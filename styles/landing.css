@@ -46,6 +46,7 @@ h2{
     text-align: center;
 }
 .top-bar-text span{
+    font-size: 30px;
     color: #9d9d9d;
 }
 .top-bar-box {
@@ -79,6 +80,7 @@ h2{
 }
 .header-main-con {
     padding:20px 0;
+    border-bottom: 6px solid #9d9d9d;
 }
 .input-block input{
     border: 0;
@@ -255,18 +257,10 @@ h2{
 .contact-con{
     padding: 100px 0;
     position: relative;
-    background: url("../public/images/contact-bg-img.jpg") no-repeat center;
+    background: url("../public/images/contact-bg-img.jpeg") no-repeat center;
     background-size: cover;
 }
-.contact-con::after{
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    content: "";
-    position: absolute;
-    background: rgb(254 0 0 / 50%);
-}
+
 .contact-con .container{
     z-index: 1;
     position: relative;
@@ -324,4 +318,165 @@ h2{
     background: #9d9d9d;
     color: #fff;
     font-size: 24px;
+}
+/* page2 */
+.transport-banner{
+    padding: 76px 0 50px;
+}
+.transport-banner-box {
+    gap: 30px;
+    display: grid;
+    border-bottom: 10px solid #9d9d9d;
+    margin-bottom: 15px;
+    grid-template-columns: 32% 40% 23%;
+}
+.company-info h4 {
+    color: #fe0000;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 30px;
+    line-height: 30px;
+}
+.company-info span{
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+.company-logo figure{
+    width: 100%;
+    height: 205px;
+    background: #9d9d9d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.company-info {
+    margin: 0 auto;
+}
+.company-info span:last-child{
+    margin-bottom: 20px;
+}
+.company-contact li{
+    margin-bottom: 10px;
+}
+.company-contact li a,.company-contact li small {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+}
+.company-social-info span{
+    font-size: 14px;
+    line-height: 14px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.company-social-info .social-icon{
+    margin-bottom: 40px;
+}
+.visit-site-link a {
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    display: inline-block;
+    background: #9d9d9d;
+    color: #fff;
+    text-decoration: none;
+    padding: 17px 50px;
+}
+.transport-banner-box + p{
+    font-size: 20px;
+    line-height: 24px;
+}
+.advertisement-box {
+    gap: 30px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 55.6% 42%;
+}
+.advertisement-rt-box h4{
+    font-size: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #f52922;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.advertisement-rt-box figure{
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+.advertisement-rt-box img{
+    width: 100%;
+    height: auto;
+}
+.advertisement-box-con{
+    padding-bottom: 50px;
+}
+.advertisement-lft-box span{
+    font-size: 16px;
+    line-height: 16px;
+    background: #9d9d9d;
+    padding: 10px 20px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.advertisement-lft-box small{
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 700;
+}
+.advertisement-lft-box ul li{
+    margin-bottom: 30px;
+}
+.advertisement-lft-box ul li:last-child{
+    margin-bottom: 0;
+}
+.professional-title {
+    color: #9f9f9f;
+    margin-bottom: 20px;
+}
+.professional-box {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(2,48%);
+}
+.professional-item ul li{
+    margin-bottom: 30px;
+}
+.professional-item ul li:last-child{
+    margin-bottom: 0;
+}
+.professional-item {
+    padding: 30px;
+    background: #d7d7d7;
+}
+.professional-item-box figure img {
+    width: auto;
+    height: auto;
+}
+.professional-item-box {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+.professional-item-content h4{
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.professional-item-content span{
+    width: 60%;
+    font-size: 14px;
+    line-height: 22px;
+}
+.professional-con{
+    padding-bottom: 50px;
 }
