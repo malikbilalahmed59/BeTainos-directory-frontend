@@ -7,6 +7,7 @@ import { AdvertiseBanner } from "./components/landing-page/AdvertiseBanner";
 import { AdditionBox } from "./components/landing-page/AdditionBox";
 import { Categories } from "./components/landing-page/Categories";
 import { Footer } from "./components/landing-page/Footer";
+import { Contact } from "./components/landing-page/Contact";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +32,7 @@ export default function Home() {
       </Head>
       <Header/>
       <AdvertiseBanner/>
+      <Contact/>
       <AdditionBox/>
       <Categories/>
       <Footer/>

@@ -252,3 +252,76 @@ h2{
     color: #fff;
     text-decoration: none;
 }
+.contact-con{
+    padding: 100px 0;
+    position: relative;
+    background: url("../public/images/contact-bg-img.jpg") no-repeat center;
+    background-size: cover;
+}
+.contact-con::after{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    background: rgb(254 0 0 / 50%);
+}
+.contact-con .container{
+    z-index: 1;
+    position: relative;
+}
+.contact-title{
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.contact-title h3{
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 20.9px;
+    line-height: 48px;
+    margin-bottom: 30px;
+}
+.contact-title span{
+    font-size: 36px;
+    letter-spacing: 20.9px;
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+.contact-title h2{
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 48px;
+    margin-bottom: 60px;
+}
+.main-contact-form{
+    gap: 20px;
+    display: flex;
+}
+.main-contact-form ul{
+    gap: 20px;
+    margin-bottom: 0;
+    display: flex;
+    width: 93%;
+}
+.main-contact-form ul li{
+    width: 100%;
+}
+.main-contact-form ul li input{
+    width: 100%;
+    border: none;
+    padding: 23px 20px;
+    background: #fff;
+}
+.main-contact-form ul li input:focus,.search-btn:focus{
+    outline: none;
+}
+.search-btn {
+    border: none;
+    height: 70px;
+    width: 70px;
+    background: #9d9d9d;
+    color: #fff;
+    font-size: 24px;
+}
