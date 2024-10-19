@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
 import { Header } from "./components/landing-page/Header";
 import { AdvertiseBanner } from "./components/landing-page/AdvertiseBanner";
+import { AdditionBox } from "./components/landing-page/AdditionBox";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,6 +29,7 @@ export default function Home() {
       </Head>
       <Header/>
       <AdvertiseBanner/>
+      <AdditionBox/>
     </>
   );
 }

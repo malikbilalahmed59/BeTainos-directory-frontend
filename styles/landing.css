@@ -10,6 +10,11 @@ body{
     font-family: Helvetica, Arial, sans-serif;
     
 }
+h2{
+    font-size: 36px;
+    line-height: 38px;
+    font-weight: 700;
+}
 .navbar-nav {
     gap: 20px;
 }
@@ -88,8 +93,70 @@ body{
     font-size: 16px;
     line-height: 16px;
 }
+.advertise-banner{
+    margin-bottom: 24px;
+}
 .advertise-banner img{
     width: 100%;
     height: auto !important;
     object-fit: cover;
+}
+.discover-con{
+    padding: 50px 0;
+}
+.discover-title{
+    text-align: center;
+}
+.discover-title p{
+    font-size: 24px;
+    line-height: 30px;
+    color: #000;
+    padding: 0 200px;
+}
+.discover-title h2{
+    color: #f52922;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+}
+.discover-box {
+    gap: 30px;
+    display: grid;
+    margin-bottom: 50px;
+    grid-template-columns: 35% 35%;
+    justify-content: space-between;
+}
+.discover-box + p{
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    padding: 0 130px;
+}
+.discover-box-item figure {
+    width: 154px;
+    height: 154px;
+    flex-shrink: 0;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.discover-box-content h3{
+    font-size: 28px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.discover-box-content p{
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.discover-box-content span{
+    font-size: 14px;
+    font-weight: 700;
+}
+.discover-box-item{
+    display: flex;
+    gap: 30px;
 }
