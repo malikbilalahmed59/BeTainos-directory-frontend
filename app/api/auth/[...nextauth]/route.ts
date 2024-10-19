@@ -53,7 +53,7 @@ const handler = NextAuth({
             session.user = session.user || {};
             session.user.id = token.id as string
             session.user.email = token.email as string | null;
-            session.user.token = token.token as any;
+            session.user.token = token.token as string;
             session.user.username = token.username as string | undefined;
             return session;
         }
