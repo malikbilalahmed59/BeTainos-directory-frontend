@@ -88,3 +88,8 @@ body{
     font-size: 16px;
     line-height: 16px;
 }
+.advertise-banner img{
+    width: 100%;
+    height: auto !important;
+    object-fit: cover;
+}

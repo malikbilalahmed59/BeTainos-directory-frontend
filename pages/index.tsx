@@ -3,6 +3,7 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
 import { Header } from "./components/landing-page/Header";
+import { AdvertiseBanner } from "./components/landing-page/AdvertiseBanner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function Home() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
       </Head>
       <Header/>
+      <AdvertiseBanner/>
     </>
   );
 }
