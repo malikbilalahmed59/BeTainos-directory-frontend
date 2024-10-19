@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Contact = () => {
+const Contact = () => {
   return (
     <section className='w-100 float-start contact-con'>
       <div className='container'>
@@ -12,8 +12,8 @@ export const Contact = () => {
         </div>
         <form className='main-contact-form'>
           <ul className='list-unstyled'>
-            <li><input type='text' placeholder='What,who ex:Hairdressser,plumber'/></li>
-            <li><input type='text' placeholder='What,who ex:Hairdressser,plumber'/></li>
+            <li><input type='text' placeholder='What,who ex:Hairdressser,plumber' /></li>
+            <li><input type='text' placeholder='What,who ex:Hairdressser,plumber' /></li>
           </ul>
           <button type="submit" className="search-btn"><i className="fa-solid fa-magnifying-glass"></i></button>
           {/* main-contact-form */}
@@ -24,3 +24,4 @@ export const Contact = () => {
     </section>
   )
 }
+export default Contact;

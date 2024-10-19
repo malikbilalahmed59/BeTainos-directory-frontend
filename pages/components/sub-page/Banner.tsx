@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from "next/image";
 import Logo from "/public/images/logo.jpg"
-export const Banner = () => {
+const Banner = () => {
     return (
         <section className='transport-banner w-100 float-start'>
             <div className='container'>
@@ -51,3 +51,4 @@ export const Banner = () => {
         </section>
     )
 }
+export default Banner

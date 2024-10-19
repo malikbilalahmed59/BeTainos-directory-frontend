@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import Logo from "/public/images/logo.jpg"
 
-export const Footer = () => {
+const Footer = () => {
     return (
         <footer className='w-100 float-start footer-con'>
             <div className='container'>
@@ -43,3 +43,4 @@ export const Footer = () => {
         </footer>
     )
 }
+export default Footer;

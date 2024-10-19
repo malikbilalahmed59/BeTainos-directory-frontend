@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import betaincIcon from '/public/images/betainc-icon.png'; // Corrected import name
 
-export const AdditionBox = () => {
+const AdditionBox = () => {
     return (
         <section className='w-100 float-start discover-con'>
             <div className='container'>
@@ -93,3 +93,4 @@ export const AdditionBox = () => {
         </section>
     );
 };
+export default AdditionBox;

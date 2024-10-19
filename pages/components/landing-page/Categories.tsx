@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link';
 
-export const Categories = () => {
+const Categories = () => {
     return (
         <section className='w-100 float-start categories-con'>
             <div className='container'>
@@ -48,3 +48,4 @@ export const Categories = () => {
         </section>
     )
 }
+export default Categories;

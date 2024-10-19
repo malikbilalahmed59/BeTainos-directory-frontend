@@ -1,10 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import { Header } from '../components/landing-page/Header';
-import { EmployeeForm } from '../components/sub-page/EmployeeForm';
-import { BlogCard } from '../components/sub-page/BlogCard';
-import { AdvertisementBox2 } from '../components/sub-page/AdvertisementBox2';
-import { Footer } from "../components/landing-page/Footer";
+import { Header, Footer } from '../components/landing-page';
+import { EmployeeForm, BlogCard, AdvertisementBox2 } from '../components/sub-page';
 
 const Index = () => {
   return (
@@ -22,7 +19,7 @@ const Index = () => {
       <Header />
       <EmployeeForm />
       <BlogCard />
-      <AdvertisementBox2  />
+      <AdvertisementBox2 />
       <BlogCard />
       <Footer />
     </>

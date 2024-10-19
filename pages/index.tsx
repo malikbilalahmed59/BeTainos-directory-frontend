@@ -1,11 +1,6 @@
 import Head from "next/head";
 import { useEffect } from "react";
-import { AdditionBox } from "./components/landing-page/AdditionBox";
-import { AdvertiseBanner } from "./components/landing-page/AdvertiseBanner";
-import { Categories } from "./components/landing-page/Categories";
-import { Contact } from "./components/landing-page/Contact";
-import { Footer } from "./components/landing-page/Footer";
-import { Header } from "./components/landing-page/Header";
+import { AdditionBox, Header, Footer, AdvertiseBanner, Categories, Contact } from "./components/landing-page";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",

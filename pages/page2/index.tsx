@@ -1,11 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import { Header } from '../components/landing-page/Header';
-import { Banner } from '../components/sub-page/Banner';
-import { AdvertisementBox } from '../components/sub-page/AdvertisementBox';
-import { ProfessionalBox } from '../components/sub-page/ProfessionalBox';
-import { Categories } from '../components/landing-page/Categories';
-import { Footer } from "../components/landing-page/Footer";
+import { Header, Footer, Categories } from '../components/landing-page';
+import { Banner, AdvertisementBox, ProfessionalBox } from '../components/sub-page';
 
 const Index = () => {
   return (
@@ -22,9 +18,9 @@ const Index = () => {
       </Head>
       <Header />
       <Banner />
-      <AdvertisementBox/>
-      <ProfessionalBox/>
-      <Categories/>
+      <AdvertisementBox />
+      <ProfessionalBox />
+      <Categories />
       <Footer />
     </>
   );
