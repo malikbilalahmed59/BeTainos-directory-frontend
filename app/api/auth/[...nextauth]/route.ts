@@ -12,13 +12,13 @@ const handler = NextAuth({
             },
             async authorize(credentials) {
                 try {
+
+
                     const data = {
                         identifier: credentials?.email,
                         password: credentials?.password
                     };
                     const res = await axiosInstance.post("auth/local", data);
-
-                    console.log("Response from API:", res.data);
                     const response = res.data;
 
                     if (response && response.jwt && response.user) {
@@ -29,16 +29,24 @@ const handler = NextAuth({
                             token,
                             username: user.username
                         };
-                    } else {
-                        return null;
+                    } else if (response && response.error) {
+                        // If there's an error in the response, throw it
+                        throw new Error(response.error.message || "Authentication failed");
                     }
-                } catch (error) {
+
+                    return null; // No valid response
+
+                } catch (error: any) {
                     console.error('Error during authentication:', error);
-                    return null;
+                    throw new Error(
+                        error.message || "An error occurred");
                 }
             }
-        })
+        }),
     ],
+    pages: {
+        signIn: '/login',
+    },
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
@@ -51,13 +59,12 @@ const handler = NextAuth({
         },
         async session({ session, token }) {
             session.user = session.user || {};
-            session.user.id = token.id as string
+            session.user.id = token.id as string;
             session.user.email = token.email as string | null;
             session.user.token = token.token as string;
             session.user.username = token.username as string | undefined;
             return session;
         }
-
     },
     session: {
         strategy: "jwt"

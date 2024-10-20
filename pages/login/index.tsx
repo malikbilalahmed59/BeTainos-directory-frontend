@@ -4,24 +4,28 @@ import { toast } from 'react-toastify';
 import Image from "next/image";
 import Logo from "/public/images/logo.png"
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Button } from 'rsuite';
 const Login = () => {
     const [email, setEmail] = useState<string>("user@strapi.io")
     const [password, setPassword] = useState<string>("strapiPassword")
     const [loading, setLoading] = useState(false);
-
+    const router = useRouter()
     const handleSubmit = async () => {
         setLoading(true);
         try {
             const result = await logged_in(email, password);
             console.log("res", result?.status)
             if (result?.status == 200) {
-                console.log("logged in")
+                router.push('/dashboard')
                 toast.success("Successfully signed in");
             } else {
                 toast.info("Invalid email or password");
             }
             setLoading(false);
         } catch (error) {
+            toast.info("Invalid email or password");
+            setLoading(false);
             console.log(error)
         }
 
@@ -49,7 +53,7 @@ const Login = () => {
                                 <input required type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             </li>
                         </ul>
-                        <button type="submit" disabled={loading}>Login</button>
+                        <Button block loading={loading} type="submit" disabled={loading}>{'Login'}</Button>
                         <span className="d-block text-center">Don&apos;t have an account yet? <Link href="/register">Register</Link></span>
                     </form>
                 </div>

@@ -1,8 +1,5 @@
 
-import NextSessionProvider from "@/app/provider/SessionProvider";
-import TanstackProvider from "@/app/provider/TanstackProvider";
-import { Html, Head, Main, NextScript } from "next/document";
-import { ToastContainer } from "react-toastify";
+import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -11,12 +8,11 @@ export default function Document() {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
       </Head>
       <body>
-        <NextSessionProvider>
-          <TanstackProvider>
+        <>
+          <>
             <Main />
-            <ToastContainer />
-          </TanstackProvider>
-        </NextSessionProvider>
+          </>
+        </>
         <NextScript />
       </body>
     </Html>

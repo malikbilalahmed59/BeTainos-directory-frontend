@@ -8,8 +8,7 @@ export const logged_in = async (
     const status = await signIn('credentials', {
         redirect: false,
         email: email,
-        password: password,
-
+        password: password
     })
     return status
 
