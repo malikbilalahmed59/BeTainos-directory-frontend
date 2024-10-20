@@ -2,47 +2,54 @@ import React from 'react'
 import Image from "next/image";
 import Link from 'next/link';
 import Logo from "/public/images/logo.jpg"
+import { ILandingPage } from '@/app/types/landingpage';
 
-const Header = () => {
+interface Props {
+    pageData: ILandingPage | undefined
+}
+const Header = ({ pageData }: Props) => {
     return (
         <div className='header-main-con w-100 float-start'>
-            <div className='top-bar-con'>
-                <div className='container'>
-                    <div className='top-bar-box'>
-                        <div className='top-bar-text'>
-                            <span className='d-block'>The 100% Afro-Caribbean director</span>
-                        </div>
-                        <div className='top-bar-info'>
-                            <div className='input-block'>
-                                <input type='text' placeholder='Search' />
+            {
+                pageData?.HeaderBar && <div className='top-bar-con'>
+                    <div className='container'>
+                        <div className='top-bar-box'>
+
+                            <div className='top-bar-text'>
+                                {
+                                    pageData?.HeaderBar.Title && <span className='d-block'>{pageData?.HeaderBar.Title}</span>
+                                }
+
                             </div>
-                            <div className='social-icon'>
-                                <ul className='list-unstyled mb-0'>
-                                    <li>
-                                        <Link href="/"><i className="fa-brands fa-facebook-f"></i></Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/"><i className="fa-brands fa-instagram"></i></Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/"><i className="fa-brands fa-x-twitter"></i></Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/"><i className="fa-brands fa-youtube"></i></Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/"><i className="fa-brands fa-tiktok"></i></Link>
-                                    </li>
-                                </ul>
-                                {/* social-icon */}
+                            <div className='top-bar-info'>
+                                <div className='input-block'>
+                                    <input type='text' placeholder={pageData?.HeaderBar?.search_label || 'Search'} />
+                                </div>
+                                {
+                                    pageData.HeaderBar.Socials && pageData.HeaderBar.Socials.length > 0 &&
+                                    <div className='social-icon'>
+                                        <ul className='list-unstyled mb-0'>
+                                            {
+                                                pageData.HeaderBar.Socials.map(s => <li>
+                                                    <Link href={s.Link || "#"}>
+                                                        <Image src={s.Icon.url} height={20} width={20} alt={s.Icon.alternativeText || s.Name} />
+                                                    </Link>
+                                                </li>)
+                                            }
+                                        </ul>
+                                        {/* social-icon */}
+                                    </div>
+                                }
+
                             </div>
+                            {/* top-bar-box */}
                         </div>
-                        {/* top-bar-box */}
+                        {/* container */}
                     </div>
-                    {/* container */}
+                    {/* top-bar */}
                 </div>
-                {/* top-bar */}
-            </div>
+            }
+
             <header className=' header-con'>
                 <div className='container'>
                     <nav className="navbar navbar-expand-lg navbar-light">

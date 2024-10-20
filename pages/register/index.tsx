@@ -9,8 +9,8 @@ import { Button } from 'rsuite';
 import Logo from "/public/images/logo.png";
 
 const Register = () => {
-    const [username, setUsername] = useState<string>("user")
-    const [email, setEmail] = useState<string>("user@strapi.io")
+    const [username, setUsername] = useState<string>("")
+    const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("0")
     const { mutate, isPending: loading } = useRegister()
     const router = useRouter();

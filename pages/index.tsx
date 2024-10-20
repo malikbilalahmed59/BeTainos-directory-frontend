@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useEffect } from "react";
 import { AdditionBox, Header, Footer, AdvertiseBanner, Categories, Contact } from "./components/landing-page";
+import { useLandingPage } from "@/app/hooks/useLandingPage";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -17,6 +18,9 @@ export default function Home() {
   useEffect(() => {
     import('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
+  const { data, isLoading } = useLandingPage();
+  const pageData = data && data[0];
+  console.log(data)
   return (
     <>
       <Head>
@@ -26,12 +30,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
 
       </Head>
-      <Header />
-      <AdvertiseBanner />
-      <Contact />
-      <AdditionBox />
-      <Categories />
-      <Footer />
+      {
+        isLoading ? <>
+          <p>Loading...</p>
+        </> : <>
+
+          <Header pageData={pageData} />
+          <AdvertiseBanner />
+          <Contact />
+          <AdditionBox />
+          <Categories />
+          <Footer /></>
+      }
+
     </>
   );
 }
