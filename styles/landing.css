@@ -674,6 +674,96 @@ h2 {
 .advertisement-box2+.blog-card-con .blog-card-title {
     display: none;
 }
+.offer-banner {
+    padding: 150px 0;
+    margin-top: 10px;
+    background: linear-gradient(to right, #de1701 0%, #ed8c0c 100%);
+}
+.offer-banner-title{
+    color: #fff;
+}
+.offer-banner-title h1{
+    font-size: 38px;
+    line-height: 42px;
+    font-weight: 700;
+    margin-bottom: 80px;
+}
+.offer-banner-title {
+    color: #fff;
+    width: 60%;
+}
+.offer-banner-title span{
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 800;
+    margin-bottom: 80px;
+}
+.offer-banner-list li{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+}
+.offer-banner-list{
+    margin-bottom: 60px;
+}
+.offer-list2{
+    gap: 10px;
+    display: flex;
+    margin-bottom: 80px;
+}
+.offer-list2 li {
+    font-size: 22px;
+    line-height: 20px;
+    font-weight: 700;
+    border-right: 3px solid #fff;
+    padding-right: 10px;
+}
+.offer-list2 li:last-child{
+    border-right: 0;
+    padding-right: 0;
+}
+.contact-btn a {
+    display: inline-block;
+    color: #f6261d;
+    text-decoration: none;
+    background: #fff;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 22px;
+    padding: 19px 50px;
+    border-radius: 30px;
+}
+.betainos-banner figure img{
+    position: relative !important;
+}
+.help-con{
+    padding: 285px 0;
+    background: url(../public/images/support-img.jpeg) no-repeat center;
+    background-size: cover;
+}
+.help-title h4{
+    font-size: 36px;
+    line-height: 36px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 20px;
+}
+.help-title p{
+    font-size: 22px;
+    line-height: 22px;
+    color: #000000;
+    margin-bottom: 50px;
+}
+.info-btn a{
+    font-size: 20px;
+    line-height: 20px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: #ff0000;
+    padding: 16px 60px;
+    border-radius: 30px;
+}
 /* RESPONSIVE */
 @media only screen and (max-width: 1440px) {
     .top-bar-text span {
