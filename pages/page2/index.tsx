@@ -1,9 +1,11 @@
-import React from "react";
+import { useLandingPage } from "@/app/hooks/useLandingPage";
 import Head from "next/head";
-import { Header, Footer, Categories } from '../components/landing-page';
-import { Banner, AdvertisementBox, ProfessionalBox } from '../components/sub-page';
+import { Categories, Footer, Header } from '../components/landing-page';
+import { AdvertisementBox, Banner, ProfessionalBox } from '../components/sub-page';
 
 const Index = () => {
+  const { data } = useLandingPage();
+  const pageData = data && data[0];
   return (
     <>
       <Head>
@@ -16,12 +18,12 @@ const Index = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         />
       </Head>
-      <Header />
+      <Header pageData={pageData} />
       <Banner />
       <AdvertisementBox />
       <ProfessionalBox />
       <Categories />
-      <Footer />
+      <Footer pageData={pageData} />
     </>
   );
 };

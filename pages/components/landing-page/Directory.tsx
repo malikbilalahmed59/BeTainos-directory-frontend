@@ -1,14 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import betaincIcon from '/public/images/betainc-icon.png'; // Corrected import name
-
-const AdditionBox = () => {
+import { ILandingPage } from '@/app/types/landingpage';
+interface Props {
+    pageData: ILandingPage | undefined
+}
+const Directory = ({ pageData }: Props) => {
     return (
         <section className='w-100 float-start discover-con'>
             <div className='container'>
                 <div className='discover-title'>
-                    <p>Are you looking for contact details of a company or professional in your community?Find them on the <strong>BeTaions directory</strong></p>
-                    <h2>discover the new additions</h2>
+                    <p>{pageData?.Directory?.Description}</p>
+                    <h2>{pageData?.Directory?.Heading}</h2>
                     {/* discover-title */}
                 </div>
                 <div className='discover-box'>
@@ -86,11 +89,11 @@ const AdditionBox = () => {
                     </div>
                     {/* discover-box */}
                 </div>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using <strong>Content here, content here, making it look like readable English.</strong></p>
+                <p>{pageData?.Directory?.BottomDescription}</p>
                 {/* container */}
             </div>
             {/* discover-con */}
         </section>
     );
 };
-export default AdditionBox;
+export default Directory;

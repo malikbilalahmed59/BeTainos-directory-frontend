@@ -8,6 +8,7 @@ interface Props {
     pageData: ILandingPage | undefined
 }
 const Header = ({ pageData }: Props) => {
+    console.log(pageData)
     return (
         <div className='header-main-con w-100 float-start'>
             {
@@ -30,7 +31,7 @@ const Header = ({ pageData }: Props) => {
                                     <div className='social-icon'>
                                         <ul className='list-unstyled mb-0'>
                                             {
-                                                pageData.HeaderBar.Socials.map(s => <li>
+                                                pageData.HeaderBar.Socials.map(s => <li key={s.id}>
                                                     <Link href={s.Link || "#"}>
                                                         <Image src={s.Icon.url} height={20} width={20} alt={s.Icon.alternativeText || s.Name} />
                                                     </Link>

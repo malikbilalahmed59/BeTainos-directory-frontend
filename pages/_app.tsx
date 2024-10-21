@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return <TanstackProvider>
     <NextSessionProvider>
       <CustomProvider>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
         <ToastContainer />
       </CustomProvider>
 

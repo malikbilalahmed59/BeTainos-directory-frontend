@@ -1,47 +1,11 @@
-interface IIconFormat {
-    ext: string;
-    url: string;
-    hash: string;
-    mime: string;
-    name: string;
-    path: string | null;
-    size: number;
-    width: number;
-    height: number;
-    sizeInBytes: number;
-}
+import { IImage } from "./types";
 
-interface IIcon {
-    id: number;
-    documentId: string;
-    name: string;
-    alternativeText: string | null;
-    caption: string | null;
-    width: number;
-    height: number;
-    formats: {
-        small: IIconFormat;
-        thumbnail: IIconFormat;
-    };
-    hash: string;
-    ext: string;
-    mime: string;
-    size: number;
-    url: string;
-    previewUrl: string | null;
-    provider: string;
-    provider_metadata: any | null;
-    folderPath: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    locale: string | null;
-}
+
 interface ISocial {
     id: number;
     Link: string;
     Name: string;
-    Icon: IIcon;
+    Icon: IImage;
 }
 
 interface IHeaderBar {
@@ -60,27 +24,42 @@ export interface ILandingPage {
     publishedAt: string;
     locale: string | null;
     HeaderBar: IHeaderBar | null;
-    Header: { Logo: IIcon | null };
-    Advertisement: { Banner: IIcon | null };
+    Header: { Logo: IImage | null };
+    Advertisement: { Banner: IImage | null };
     Footer: {
-        Logo: IIcon | null,
+        Logo: IImage | null,
         Description: string,
         LeagalInformation: {
             id: number,
-            links: {
+            Heading: string,
+            Links: {
                 id: number,
                 link: string,
                 label: string
             }[]
         },
         FollowUs: {
+            Heading: string,
             Socials: {
                 id: number,
                 Link: string,
                 Name: string,
-                Icon: IIcon | null
+                Icon: IImage | null
             }[]
         }
+    },
+    HeroSection: {
+        Heading1: string,
+        Heading2: string,
+        Heading3: string,
+        SearchLabel1: string,
+        SearchLabel2: string,
+        Background: IImage | null
+    },
+    Directory: {
+        Description: string,
+        Heading: string,
+        BottomDescription: string
     }
 }interface IListItem {
     id: number;
