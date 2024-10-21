@@ -54,13 +54,15 @@ const Header = ({ pageData }: Props) => {
             <header className=' header-con'>
                 <div className='container'>
                     <nav className="navbar navbar-expand-lg navbar-light">
-                        <div className="container-fluid">
+                        <div className="container-fluid p-0">
                             <Link href="/" className="navbar-brand">
                                 <figure className='mb-0'>
                                     <Image width={216} height={63} src={Logo} alt="logo" />
                                 </figure>
                             </Link>
-                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                                <span className="navbar-toggler-icon"></span>
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -82,13 +84,13 @@ const Header = ({ pageData }: Props) => {
                                             Contact</Link>
                                     </li>
                                 </ul>
-                                <div className='cart-btn'>
+                            </div>
+                            <div className='cart-btn'>
                                     <Link href='#' className="nav-link">
                                         Add</Link>
                                     <Link href='#' className="nav-link">
                                         Login</Link>
                                 </div>
-                            </div>
                         </div>
                     </nav>
                     {/* container */}
