@@ -30,8 +30,7 @@ const Footer = ({ pageData }: Props) => {
                         <ul className='list-unstyled footer-social'>
                             {
                                 (pageData?.Footer.FollowUs.Socials || []).map(l => <li key={l.id}>
-                                    <figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(l.Icon || null)} alt={pageData?.Footer.Logo?.alternativeText || "Logo"} /></figure>
-                                    <Link href={l.Link || "#"}>{l.Name}</Link></li>)
+                                    <Link href={l.Link || "#"}><figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(l.Icon || null)} alt={pageData?.Footer.Logo?.alternativeText || "Logo"} /></figure></Link></li>)
                             }
 
                         </ul>
