@@ -5,6 +5,8 @@ import { Categories, Footer, Header } from '../components/landing-page';
 import HelpSection from '../components/sub-page/HelpSection';
 import BetainosBanner from '../components/sub-page/BetainosBanner';
 import Testimonials from '../components/sub-page/Testimonials';
+import { DevelopmentServices } from '../components/sub-page/DevelopmentServices';
+import { ServicesBox } from '../components/sub-page/ServicesBox';
 
 
 const Index = () => {
@@ -14,6 +16,8 @@ const Index = () => {
     <>
         <Header pageData={pageData} />
         <MainBanner/>
+        <DevelopmentServices/>
+        <ServicesBox/>
         <BetainosBanner/>
         <Categories />
         <HelpSection />

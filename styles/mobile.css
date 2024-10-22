@@ -1,0 +1,397 @@
+/* RESPONSIVE */
+@media only screen and (max-width: 1440px) {
+    .top-bar-text span {
+        font-size: 24px;
+    }
+    .contact-title h3 {
+        font-size: 40px;
+        letter-spacing: 16.9px;
+    }
+    .contact-title span {
+        font-size: 32px;
+        letter-spacing: 16px;
+        margin-bottom: 50px;
+    }
+    .contact-title h2 {
+        font-size: 48px;
+        line-height: 48px;
+        margin-bottom: 50px;
+    }
+    .main-contact-form ul li input {
+        padding: 20px 20px;
+    }
+    .search-btn {
+        height: 64px;
+        width: 64px;
+    }
+    .contact-con {
+        padding: 80px 0;
+    }
+    .discover-box {
+        grid-template-columns: 38% 38%;
+    }
+    .footer-box {
+        gap: 70px;
+    }
+}
+@media only screen and (max-width: 1199px) {
+    .top-bar-text span {
+        font-size: 20px;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 10px 12px;
+    }
+    .header-con .navbar>.container-fluid{
+        align-items: flex-end;
+    }
+    .contact-title h3 {
+        font-size: 38px;
+        letter-spacing: 11px;
+    }
+    .contact-title span {
+        font-size: 30px;
+        letter-spacing: 12px;
+        margin-bottom: 30px;
+    }
+    .contact-title h2 {
+        font-size: 44px;
+        line-height: 44px;
+        margin-bottom: 40px;
+    }
+    .contact-con {
+        padding: 70px 0;
+    }
+    .discover-title p {
+        font-size: 22px;
+        line-height: 30px;
+        padding: 0 140px;
+    }
+    .discover-box {
+        grid-template-columns: 45% 45%;
+    }
+    .discover-box-content h3 {
+        font-size: 26px;
+        line-height: 26px;
+    }
+    .discover-box+p, .categories-box+p {
+        padding: 0 70px;
+    }
+    .footer-box {
+        gap: 50px;
+        grid-template-columns: 37% 32% 20%;
+    }
+    .footer-logo p {
+        padding-right: 50px;
+    }
+    .sitemap h4 {
+        margin-bottom: 20px;
+        font-size: 22px;
+        line-height: 22px;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .header-main-con {
+        padding: 20px 0 10px;
+    }
+    .contact-title h3 {
+        font-size: 30px;
+        letter-spacing: 6px;
+        margin-bottom: 20px;
+    }
+    .contact-title span {
+        font-size: 26px;
+        letter-spacing: 5px;
+        margin-bottom: 26px;
+    }
+    .contact-title h2 {
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 30px;
+    }
+    .main-contact-form ul li input {
+        padding: 14px 20px;
+    }
+    .search-btn {
+        height: 52px;
+        width: 52px;
+    }
+    .search-btn i{
+        font-size: 20px;
+    }
+    .discover-title p {
+        font-size: 20px;
+        line-height: 28px;
+        padding: 0;
+    }
+    h2 {
+        font-size: 32px;
+        line-height: 34px;
+    }
+    .discover-title h2 {
+        margin-bottom: 44px;
+    }
+    .discover-box-item {
+        gap: 15px;
+    }
+    .discover-box-item figure {
+        width: 134px;
+        height: 134px;
+    }
+    .discover-box {
+        grid-template-columns: 48% 48%;
+    }
+    .discover-box+p, .categories-box+p {
+        padding: 0;
+    }
+    .discover-con {
+        padding: 40px 0;
+    }
+    .categories-con h2 {
+        margin-bottom: 38px;
+    }
+    .categories-box {
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    .categories-box-item a {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .footer-logo, .sitemap {
+        padding: 30px 0;
+    }
+    .footer-logo p {
+        padding-right: 0;
+    }
+    .footer-box {
+        gap: 30px;
+        grid-template-columns: 40% 27% 26%;
+    }
+    .sitemap h4 {
+        font-size: 20px;
+        line-height: 22px;
+    }
+    /*  */
+    .header-con .navbar-toggler {
+        right: 0;
+        padding: 0;
+        bottom: 13px;
+        width: 24px;
+        border: none;
+        z-index: 999;
+        position: absolute;
+    }
+    .header-con .navbar-toggler-icon{
+        float: left;
+        width: 100%;
+        height: 2px;
+        margin: 3px 0;
+        background: #f6261c;
+    }
+    .header-con .navbar-toggler:focus{
+        box-shadow: none;
+        outline: none;
+    }
+    .header-con .navbar-toggler .navbar-toggler-icon:nth-child(1),
+    .header-con .navbar-toggler .navbar-toggler-icon:nth-child(3) {
+    -webkit-transition: transform .35s ease-in-out;
+    -moz-transition: transform .35s ease-in-out;
+    -o-transition: transform .35s ease-in-out;
+    transition: transform .35s ease-in-out;
+    }
+    .header-con .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(1) {
+    position: absolute;
+    top:8px;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+    left: 0px;
+    }
+    .header-con .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(2) {
+    height: 12px;
+    visibility: hidden;
+    background-color: transparent;
+    }
+    .header-con .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(3) {
+    position: absolute;
+    top:8px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    left: 0px;
+    }
+    .header-con .navbar-collapse.collapse, .navbar-collapse.collapsing {
+        width: 100%;
+        right: 0;
+        top: 120px;
+        z-index: 999;
+        position: absolute;
+        background: #fff;
+        border: 1px solid rgb(157 157 157 / 22%);
+        border-radius: 10px;
+    }
+    .header-con .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 5px;
+        background: transparent;
+        color: #9d9d9d;
+        display: block;
+    }
+    .header-con .navbar-nav {
+        gap: 0;
+    }
+    .header-con .nav-item {
+        padding: 5px 20px;
+    }
+    .cart-btn {
+        padding-right: 40px;
+    }
+    .cart-btn a {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 10px 20px;
+        min-width: 94px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .top-bar-text span {
+        font-size: 18px;
+    }
+    .input-block input {
+        padding: 10px 30px 10px 10px;
+    }
+    .contact-con {
+        padding: 60px 0;
+    }
+    .contact-title h3 {
+        font-size: 26px;
+        letter-spacing: 4px;
+        line-height: 30px;
+    }
+    .contact-title span {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+    .contact-title h2 {
+        font-size: 30px;
+        line-height: 30px;
+        margin-bottom: 26px;
+    }
+    .main-contact-form ul {
+        gap: 10px;
+    }
+    .main-contact-form {
+        gap: 10px;
+    }
+    .discover-title p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .discover-title h2 {
+        margin-bottom: 34px;
+    }
+    h2 {
+        font-size: 30px;
+        line-height: 32px;
+    }
+    .discover-box-item {
+        gap: 15px;
+        flex-direction: column;
+    }
+    .discover-box-content h3 {
+        font-size: 24px;
+    }
+    .categories-con h2 {
+        margin-bottom: 28px;
+    }
+    .categories-box {
+        grid-template-columns: repeat(2, 48%);
+    }
+    .discover-box+p, .categories-box+p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    .categories-con {
+        padding-bottom: 40px;
+    }
+    .footer-box {
+        gap: 30px;
+        grid-template-columns: 100%;
+    }
+    .footer-logo, .sitemap {
+        padding: 0;
+        border-right: none;
+    }
+    .footer-con {
+        padding: 30px 0;
+    }
+    .top-bar-text,.top-bar-info .input-block {
+        display: none;
+    }
+    .top-bar-box {
+        justify-content: center;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .top-bar-con{
+        display: none;
+    }
+    .contact-con {
+        padding: 50px 0;
+    }
+    .contact-title h3 {
+        font-size: 24px;
+        letter-spacing: 2px;
+        line-height: 30px;
+    }
+    .contact-title span {
+        font-size: 20px;
+        letter-spacing: 0;
+    }
+    .main-contact-form ul {
+        gap: 10px;
+        width: 100%;
+        flex-direction: column;
+    }
+    .main-contact-form {
+        gap: 10px;
+        flex-direction: column;
+    }
+    .search-btn {
+        height: 52px;
+        width: 100%;
+    }
+    h2 {
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .discover-box {
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+    .discover-box-item figure {
+        margin: 0 auto;
+    }
+    .navbar{
+        padding: 0;
+    }
+    .header-main-con {
+        padding: 10px 0;
+    }
+    .cart-btn a:first-child {
+        display: none;
+    }
+    .cart-btn {
+        position: relative;
+        top: -10px;
+    }
+    .cart-btn a {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 8px 12px;
+        min-width: auto;
+    }
+}
