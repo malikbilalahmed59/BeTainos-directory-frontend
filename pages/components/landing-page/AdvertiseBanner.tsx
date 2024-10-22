@@ -1,7 +1,6 @@
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import { ILandingPage } from '@/app/types/landingpage';
 import Image from 'next/image';
-import { isMobile } from 'react-device-detect';
 
 interface Props {
   pageData: ILandingPage | undefined
