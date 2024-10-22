@@ -764,6 +764,58 @@ h2 {
     padding: 16px 60px;
     border-radius: 30px;
 }
+.testimonials-title span{
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.testimonials-title p{
+    font-size: 40px;
+    line-height: 46px;
+    margin-bottom: 0;
+    font-weight: 700;
+    color: #000;
+}
+.testimonials-con {
+    padding: 100px 0;
+}
+.testimonials-title {
+    width: 54%;
+    margin: 0 auto;
+    position: relative;
+}
+.testimonials-title:after{
+    top: 0;
+    left: 0;
+    content: "\f10d";
+    position: absolute;
+    font-family: "Font Awesome 6 Pro";
+}
+.testimonials-title:after,.testimonials-title:before {
+    top: 0;
+    left: -150px;
+    content: "\f10d";
+    position: absolute;
+    font-family: "Font Awesome 6 free";
+    font-weight: 600;
+    font-size: 54px;
+    background: #d9d9d9;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff0000;
+}
+.testimonials-title:before{
+    top: auto;
+    left: auto;
+    content: "\f10e";
+    right: -150px;
+    bottom: -40px;
+}
 /* RESPONSIVE */
 @media only screen and (max-width: 1440px) {
     .top-bar-text span {
