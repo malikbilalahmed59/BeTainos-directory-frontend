@@ -31,7 +31,12 @@ export default function Home() {
       </Head>
       {
         isLoading ? <>
-          <p>Loading...</p>
+          <div className="loader-mask" >
+    <div className="loader">
+        <div></div>
+        <div></div>
+    </div>
+</div>
         </> : <>
 
           <Header pageData={pageData} />

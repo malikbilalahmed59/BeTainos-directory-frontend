@@ -902,4 +902,139 @@ h2 {
 .services-box-content ul li:last-child{
     margin-bottom: 0;
 }
+.main-contact-con{
+    padding: 100px 0;
+}
+.main-contact-title h2{
+    font-size: 34px;
+    line-height: 34px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ff0101;
+}
+.main-contact-title p {
+    font-size: 22px;
+    line-height: 24px;
+    margin-bottom: 50px;
+}
+form.main-contact-box {
+    background: #eaeaea;
+    width: 60%;
+    margin: 0 auto;
+    padding: 50px;
+}
+.main-contact-box ul li label{
+    display: block;
+}
+.main-contact-box ul li label {
+    display: block;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.main-contact-box ul li{
+    margin-bottom: 20px;
+}
+.main-contact-box ul li input,.main-contact-box ul li textarea{
+    width: 100%;
+    border: none;
+    padding: 10px 20px;
+    background: #fff;
+}
+.main-contact-box ul li input:focus,.main-contact-box ul li textarea:focus,.main-form-btn button:focus{
+    outline: none;
+}
+.main-contact-box ul li textarea{
+    height: 150px;
+}
+.main-contact-box ul{
+    margin-bottom: 20px;
+}
+.main-form-btn{
+    text-align: center;
+}
+.main-form-btn button{
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 700;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 14px 30px;
+    background: #fb0102;
+}
+/*  */
+/* LOADER SECTION */
+.loader {
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    position: absolute;
+    text-indent: -9999em;
+    display: inline-block;
+    margin: -25px 0 0 -25px;
+    color:var(--primary--color);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.loader-mask {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    position: fixed;
+    background-color: #fff;
+}
+.lead{
+  font-size:13px;
+}
+.loader div {
+    top: 0;
+    left: 0;
+    opacity: .5;
+    float: none;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    display: inline-block;
+    background:#f6261c;
+    -webkit-animation: ballPulseDouble 2s ease-in-out infinite;
+    animation: ballPulseDouble 2s ease-in-out infinite;
+}
+.loader div:last-child {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+}
 
+@-webkit-keyframes ballPulseDouble {
+    0%,
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes ballPulseDouble {
+    0%,
+    100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+/* LOADER SECTION */
