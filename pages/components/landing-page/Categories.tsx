@@ -1,33 +1,32 @@
 import React from 'react'
 import Link from 'next/link';
-import { useCategories } from '@/app/hooks/useCategories';
+import { useCategories } from '@/app/hooks/useAPIs';
+import { ILandingPage } from '@/app/types/landingpage';
 
-const Categories = () => {
+interface Props {
+    pageData: ILandingPage | undefined
+}
+const Categories = ({ pageData }: Props) => {
     const { data, isLoading } = useCategories();
-    const pageData = data && data[0]
+
     return (
         <section className='w-100 float-start categories-con'>
             <div className='container'>
                 {
                     isLoading ? <> </> : <>
-                        {pageData?.Heading && <h2>{pageData?.Heading}</h2>}
-
+                        {pageData?.Categories?.Heading && <h2>{pageData?.Categories?.Heading}</h2>}
                         <div className='categories-box'>
                             {
-                                pageData?.List.map(item => <div key={item.id} className='categories-box-item'>
+                                (data || []).map(item => <div key={item.id} className='categories-box-item'>
                                     <Link href="#">{item.Name}</Link>
                                 </div>)
                             }
-
                         </div>
-                        {
-                            pageData?.Description && <p><strong>{pageData?.Description}</strong></p>
-                        }
-
-
                     </>
                 }
-
+                {
+                    pageData?.Categories?.Description && <p><strong>{pageData?.Categories?.Description}</strong></p>
+                }
             </div>
         </section>
     )

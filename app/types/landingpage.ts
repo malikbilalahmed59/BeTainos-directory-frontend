@@ -15,7 +15,14 @@ interface IHeaderBar {
     Socials: ISocial[];
 }
 
-
+interface IHeader {
+    Banner: IImage | null,
+    MenuLink: {
+        id: number,
+        Link: string,
+        Name: string,
+    }[] | []
+}
 export interface ILandingPage {
     id: number;
     documentId: string;
@@ -25,7 +32,7 @@ export interface ILandingPage {
     locale: string | null;
     HeaderBar: IHeaderBar | null;
     Header: { Logo: IImage | null };
-    Advertisement: { Banner: IImage | null };
+    Advertisement: IHeader | null;
     Footer: {
         Logo: IImage | null,
         Description: string,
@@ -60,7 +67,11 @@ export interface ILandingPage {
         Description: string,
         Heading: string,
         BottomDescription: string
-    }
+    } | null,
+    Categories: {
+        Description: string,
+        Heading: string,
+    } | null
 }interface IListItem {
     id: number;
     Name: string;
@@ -69,11 +80,45 @@ export interface ILandingPage {
 export interface ICategory {
     id: number;
     documentId: string;
-    Heading: string;
+    Name: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
     locale: string | null;
-    Description: string | null;
-    List: IListItem[];
+}
+interface ISocial {
+    id: number;
+    Link: string;
+    Name: string;
+    Icon: IImage;
+}
+
+interface ICategoryRel {
+    id: number;
+    documentId: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string | null;
+    locale: string | null;
+    Name: string;
+}
+export interface IComapany {
+    id: number;
+    documentId: string;
+    Name: string;
+    PostelAddress: string;
+    Phone: string;
+    Email: string;
+    Website: string;
+    CoFounderName: string;
+    FounderName: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string | null;
+    locale: string | null;
+    ApplicationStatus: string;
+    Description: string;
+    Logo: IImage;
+    Socials: ISocial[];
+    categories_list: ICategoryRel;
 }

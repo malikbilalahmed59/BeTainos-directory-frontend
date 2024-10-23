@@ -46,7 +46,7 @@ export default function Home() {
 
           <HeroSection pageData={pageData} />
           <Directory pageData={pageData} />
-          <Categories />
+          <Categories pageData={pageData} />
           <Footer pageData={pageData} />
         </>
       }

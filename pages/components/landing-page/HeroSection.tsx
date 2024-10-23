@@ -7,7 +7,7 @@ interface Props {
 }
 const HeroSection = ({ pageData }: Props) => {
   return (
-    <section className='w-100 float-start contact-con' style={{ background: `url(${s3BucketStrapiUrl(pageData?.HeroSection.Background || null)})`, backgroundRepeat: 'no-repeat',backgroundPosition: 'center',  backgroundSize: 'cover' }}>
+    <section className='w-100 float-start contact-con' style={{ background: `url(${s3BucketStrapiUrl(pageData?.HeroSection?.Background || null)})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }}>
       <div className='container'>
         <div className='contact-title'>
           {
