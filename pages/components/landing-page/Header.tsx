@@ -24,7 +24,7 @@ const Header = ({ pageData }: Props) => {
                             </div>
                             <div className='top-bar-info'>
                                 <div className='input-block'>
-                                    <input type='text' placeholder={pageData?.HeaderBar?.search_label || 'Search'} />
+                                    <input type='text' placeholder={pageData?.HeaderBar?.search_label || ''} />
                                 </div>
                                 {
                                     pageData.HeaderBar.Socials && pageData.HeaderBar.Socials.length > 0 &&
@@ -67,30 +67,21 @@ const Header = ({ pageData }: Props) => {
                             </button>
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav mx-auto mb-lg-0">
-                                    <li className="nav-item">
-                                        <Link href="/" className="nav-link" aria-current="page">
-                                            Directory</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link href="/blog" className="nav-link">
-                                            Blog pro</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link href="/offers" className="nav-link">
-                                            Offers</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link href="/contact" className="nav-link">
-                                            Contact</Link>
-                                    </li>
+                                    {
+                                        pageData?.Header.MenuLink.map(item => <li key={item.id} className="nav-item">
+                                            <Link href={item.Link} className="nav-link" aria-current="page">
+                                                {item.Name}</Link>
+                                        </li>)
+                                    }
+
                                 </ul>
                             </div>
                             <div className='cart-btn'>
-                                    <Link href='#' className="nav-link">
-                                        Add</Link>
-                                    <Link href='#' className="nav-link">
-                                        Login</Link>
-                                </div>
+                                <Link href='#' className="nav-link">
+                                    Add</Link>
+                                <Link href='#' className="nav-link">
+                                    Login</Link>
+                            </div>
                         </div>
                     </nav>
                     {/* container */}

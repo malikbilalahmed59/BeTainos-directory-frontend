@@ -31,8 +31,8 @@ export interface ILandingPage {
     publishedAt: string;
     locale: string | null;
     HeaderBar: IHeaderBar | null;
-    Header: { Logo: IImage | null };
-    Advertisement: IHeader | null;
+    Header: IHeader;
+    Advertisement: { Banner: IImage | null } | null;
     Footer: {
         Logo: IImage | null,
         Description: string,
