@@ -1,14 +1,11 @@
-import React from 'react'
-import Link from 'next/link';
 import { useCategories } from '@/app/hooks/useAPIs';
-import { ILandingPage } from '@/app/types/landingpage';
+import { useLandingPage } from '@/app/hooks/useLandingPage';
+import Link from 'next/link';
 
-interface Props {
-    pageData: ILandingPage | undefined
-}
-const Categories = ({ pageData }: Props) => {
+const Categories = () => {
     const { data, isLoading } = useCategories();
-
+    const { data: data2 } = useLandingPage();
+    const pageData = data2 && data2[0];
     return (
         <section className='w-100 float-start categories-con'>
             <div className='container'>

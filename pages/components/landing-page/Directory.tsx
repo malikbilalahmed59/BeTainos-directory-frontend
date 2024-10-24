@@ -1,11 +1,10 @@
-import React from 'react';
+import { useLandingPage } from '@/app/hooks/useLandingPage';
 import Image from 'next/image';
-import betaincIcon from '/public/images/betainc-icon.png'; // Corrected import name
-import { ILandingPage } from '@/app/types/landingpage';
-interface Props {
-    pageData: ILandingPage | undefined
-}
-const Directory = ({ pageData }: Props) => {
+import betaincIcon from '/public/images/betainc-icon.png';
+
+const Directory = () => {
+    const { data } = useLandingPage();
+    const pageData = data && data[0];
     return (
         <section className='w-100 float-start discover-con'>
             <div className='container'>

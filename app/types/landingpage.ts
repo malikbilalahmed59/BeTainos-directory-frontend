@@ -72,10 +72,8 @@ export interface ILandingPage {
         Description: string,
         Heading: string,
     } | null
-}interface IListItem {
-    id: number;
-    Name: string;
 }
+
 
 export interface ICategory {
     id: number;

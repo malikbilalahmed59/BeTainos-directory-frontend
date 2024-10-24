@@ -1,14 +1,17 @@
-import React from 'react'
+import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import { ILandingPage } from '@/app/types/landingpage';
 import Image from "next/image";
 import Link from 'next/link';
-import Logo from "/public/images/logo.jpg"
-import { ILandingPage } from '@/app/types/landingpage';
+import { useRouter } from 'next/router';
 
 interface Props {
     pageData: ILandingPage | undefined
 }
 const Header = ({ pageData }: Props) => {
-    console.log(pageData)
+    const router = useRouter();
+
+    // Function to determine if the link is active
+    const isActive = (path: string) => router.pathname === path;
     return (
         <div className='header-main-con w-100 float-start'>
             {
@@ -57,7 +60,7 @@ const Header = ({ pageData }: Props) => {
                         <div className="container-fluid p-0">
                             <Link href="/" className="navbar-brand">
                                 <figure className='mb-0'>
-                                    <Image width={216} height={63} src={Logo} alt="logo" />
+                                    <Image width={216} height={63} src={s3BucketStrapiUrl(pageData?.Header.Banner || null)} alt="logo" />
                                 </figure>
                             </Link>
                             <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,8 +71,8 @@ const Header = ({ pageData }: Props) => {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav mx-auto mb-lg-0">
                                     {
-                                        pageData?.Header.MenuLink.map(item => <li key={item.id} className="nav-item">
-                                            <Link href={item.Link} className="nav-link" aria-current="page">
+                                        (pageData?.Header.MenuLink || []).map(item => <li key={item.id} className="nav-item " >
+                                            <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
                                                 {item.Name}</Link>
                                         </li>)
                                     }
@@ -79,7 +82,7 @@ const Header = ({ pageData }: Props) => {
                             <div className='cart-btn'>
                                 <Link href='#' className="nav-link">
                                     Add</Link>
-                                <Link href='#' className="nav-link">
+                                <Link href='/login' className="nav-link">
                                     Login</Link>
                             </div>
                         </div>
@@ -87,9 +90,9 @@ const Header = ({ pageData }: Props) => {
                     {/* container */}
                 </div>
                 {/* header-con */}
-            </header>
+            </header >
             {/* header-main-con */}
-        </div>
+        </div >
     )
 }
 export default Header;
