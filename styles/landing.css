@@ -214,10 +214,11 @@ h2 {
 }
 
 .categories-box {
+    grid-gap: 30px;
     gap: 30px;
-    display: grid;
+    display: flex;
     margin-bottom: 50px;
-    grid-template-columns: repeat(4, 23.3%);
+    justify-content: center;
 }
 
 .categories-box-item a {
@@ -234,6 +235,7 @@ h2 {
 
 .categories-box-item {
     display: flex;
+    width: 23.6%;
 }
 
 .categories-box-item a:hover {

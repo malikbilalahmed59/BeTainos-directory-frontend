@@ -21,7 +21,8 @@
     "react-dom": "^18",
     "react-toastify": "^10.0.6",
     "rsuite": "^5.73.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
