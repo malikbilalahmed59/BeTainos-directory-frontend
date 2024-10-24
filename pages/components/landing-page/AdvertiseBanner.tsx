@@ -13,7 +13,7 @@ const AdvertiseBanner = ({ pageData }: Props) => {
           <div className='container'>
             <figure className='mb-0'>
               <Image priority width={1000}
-                height={479}
+                height={304}
                 src={s3BucketStrapiUrl(pageData.Advertisement.Banner)} alt={pageData.Advertisement.Banner.alternativeText || ""} />
             </figure>
             {/* container */}
