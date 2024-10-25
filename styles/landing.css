@@ -997,11 +997,16 @@ form.main-contact-box {
     padding: 10px 20px;
     background: #fff;
 }
+.main-contact-box ul li select{
+    padding: 11px 20px;
+    border: 0;
+}
 
 .main-contact-box ul li input:focus,
 .main-contact-box ul li textarea:focus,
 .main-form-btn button:focus {
     outline: none;
+    box-shadow: none;
 }
 
 .main-contact-box ul li textarea {
@@ -1026,7 +1031,10 @@ form.main-contact-box {
     padding: 14px 30px;
     background: #fb0102;
 }
-
+.main-form-btn button:hover{
+    color: #fb0102;
+    background: #fff;
+}
 /*  */
 /* LOADER SECTION */
 .loader {

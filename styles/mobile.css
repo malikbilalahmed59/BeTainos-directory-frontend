@@ -33,6 +33,9 @@
     .footer-box {
         gap: 70px;
     }
+    .main-contact-con {
+        padding: 80px 0;
+    }
 }
 @media only screen and (max-width: 1199px) {
     .top-bar-text span {
@@ -89,6 +92,13 @@
         margin-bottom: 20px;
         font-size: 22px;
         line-height: 22px;
+    }
+    form.main-contact-box {
+        width: 80%;
+        padding: 40px;
+    }
+    .main-contact-title p {
+        margin-bottom: 40px;
     }
 }
 @media only screen and (max-width: 991px) {
@@ -255,6 +265,24 @@
         padding: 10px 20px;
         min-width: 94px;
     }
+    .main-contact-con {
+        padding: 60px 0;
+    }
+    .main-contact-title h2 {
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .main-contact-box ul li textarea {
+        height: 130px;
+    }
+    form.main-contact-box {
+        width: 100%;
+    }
+    .main-form-btn button {
+        font-size: 20px;
+        line-height: 20px;
+        padding: 12px 30px 14px;
+    }
 }
 @media only screen and (max-width: 767px) {
     .top-bar-text span {
@@ -334,6 +362,21 @@
     .top-bar-box {
         justify-content: center;
     }
+    .main-contact-box ul li label {
+        font-size: 16px;
+        line-height: 16px;
+    }
+    form.main-contact-box {
+        padding: 20px;
+    }
+    .main-contact-title h2 {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .main-contact-title p {
+        margin-bottom: 30px;
+        font-size: 20px;
+    }
 }
 @media only screen and (max-width: 575px) {
     .top-bar-con{
@@ -393,5 +436,14 @@
         line-height: 14px;
         padding: 8px 12px;
         min-width: auto;
+    }
+    .main-form-btn button {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 9px 30px 12px;
+    }
+    .main-contact-title p {
+        margin-bottom: 26px;
+        font-size: 18px;
     }
 }
