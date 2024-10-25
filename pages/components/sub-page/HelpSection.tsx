@@ -9,7 +9,8 @@ interface Props {
 const HelpSection = ({ pageData }: Props) => {
   if (pageData)
     return (
-      <section className='w-100 float-start help-con' style={{ background: `url(${s3BucketStrapiUrl(pageData?.BannerWithText?.Background)})` }}>
+      <section className='w-100 float-start help-con' style={{ background: `url(${s3BucketStrapiUrl(pageData?.BannerWithText?.Background)})`,  backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover', }}>
         <div className='container'>
           <div className='help-title'>
             <h4>{pageData?.BannerWithText?.Heading}</h4>

@@ -36,6 +36,21 @@
     .main-contact-con {
         padding: 80px 0;
     }
+    .offer-banner-list {
+        margin-bottom: 40px;
+    }
+    .offer-list2 li {
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .contact-btn a {
+        font-size: 20px;
+        line-height: 20px;
+        padding: 17px 40px;
+    }
+    .offer-banner-title h1 {
+        margin-bottom: 40px;
+    }
 }
 @media only screen and (max-width: 1199px) {
     .top-bar-text span {
@@ -99,6 +114,71 @@
     }
     .main-contact-title p {
         margin-bottom: 40px;
+    }
+    .offer-banner {
+        padding: 110px 0;
+    }
+    .offer-banner-title {
+        width: 68%;
+    }
+    .offer-banner-title h1 {
+        margin-bottom: 30px;
+    }
+    .offer-banner-title span {
+        font-size: 28px;
+        line-height: 28px;
+        margin-bottom: 40px;
+    }
+    .offer-list2 {
+        margin-bottom: 40px;
+    }
+    .development-title h2 {
+        margin-bottom: 20px;
+    }
+    .development-title>span {
+        font-size: 18px;
+        line-height: 18px;
+        margin-bottom: 30px;
+    }
+    .development-title p {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 40px;
+    }
+    .development-box {
+        grid-template-columns: repeat(4, 23.4%);
+    }
+    .development-box-item h4 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .development-con {
+        padding: 70px 0;
+    }
+    .services-box-content h4 {
+        font-size: 28px;
+        line-height: 30px;
+        margin-bottom: 25px;
+    }
+    .services-box {
+        grid-template-columns: 29% 35% 29%;
+        gap: 20px;
+    }
+    .services-box-item img {
+        height: 240px;
+    }
+    .categories-con h2 {
+        margin-bottom: 38px;
+    }
+    .help-con {
+        padding: 185px 0;
+    }
+    .testimonials-title p {
+        font-size: 34px;
+        line-height: 36px;
+    }
+    .testimonials-con {
+        padding: 80px 0;
     }
 }
 @media only screen and (max-width: 991px) {
@@ -283,6 +363,74 @@
         line-height: 20px;
         padding: 12px 30px 14px;
     }
+    .offer-banner-title {
+        width: 100%;
+    }
+    .offer-banner-title h1 {
+        margin-bottom: 28px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+    .offer-banner-title span {
+        margin-bottom: 34px;
+    }
+    .contact-btn a {
+        font-size: 18px;
+        line-height: 18px;
+    }
+    .development-box {
+        grid-template-columns: repeat(2, 48%);
+    }
+    .services-box-content {
+        grid-column: 1 / -1;
+    }
+    .services-box {
+        grid-template-columns: 48% 48%;
+        gap: 20px;
+        justify-content: center;
+    }
+    .services-box-content {
+        grid-column: 1 / -1;
+        order: 3;
+    }
+    .categories-box-item {
+        display: flex;
+        width: 100%;
+    }
+    .categories-box {
+        flex-direction: column;
+    }
+    .help-con {
+        padding: 125px 0;
+    }
+    .info-btn a {
+        padding: 16px 50px;
+    }
+    .testimonials-title {
+        width: 76%;
+    }
+    .testimonials-title:before {
+        right: -70px;
+    }
+    .testimonials-title:after{
+        left: -70px;
+    }
+    .testimonials-title p {
+        font-size: 32px;
+    }
+    .testimonials-title span {
+        font-size: 22px;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+    .testimonials-title:after, .testimonials-title:before {
+        font-size: 44px;
+        width: 70px;
+        height: 70px;
+    }
+    .testimonials-con {
+        padding: 60px 0;
+    }
 }
 @media only screen and (max-width: 767px) {
     .top-bar-text span {
@@ -377,6 +525,83 @@
         margin-bottom: 30px;
         font-size: 20px;
     }
+    .offer-banner {
+        padding: 70px 0;
+    }
+    .offer-banner-title h1 {
+        margin-bottom: 18px;
+        font-size: 32px;
+        line-height: 38px;
+    }
+    .offer-banner-title span {
+        margin-bottom: 24px;
+        font-size: 24px;
+        line-height: 24px;
+    }
+    .offer-banner-list {
+        margin-bottom: 30px;
+    }
+    .offer-list2 li {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .contact-btn a {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 14px 30px;
+    }
+    .development-con {
+        padding: 50px 0;
+    }
+    .development-title h2 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+    .development-title p {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 30px;
+    }
+    .services-box-content h4 {
+        font-size: 26px;
+        line-height: 28px;
+        margin-bottom: 15px;
+    }
+    .services-box-content ul li {
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .help-con {
+        padding: 100px 0;
+    }
+    .info-btn a {
+        padding: 14px 40px;
+    }
+    .help-title h4 {
+        font-size: 32px;
+        line-height: 34px;
+        margin-bottom: 20px;
+    }
+    .help-title p {
+        margin-bottom: 40px;
+    }
+    .testimonials-title p {
+        font-size: 28px;
+    }
+    .testimonials-title:after, .testimonials-title:before {
+        font-size: 36px;
+        width: 50px;
+        height: 50px;
+    }
+    .testimonials-title:before {
+        right: -40px;
+    }
+    .testimonials-title:after {
+        left: -40px;
+    }
+    .testimonials-title p {
+        font-size: 26px;
+    }
 }
 @media only screen and (max-width: 575px) {
     .top-bar-con{
@@ -445,5 +670,58 @@
     .main-contact-title p {
         margin-bottom: 26px;
         font-size: 18px;
+    }
+    .offer-banner {
+        padding: 50px 0;
+    }
+    .offer-banner-title h1 {
+        font-size: 26px;
+        line-height: 28px;
+    }
+    .offer-list2 {
+        margin-bottom: 30px;
+    }
+    .development-title h2 {
+        font-size: 22px;
+        line-height: 28px;
+    }
+    .development-box {
+        grid-template-columns: 100%;
+    }
+    .services-box-item img {
+        height: 150px;
+    }
+    .services-box-content h4 {
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .services-box-content ul li {
+        font-size: 18px;
+    }
+    .categories-con h2 {
+        font-size: 22px;
+    }
+    .help-title h4 {
+        font-size: 30px;
+        line-height: 32px;
+    }
+    .help-title p {
+        margin-bottom: 30px;
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .testimonials-title:after, .testimonials-title:before{
+        display: none;
+    }
+    .testimonials-title {
+        width: 100%;
+    }
+    .testimonials-title p {
+        font-size: 22px;
+        line-height: 28px;
+    }
+    .testimonials-title span {
+        font-size: 18px;
+        line-height: 20px;
     }
 }

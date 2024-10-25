@@ -13,7 +13,7 @@ const ServicesBox = ({ pageData }: Props) => {
                 <div className='services-box'>
                     <div className='services-box-item'>
                         <figure className='mb-0'>
-                            <Image alt={pageData?.Services.Banner1?.alternativeText || "Banner"} width={1000} height={1000} src={s3BucketStrapiUrl(pageData?.Services.Banner1 || null)} />
+                            <Image alt={pageData?.Services.Banner1?.alternativeText || "Banner"} width={626} height={560} src={s3BucketStrapiUrl(pageData?.Services.Banner1 || null)} />
                         </figure>
                         {/* services-box-item */}
                     </div>
@@ -27,7 +27,7 @@ const ServicesBox = ({ pageData }: Props) => {
                         {/* services-box-item */}
                     </div>
                     <div className='services-box-item'>
-                        <Image alt={pageData?.Services.Banner2?.alternativeText || "Banner"} width={1000} height={1000} src={s3BucketStrapiUrl(pageData?.Services.Banner1 || null)} />
+                        <Image alt={pageData?.Services.Banner2?.alternativeText || "Banner"} width={626} height={560} src={s3BucketStrapiUrl(pageData?.Services.Banner1 || null)} />
                         {/* services-box-item */}
                     </div>
                     {/* services-box */}

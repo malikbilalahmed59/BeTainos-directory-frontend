@@ -8,7 +8,11 @@ interface Props {
 }
 const MainBanner = ({ pageData }: Props) => {
   return (
-    <section className='w-100 float-start offer-banner' style={{ background: `url(${s3BucketStrapiUrl(pageData?.Background || null)})` }}>
+    <section className='w-100 float-start offer-banner' style={{
+      background: `url(${s3BucketStrapiUrl(pageData?.Background || null)})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+    }}>
       <div className='container'>
         <div className='offer-banner-title'>
           <h1>{pageData?.Heading}</h1>

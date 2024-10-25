@@ -770,14 +770,14 @@ h2 {
     font-size: 36px;
     line-height: 36px;
     font-weight: 700;
-    color: #000000;
+    color: #fff;
     margin-bottom: 20px;
 }
 
 .help-title p {
     font-size: 22px;
     line-height: 22px;
-    color: #000000;
+    color: #fff;
     margin-bottom: 50px;
 }
 
@@ -1000,6 +1000,15 @@ form.main-contact-box {
 .main-contact-box ul li select{
     padding: 11px 20px;
     border: 0;
+}
+.services-box-item img {
+    width: 100%;
+    width: 100%;
+    object-fit: contain;
+    height: 350px;
+}
+.services-box-content {
+    padding-left: 60px;
 }
 
 .main-contact-box ul li input:focus,
