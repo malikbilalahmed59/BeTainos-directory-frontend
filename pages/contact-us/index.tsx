@@ -32,7 +32,7 @@ const Index = () => {
   const [errors, setErrors] = useState<IFormErrors>({});
 
   const validate = () => {
-    let formErrors: IFormErrors = {};
+    const formErrors: IFormErrors = {};
 
     if (!formData.name) {
       formErrors.name = "Name is required.";
