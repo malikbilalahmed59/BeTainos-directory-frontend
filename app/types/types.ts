@@ -48,3 +48,75 @@ export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
 export type AppPropsWithLayout = AppProps & {
     Component: NextPageWithLayout;
 };
+export interface IDirectoryPage {
+    id: number;
+    documentId: string;
+    Heading: string;
+    Heading2: string;
+    Description: string;
+    Tags: string;
+    Button_Label: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string | null;
+    Directory: IDirectory;
+    Services: IServices;
+    Packages: IPackage[];
+    Testimonials: ITestimonial[];
+    BannerWithText: ISection,
+    Background: IImage | null
+}
+interface ISection {
+    id: number;
+    Heading: string;
+    Description: string;
+    ButtonLabel: string;
+    ButtonPath: string;
+    Background: IImage | null;
+}
+interface IDirectory {
+    id: number;
+    Heading: string;
+    Heading2: string;
+    Description: string;
+    Sites: ISite[];
+}
+
+interface ISite {
+    id: number;
+    Title: string;
+    Description: string;
+}
+
+interface IServices {
+    id: number;
+    Heading: string;
+    Needs: INeed[];
+    Banner1: IImage | null,
+    Banner2: IImage | null,
+    Banner3: IImage[] | null,
+}
+
+interface INeed {
+    id: number;
+    Label: string;
+}
+
+interface IPackage {
+    id: number;
+    Name: string;
+    Price: string;
+    Points: IPoint[];
+}
+
+interface IPoint {
+    id: number;
+    Name: string;
+}
+
+interface ITestimonial {
+    id: number;
+    Label: string;
+    Description: string;
+}

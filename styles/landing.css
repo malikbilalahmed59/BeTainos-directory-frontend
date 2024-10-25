@@ -33,9 +33,10 @@ h2 {
     display: inline-block;
 }
 
-.header-con .navbar>.container-fluid{
+.header-con .navbar>.container-fluid {
     align-items: end;
 }
+
 .cart-btn {
     gap: 10px;
     display: flex;
@@ -93,7 +94,8 @@ h2 {
     align-items: center;
     justify-content: center;
 }
-.social-icon ul li a img{
+
+.social-icon ul li a img {
     filter: brightness(0) invert(1);
 }
 
@@ -682,43 +684,52 @@ h2 {
 .advertisement-box2+.blog-card-con .blog-card-title {
     display: none;
 }
+
 .offer-banner {
     padding: 130px 0;
     margin-top: 10px;
     background: linear-gradient(to right, #de1701 0%, #ed8c0c 100%);
 }
-.offer-banner-title{
+
+.offer-banner-title {
     color: #fff;
 }
-.offer-banner-title h1{
+
+.offer-banner-title h1 {
     font-size: 38px;
     line-height: 42px;
     font-weight: 700;
     margin-bottom: 50px;
 }
+
 .offer-banner-title {
     color: #fff;
     width: 60%;
 }
-.offer-banner-title span{
+
+.offer-banner-title span {
     font-size: 30px;
     line-height: 30px;
     font-weight: 800;
     margin-bottom: 50px;
 }
-.offer-banner-list li{
+
+.offer-banner-list li {
     font-size: 18px;
     line-height: 22px;
     font-weight: 700;
 }
-.offer-banner-list{
+
+.offer-banner-list {
     margin-bottom: 60px;
 }
-.offer-list2{
+
+.offer-list2 {
     gap: 10px;
     display: flex;
     margin-bottom: 60px;
 }
+
 .offer-list2 li {
     font-size: 22px;
     line-height: 20px;
@@ -726,10 +737,12 @@ h2 {
     border-right: 3px solid #fff;
     padding-right: 10px;
 }
-.offer-list2 li:last-child{
+
+.offer-list2 li:last-child {
     border-right: 0;
     padding-right: 0;
 }
+
 .contact-btn a {
     display: inline-block;
     color: #f6261d;
@@ -741,28 +754,34 @@ h2 {
     padding: 19px 50px;
     border-radius: 30px;
 }
-.betainos-banner figure img{
+
+.betainos-banner figure img {
     position: relative !important;
 }
-.help-con{
+
+.help-con {
     padding: 285px 0;
-    background: url(../public/images/support-img.jpeg) no-repeat center;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-.help-title h4{
+
+.help-title h4 {
     font-size: 36px;
     line-height: 36px;
     font-weight: 700;
     color: #000000;
     margin-bottom: 20px;
 }
-.help-title p{
+
+.help-title p {
     font-size: 22px;
     line-height: 22px;
     color: #000000;
     margin-bottom: 50px;
 }
-.info-btn a{
+
+.info-btn a {
     font-size: 20px;
     line-height: 20px;
     display: inline-block;
@@ -772,35 +791,42 @@ h2 {
     padding: 16px 60px;
     border-radius: 30px;
 }
-.testimonials-title span{
+
+.testimonials-title span {
     font-size: 24px;
     line-height: 24px;
     font-weight: 500;
     margin-bottom: 30px;
 }
-.testimonials-title p{
+
+.testimonials-title p {
     font-size: 40px;
     line-height: 46px;
     margin-bottom: 0;
     font-weight: 800;
     color: #000;
 }
+
 .testimonials-con {
     padding: 100px 0;
 }
+
 .testimonials-title {
     width: 54%;
     margin: 0 auto;
     position: relative;
 }
-.testimonials-title:after{
+
+.testimonials-title:after {
     top: 0;
     left: 0;
     content: "\f10d";
     position: absolute;
     font-family: "Font Awesome 6 Pro";
 }
-.testimonials-title:after,.testimonials-title:before {
+
+.testimonials-title:after,
+.testimonials-title:before {
     top: 0;
     left: -150px;
     content: "\f10d";
@@ -817,23 +843,28 @@ h2 {
     justify-content: center;
     color: #ff0000;
 }
-.testimonials-title:before{
+
+.testimonials-title:before {
     top: auto;
     left: auto;
     content: "\f10e";
     right: -150px;
     bottom: -40px;
 }
-.sitemap ul{
+
+.sitemap ul {
     margin-bottom: 0;
 }
-.betainos-banner + .categories-con{
+
+.betainos-banner+.categories-con {
     padding-top: 50px;
 }
-.development-con{
+
+.development-con {
     padding: 80px 0;
 }
-.development-title h2{
+
+.development-title h2 {
     font-size: 30px;
     line-height: 31px;
     font-weight: 800;
@@ -841,26 +872,31 @@ h2 {
     margin-bottom: 30px;
     text-transform: uppercase;
 }
-.development-title h2 span{
+
+.development-title h2 span {
     color: #9d9d9d;
 }
-.development-title > span{
+
+.development-title>span {
     font-size: 20px;
     line-height: 22px;
     font-weight: 800;
     margin-bottom: 40px;
 }
+
 .development-title p {
     font-size: 20px;
     line-height: 26px;
     font-weight: 600;
     margin-bottom: 50px;
 }
+
 .development-box {
     display: grid;
-    grid-template-columns: repeat(4,23.8%);
+    grid-template-columns: repeat(4, 23.8%);
     gap: 20px;
 }
+
 .development-box-item h4 {
     font-size: 22px;
     line-height: 22px;
@@ -871,6 +907,7 @@ h2 {
     font-weight: 700;
     text-align: center;
 }
+
 .development-box-content {
     background: #ebebeb;
     padding: 20px 20px 50px 20px;
@@ -880,14 +917,17 @@ h2 {
     border-radius: 20px;
     clip-path: polygon(0 0, 100% 0, 100% 86%, 0 100%);
 }
+
 .services-box {
     display: grid;
     grid-template-columns: 30% 35% 30%;
     gap: 30px;
 }
-.services-con{
+
+.services-con {
     padding-bottom: 50px;
 }
+
 .services-box-content h4 {
     font-size: 31px;
     line-height: 32px;
@@ -896,18 +936,22 @@ h2 {
     margin-bottom: 35px;
     font-weight: 700;
 }
+
 .services-box-content ul li {
     font-size: 22px;
     line-height: 22px;
     margin-bottom: 10px;
 }
-.services-box-content ul li:last-child{
+
+.services-box-content ul li:last-child {
     margin-bottom: 0;
 }
-.main-contact-con{
+
+.main-contact-con {
     padding: 100px 0;
 }
-.main-contact-title h2{
+
+.main-contact-title h2 {
     font-size: 34px;
     line-height: 34px;
     margin-bottom: 20px;
@@ -915,20 +959,24 @@ h2 {
     text-transform: uppercase;
     color: #ff0101;
 }
+
 .main-contact-title p {
     font-size: 22px;
     line-height: 24px;
     margin-bottom: 50px;
 }
+
 form.main-contact-box {
     background: #eaeaea;
     width: 60%;
     margin: 0 auto;
     padding: 50px;
 }
-.main-contact-box ul li label{
+
+.main-contact-box ul li label {
     display: block;
 }
+
 .main-contact-box ul li label {
     display: block;
     font-size: 18px;
@@ -937,28 +985,38 @@ form.main-contact-box {
     font-weight: 500;
     margin-bottom: 10px;
 }
-.main-contact-box ul li{
+
+.main-contact-box ul li {
     margin-bottom: 20px;
 }
-.main-contact-box ul li input,.main-contact-box ul li textarea{
+
+.main-contact-box ul li input,
+.main-contact-box ul li textarea {
     width: 100%;
     border: none;
     padding: 10px 20px;
     background: #fff;
 }
-.main-contact-box ul li input:focus,.main-contact-box ul li textarea:focus,.main-form-btn button:focus{
+
+.main-contact-box ul li input:focus,
+.main-contact-box ul li textarea:focus,
+.main-form-btn button:focus {
     outline: none;
 }
-.main-contact-box ul li textarea{
+
+.main-contact-box ul li textarea {
     height: 150px;
 }
-.main-contact-box ul{
+
+.main-contact-box ul {
     margin-bottom: 20px;
 }
-.main-form-btn{
+
+.main-form-btn {
     text-align: center;
 }
-.main-form-btn button{
+
+.main-form-btn button {
     font-size: 22px;
     line-height: 22px;
     font-weight: 700;
@@ -968,6 +1026,7 @@ form.main-contact-box {
     padding: 14px 30px;
     background: #fb0102;
 }
+
 /*  */
 /* LOADER SECTION */
 .loader {
@@ -980,11 +1039,12 @@ form.main-contact-box {
     text-indent: -9999em;
     display: inline-block;
     margin: -25px 0 0 -25px;
-    color:var(--primary--color);
+    color: var(--primary--color);
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
 }
+
 .loader-mask {
     top: 0;
     left: 0;
@@ -994,9 +1054,11 @@ form.main-contact-box {
     position: fixed;
     background-color: #fff;
 }
-.lead{
-  font-size:13px;
+
+.lead {
+    font-size: 13px;
 }
+
 .loader div {
     top: 0;
     left: 0;
@@ -1007,21 +1069,24 @@ form.main-contact-box {
     position: absolute;
     border-radius: 50%;
     display: inline-block;
-    background:#f6261c;
+    background: #f6261c;
     -webkit-animation: ballPulseDouble 2s ease-in-out infinite;
     animation: ballPulseDouble 2s ease-in-out infinite;
 }
+
 .loader div:last-child {
     -webkit-animation-delay: -1s;
     animation-delay: -1s;
 }
 
 @-webkit-keyframes ballPulseDouble {
+
     0%,
     100% {
         -webkit-transform: scale(0);
         transform: scale(0);
     }
+
     50% {
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -1029,14 +1094,17 @@ form.main-contact-box {
 }
 
 @keyframes ballPulseDouble {
+
     0%,
     100% {
         -webkit-transform: scale(0);
         transform: scale(0);
     }
+
     50% {
         -webkit-transform: scale(1);
         transform: scale(1);
     }
 }
+
 /* LOADER SECTION */

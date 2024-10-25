@@ -1,53 +1,31 @@
+import { IDirectoryPage } from '@/app/types/types';
 import React from 'react'
 
-const DevelopmentServices = () => {
+interface Props {
+    pageData: IDirectoryPage | undefined
+}
+
+const DevelopmentServices = ({ pageData }: Props) => {
     return (
         <section className='w-100 float-start development-con'>
             <div className='container'>
                 <div className='development-title'>
-                    <h2>our <span className='d-inline-block'>developers</span> network</h2>
-                    <span className='d-block'>Explore our varied solutions for website creation.</span>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum. is that it has a more-or-less normal distribution of letters, as opposed to using &apos;Content here.</p>
-                    {/* development-title */}
+                    <h2>{pageData?.Directory?.Heading}</h2>
+                    <span className='d-block'>{pageData?.Directory?.Heading2}</span>
+                    <p>{pageData?.Directory?.Description}</p>
                 </div>
                 <div className='development-box'>
-                    <div className='development-box-item'>
-                        <h4>showcase site</h4>
-                        <div className='development-box-content'>
-                            <p className='mb-0'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
-                            {/* development-box-content */}
-                        </div>
-                        {/* development-box-item */}
-                    </div>
-                    <div className='development-box-item'>
-                        <h4>showcase site</h4>
-                        <div className='development-box-content'>
-                            <p className='mb-0'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
-                            {/* development-box-content */}
-                        </div>
-                        {/* development-box-item */}
-                    </div>
-                    <div className='development-box-item'>
-                        <h4>Booking site</h4>
-                        <div className='development-box-content'>
-                            <p className='mb-0'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
-                            {/* development-box-content */}
-                        </div>
-                        {/* development-box-item */}
-                    </div>
-                    <div className='development-box-item'>
-                        <h4>E-commerce site</h4>
-                        <div className='development-box-content'>
-                            <p className='mb-0'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
-                            {/* development-box-content */}
-                        </div>
-                        {/* development-box-item */}
-                    </div>
-                    {/* development-box */}
+                    {
+                        (pageData?.Directory.Sites || []).map((item) => <div key={item.id} className='development-box-item'>
+                            <h4>{item.Title}</h4>
+                            <div className='development-box-content'>
+                                <p className='mb-0'>{item.Description}</p>
+
+                            </div>
+                        </div>)
+                    }
                 </div>
-                {/* container */}
             </div>
-            {/* development-con */}
         </section>
     )
 }

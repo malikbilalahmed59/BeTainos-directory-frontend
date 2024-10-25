@@ -7,22 +7,36 @@ import MainBanner from '../components/sub-page/MainBanner';
 import ServicesBox from '../components/sub-page/ServicesBox';
 import Testimonials from '../components/sub-page/Testimonials';
 import Layout from '../layout';
+import { fetchDirectoryPagetData, useDirectoryPage } from "@/app/hooks/useAPIs";
+import { prefetchQuery } from "@/app/helper/helper";
 
-
+export async function getServerSideProps() {
+  const { dehydratedState } = await prefetchQuery({
+    queryKey: 'directory-page',
+    queryFn: fetchDirectoryPagetData,
+  });
+  return {
+    props: {
+      dehydratedState: dehydratedState,
+    },
+  };
+}
 const Index = () => {
+  const { data } = useDirectoryPage()
+  const pageData = data && data[0]
   return (
     <>
       <Head>
         <title>Directory</title>
       </Head>
       <Layout>
-        <MainBanner />
-        <DevelopmentServices />
-        <ServicesBox />
-        <BetainosBanner />
+        <MainBanner pageData={pageData} />
+        <DevelopmentServices pageData={pageData} />
+        <ServicesBox pageData={pageData} />
+        <BetainosBanner pageData={pageData} />
         <Categories />
-        <HelpSection />
-        <Testimonials />
+        <HelpSection pageData={pageData} />
+        <Testimonials pageData={pageData} />
       </Layout>
     </>
   )

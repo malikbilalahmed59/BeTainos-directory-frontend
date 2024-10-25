@@ -14,7 +14,7 @@ import { CustomProvider } from 'rsuite';
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  return <TanstackProvider>
+  return <TanstackProvider dehydratedState={pageProps.dehydratedState}>
     <NextSessionProvider>
       <CustomProvider>
         <Component {...pageProps} />

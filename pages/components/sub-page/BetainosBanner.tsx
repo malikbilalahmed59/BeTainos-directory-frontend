@@ -1,12 +1,17 @@
-import React from 'react'
+import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import { IDirectoryPage } from '@/app/types/types';
 import Image from "next/image";
-import BetainoBanner from "../../../public/images/betaino-banner.jpeg"
+interface Props {
+  pageData: IDirectoryPage | undefined
+}
 
- const BetainosBanner = () => {
+const BetainosBanner = ({ pageData }: Props) => {
   return (
     <div className='betainos-banner w-100 float-start'>
-        <figure className='mb-0'><Image   layout="fill" 
-            objectFit="cover" src={BetainoBanner} alt="BetainoBanner" /></figure>
+      {
+        pageData?.Services.Banner3?.map(item => <figure key={item.id} className='mb-0'><Image layout="fill"
+          objectFit="cover" src={s3BucketStrapiUrl(item)} alt={item.alternativeText || "BetainoBanner"} /></figure>)
+      }
     </div>
   )
 }

@@ -1,14 +1,21 @@
+import { IDirectoryPage } from '@/app/types/types';
 import React from 'react'
 
-export const Testimonials = () => {
+interface Props {
+  pageData: IDirectoryPage | undefined
+}
+export const Testimonials = ({ pageData }: Props) => {
   return (
     <div className='testimonials-con w-100 float-start'>
-        <div className='container'>
-            <div className='text-center testimonials-title'>
-                <span className='d-block'>Use the services of BeTainos,</span>
-                <p>It is contributing to the promotion of Afro-Caribbean entrepreneurship while strengthening ties within this dynamic community.</p>
-            </div>
-        </div>
+      <div className='container'>
+        {
+          (pageData?.Testimonials || []).map(item => <div key={item.id} className='text-center testimonials-title'>
+            <span className='d-block'>{item.Label}</span>
+            <p>{item.Description}</p>
+          </div>)
+        }
+
+      </div>
     </div>
   )
 }

@@ -23,7 +23,7 @@ const AdvertiseBanner = ({ pageData }: Props) => {
               }}
             >
               {
-                pageData.Advertisement.Banner.map((slide => <SwiperSlide>
+                pageData.Advertisement.Banner.map((slide => <SwiperSlide key={slide.id}>
                   <figure className='mb-0'>
                     <Image
                       priority
