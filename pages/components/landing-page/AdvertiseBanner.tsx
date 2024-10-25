@@ -13,38 +13,29 @@ const AdvertiseBanner = ({ pageData }: Props) => {
       {
         pageData?.Advertisement && pageData.Advertisement.Banner && <div className='advertise-banner w-100 float-start'>
           <div className='container'>
-          <Swiper
-  spaceBetween={50}
-  slidesPerView={1}
-  loop={true}
-  autoplay={{ 
-    delay: 3000, // Slide transition delay (in ms)
-    disableOnInteraction: false, // Enable/Disable autoplay on user interaction
-  }}
->
-  <SwiperSlide>
-    <figure className='mb-0'>
-      <Image 
-        priority 
-        width={1000} 
-        height={304} 
-        src={s3BucketStrapiUrl(pageData.Advertisement.Banner)} 
-        alt={pageData.Advertisement.Banner.alternativeText || ""} 
-      />
-    </figure>
-  </SwiperSlide>
-  <SwiperSlide>
-    <figure className='mb-0'>
-      <Image 
-        priority 
-        width={1000} 
-        height={304} 
-        src={s3BucketStrapiUrl(pageData.Advertisement.Banner)} 
-        alt={pageData.Advertisement.Banner.alternativeText || ""} 
-      />
-    </figure>
-  </SwiperSlide>
-</Swiper>
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 3000, // Slide transition delay (in ms)
+                disableOnInteraction: false, // Enable/Disable autoplay on user interaction
+              }}
+            >
+              {
+                pageData.Advertisement.Banner.map((slide => <SwiperSlide>
+                  <figure className='mb-0'>
+                    <Image
+                      priority
+                      width={1000}
+                      height={304}
+                      src={s3BucketStrapiUrl(slide)}
+                      alt={slide.alternativeText || ""}
+                    />
+                  </figure>
+                </SwiperSlide>))
+              }
+            </Swiper>
             {/* container */}
           </div>
         </div>

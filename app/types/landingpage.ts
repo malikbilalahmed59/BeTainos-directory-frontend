@@ -32,7 +32,7 @@ export interface ILandingPage {
     locale: string | null;
     HeaderBar: IHeaderBar | null;
     Header: IHeader;
-    Advertisement: { Banner: IImage | null } | null;
+    Advertisement: { Banner: IImage[] | [] } | null;
     Footer: {
         Logo: IImage | null,
         Description: string,
