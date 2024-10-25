@@ -14,7 +14,7 @@ export interface IContactForm {
 export const useContactSubmit = () => {
     return useMutation<IContactForm, AxiosError, any>({
         mutationFn: (data) =>
-            axiosInstance.post("/api/contact-us-submits", { data }).then((res) => res.data),
+            axiosInstance.post("/contact-us-submits", { data }).then((res) => res.data),
 
         onSuccess: (res) => {
             console.log(res)
