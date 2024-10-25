@@ -11,7 +11,7 @@ axiosInstance.interceptors.request.use((config) => {
     // config.headers['ngrok-skip-browser-warning'] = `69420`;
     // if (token) { 
     //     config.headers.Authorization = `Bearer ${token}`;
-    //     config.headers["Content-Type"] = "application/json";
+    config.headers["Content-Type"] = "application/json";
     // }
 
     return config;
