@@ -130,10 +130,17 @@ h2 {
     margin-top: 24px;
 }
 
+.advertise-banner .swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+    margin-top: 10px;
+}
 .advertise-banner img {
     width: 100%;
     height: auto !important;
     object-fit: cover;
+}
+.advertise-banner figure {
+    height: 304px;
+    overflow: hidden;
 }
 
 .discover-con {

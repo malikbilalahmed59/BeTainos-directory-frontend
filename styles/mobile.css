@@ -215,6 +215,9 @@
     }
 }
 @media only screen and (max-width: 991px) {
+    .advertise-banner img{
+        height: 100% !important;
+    }
     .header-main-con {
         padding: 20px 0 10px;
     }
@@ -817,5 +820,9 @@
     .bussiness-card-box {
         gap: 15px;
         margin-bottom: 20px;
+    }
+   
+    .advertise-banner figure {
+        height: 190px;
     }
 }

@@ -2,6 +2,8 @@ import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import { ILandingPage } from '@/app/types/landingpage';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import "swiper/css/autoplay";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 
 interface Props {
@@ -21,6 +23,10 @@ const AdvertiseBanner = ({ pageData }: Props) => {
                 delay: 3000, // Slide transition delay (in ms)
                 disableOnInteraction: false, // Enable/Disable autoplay on user interaction
               }}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Autoplay, Pagination, Navigation]}
             >
               {
                 pageData.Advertisement.Banner.map((slide => <SwiperSlide key={slide.id}>
