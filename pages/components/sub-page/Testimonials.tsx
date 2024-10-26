@@ -2,8 +2,8 @@ import React from 'react'
 import { IDirectoryPage } from '@/app/types/types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Pagination } from 'swiper/modules';
 import "swiper/css/autoplay";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 
 interface Props {
@@ -13,23 +13,32 @@ export const Testimonials = ({ pageData }: Props) => {
   return (
     <div className='testimonials-con w-100 float-start'>
       <div className='container'>
-      <Swiper pagination={true} modules={[Pagination]} loop={true} className="mySwiper">
-        <SwiperSlide>
+      <Swiper 
+      loop={true}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Autoplay, Pagination, Navigation]}
+      
+       className="mySwiper"
+       >
+        
         {
-          (pageData?.Testimonials || []).map(item => <div key={item.id} className='text-center testimonials-title'>
-            <span className='d-block'>{item.Label}</span>
-            <p>{item.Description}</p>
-          </div>)
+          (pageData?.Testimonials || []).map(item => 
+          <SwiperSlide key={item.id}>
+            <div  className='text-center testimonials-title'>
+              <span className='d-block'>{item.Label}</span>
+              <p>{item.Description}</p>
+           </div>
+          </SwiperSlide>
+          )
         }
-        </SwiperSlide>
-        <SwiperSlide>
-        {
-          (pageData?.Testimonials || []).map(item => <div key={item.id} className='text-center testimonials-title'>
-            <span className='d-block'>{item.Label}</span>
-            <p>{item.Description}</p>
-          </div>)
-        }
-        </SwiperSlide>
+       
       </Swiper>
         
 

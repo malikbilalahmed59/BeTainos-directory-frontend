@@ -51,6 +51,18 @@
     .offer-banner-title h1 {
         margin-bottom: 40px;
     }
+    .bussiness-card-con h2 {
+        font-size: 40px;
+        letter-spacing: 6.2px;
+        margin-bottom: 40px;
+    }
+    .bussiness-card-item h4 {
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+    .bussiness-card-content {
+        padding: 20px;
+    }
 }
 @media only screen and (max-width: 1199px) {
     .top-bar-text span {
@@ -179,6 +191,27 @@
     }
     .testimonials-con {
         padding: 80px 0;
+    }
+    .bussiness-card-con {
+        padding: 80px 0;
+    }
+    .bussiness-card-con h2 {
+        font-size: 38px;
+        letter-spacing: 5.2px;
+        margin-bottom: 30px;
+    }
+    .bussiness-card-content ul li {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+    .bussiness-card-box + p {
+        font-size: 22px;
+        line-height: 33px;
+        width: 74%;
+    }
+    .bussiness-card-content:before, .bussiness-card-content:after{
+        display: none;
     }
 }
 @media only screen and (max-width: 991px) {
@@ -431,6 +464,33 @@
     .testimonials-con {
         padding: 60px 0;
     }
+    .bussiness-card-con h2 {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+    .bussiness-card-item h4 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    .bussiness-card-box {
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    .bussiness-card-item {
+        width: 47.7%;
+    }
+    .bussiness-card-box + p {
+        font-size: 20px;
+        line-height: 30px;
+        width: 100%;
+    }
+    .bussiness-card-con {
+        padding: 50px 0;
+    }
+    .bussiness-card-con h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
 }
 @media only screen and (max-width: 767px) {
     .top-bar-text span {
@@ -575,7 +635,9 @@
         padding: 100px 0;
     }
     .info-btn a {
-        padding: 14px 40px;
+        padding: 12px 40px 14px;
+        font-size: 20px;
+        line-height: 20px;
     }
     .help-title h4 {
         font-size: 32px;
@@ -601,6 +663,26 @@
     }
     .testimonials-title p {
         font-size: 26px;
+    }
+    .bussiness-card-box {
+        gap: 23px;
+    }
+    .bussiness-card-content ul li {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    .bussiness-card-item h4 {
+        font-size: 22px;
+    }
+    .bussiness-card-content ul {
+        padding-left: 15px;
+    }
+    .bussiness-card-box + p {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .services-box-content {
+        padding-left: 0;
     }
 }
 @media only screen and (max-width: 575px) {
@@ -723,5 +805,17 @@
     .testimonials-title span {
         font-size: 18px;
         line-height: 20px;
+    }
+    .bussiness-card-con h2 {
+        font-size: 28px;
+        margin-bottom: 28px;
+        letter-spacing: 0;
+    }
+    .bussiness-card-item {
+        width: 100%;
+    }
+    .bussiness-card-box {
+        gap: 15px;
+        margin-bottom: 20px;
     }
 }

@@ -9,6 +9,7 @@ import Testimonials from '../components/sub-page/Testimonials';
 import Layout from '../layout';
 import { fetchDirectoryPagetData, useDirectoryPage } from "@/app/hooks/useAPIs";
 import { prefetchQuery } from "@/app/helper/helper";
+import { BussinessCard } from "../components/sub-page/BussinessCard";
 
 export async function getServerSideProps() {
   const { dehydratedState } = await prefetchQuery({
@@ -31,10 +32,11 @@ const Index = () => {
       </Head>
       <Layout>
         <MainBanner pageData={pageData} />
-        <DevelopmentServices pageData={pageData} />
+        <BussinessCard/>
+        <Categories />
         <ServicesBox pageData={pageData} />
         <BetainosBanner pageData={pageData} />
-        <Categories />
+        <DevelopmentServices pageData={pageData} />
         <HelpSection pageData={pageData} />
         <Testimonials pageData={pageData} />
       </Layout>
