@@ -35,24 +35,25 @@ const Index = () => {
     const formErrors: IFormErrors = {};
 
     if (!formData.name) {
-      formErrors.name = "Name is required.";
+      formErrors.name = "Le nom est requis.";
     }
     if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
-      formErrors.email = "Valid email is required.";
+      formErrors.email = "Un e-mail valide est requis.";
     }
     if (!formData.subject) {
-      formErrors.subject = "Subject is required.";
+      formErrors.subject = "Le sujet est requis.";
     }
     if (!formData.categories) {
-      formErrors.categories = "Please select a category.";
+      formErrors.categories = "Veuillez sélectionner une catégorie.";
     }
     if (!formData.message) {
-      formErrors.message = "Message is required.";
+      formErrors.message = "Le message est requis.";
     }
 
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -88,19 +89,20 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Contact Us</title>
+        <title>Contactez-nous</title>
       </Head>
       <Layout>
         <section className='w-100 float-start main-contact-con'>
           <div className='container'>
             <div className='main-contact-title text-center'>
-              <h2>Contact us</h2>
-              <p>For all request or question, please fill out the form</p>
+              <h2>Contactez-nous</h2>
+              <p>Pour toute demande ou question, veuillez remplir le formulaire</p>
+
             </div>
             <form className='main-contact-box' onSubmit={handleSubmit}>
               <ul className='list-unstyled'>
                 <li>
-                  <label>Your Name*</label>
+                  <label>Votre nom*</label>
                   <input
                     type='text'
                     className="form-control"
@@ -111,7 +113,7 @@ const Index = () => {
                   {errors.name && <span className="text-danger" >{errors.name}</span>}
                 </li>
                 <li>
-                  <label>Your Email Address*</label>
+                  <label>Votre adresse e-mail*</label>
                   <input
                     type='email'
                     name='email'
@@ -122,7 +124,7 @@ const Index = () => {
                   {errors.email && <span className="text-danger" >{errors.email}</span>}
                 </li>
                 <li>
-                  <label>Your Subject*</label>
+                  <label>Votre sujet*</label>
                   <input
                     className="form-control"
                     type='text'
@@ -133,16 +135,17 @@ const Index = () => {
                   {errors.subject && <span className="text-danger" >{errors.subject}</span>}
                 </li>
                 <li>
-                  <label>Category*</label>
+                  <label>Catégorie*</label>
                   <select
                     className="form-select"
                     name='categories'
                     value={formData.categories}
                     onChange={handleSelectChange}
                   >
-                    <option value="Professional">Professional</option>
-                    <option value="Company">Company</option>
+                    <option value="Professional">Professionnel</option>
+                    <option value="Company">Entreprise</option>
                     <option value="Annonceur">Annonceur</option>
+
                   </select>
                   {errors.categories && <span className="text-danger" >{errors.categories}</span>}
                 </li>
@@ -158,7 +161,8 @@ const Index = () => {
                 </li>
               </ul>
               <div className='main-form-btn'>
-                <Button loading={isPending} type='submit'>Send Message</Button>
+                <Button loading={isPending} type="submit">Envoyer le message</Button>
+
               </div>
             </form>
           </div>
