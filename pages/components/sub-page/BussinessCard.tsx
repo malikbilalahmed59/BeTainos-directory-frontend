@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const BussinessCard = () => {
+const BussinessCard = () => {
     return (
         <section className='bussiness-card-con w-100 float-start'>
             <div className='container'>
@@ -51,3 +51,5 @@ export const BussinessCard = () => {
         </section>
     )
 }
+
+export default BussinessCard;
