@@ -18,8 +18,8 @@ const BetainosBanner = ({ pageData }: Props) => {
       breakpoints={{
         320: { slidesPerView: 1, spaceBetween: 30 },
         640: { slidesPerView: 1, spaceBetween: 30 },
-        768: { slidesPerView: 2, spaceBetween: 30 },
-        1024: { slidesPerView: 3, spaceBetween: 30 },
+        768: { slidesPerView: 1.3, spaceBetween: 30 },
+        1024: { slidesPerView: 1.3, spaceBetween: 30 },
       }}
         spaceBetween={30}
         centeredSlides={true}

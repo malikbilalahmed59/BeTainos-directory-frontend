@@ -825,4 +825,7 @@
     .advertise-banner figure {
         height: 190px;
     }
+    .betainos-banner {
+        padding: 0 10px;
+    }
 }

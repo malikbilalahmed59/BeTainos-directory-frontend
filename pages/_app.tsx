@@ -1,5 +1,6 @@
 import NextSessionProvider from "@/app/provider/SessionProvider";
 import TanstackProvider from "@/app/provider/TanstackProvider";
+import "@/styles/dashboard.css";
 import "@/styles/globals.css";
 import "@/styles/landing.css";
 import "@/styles/login.css";

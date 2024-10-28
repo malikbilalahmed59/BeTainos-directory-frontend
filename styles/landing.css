@@ -226,6 +226,7 @@ h2 {
     grid-gap: 30px;
     gap: 30px;
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 50px;
     justify-content: center;
 }
@@ -244,7 +245,7 @@ h2 {
 
 .categories-box-item {
     display: flex;
-    width: 23.6%;
+    width: 23.26%;
 }
 
 .categories-box-item a:hover {
@@ -1250,4 +1251,7 @@ form.main-contact-box {
     font-size: 16px;
     line-height: 16px;
     font-weight: 700;
+}
+.betainos-banner{
+    padding: 0 50px;
 }
