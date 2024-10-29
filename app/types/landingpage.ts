@@ -1,7 +1,7 @@
 import { IImage } from "./types";
 
 
-interface ISocial {
+export interface ISocial {
     id: number;
     Link: string;
     Name: string;
@@ -23,6 +23,7 @@ interface IHeader {
         Name: string,
     }[] | []
 }
+
 export interface ILandingPage {
     id: number;
     documentId: string;
@@ -47,12 +48,7 @@ export interface ILandingPage {
         },
         FollowUs: {
             Heading: string,
-            Socials: {
-                id: number,
-                Link: string,
-                Name: string,
-                Icon: IImage | null
-            }[]
+            Socials: ISocial[]
         }
     },
     HeroSection: {
@@ -84,12 +80,7 @@ export interface ICategory {
     publishedAt: string;
     locale: string | null;
 }
-interface ISocial {
-    id: number;
-    Link: string;
-    Name: string;
-    Icon: IImage;
-}
+
 
 interface ICategoryRel {
     id: number;
