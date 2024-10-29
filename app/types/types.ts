@@ -40,7 +40,6 @@ export interface IImage {
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import type { AppProps } from "next/app";
-import { ISocial } from "./landingpage";
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
     getLayout?: (page: ReactElement) => ReactNode;
@@ -120,34 +119,4 @@ interface ITestimonial {
     id: number;
     Label: string;
     Description: string;
-}
-interface ICategory {
-    id: number;
-    documentId: string;
-    Name: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    locale: string | null;
-}
-export interface ICompany {
-    id: number;
-    documentId: string;
-    Name: string;
-    PostelAddress: string;
-    Phone: string;
-    Email: string;
-    Website: string;
-    CoFounderName: string;
-    FounderName: string;
-    ApplicationStatus: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    locale: string | null;
-    Description: string;
-    FieldOfExpertise: string;
-    Logo: IImage;
-    Socials: ISocial[];
-    categories_list: ICategory;
 }
