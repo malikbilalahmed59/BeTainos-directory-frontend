@@ -60,7 +60,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                         <div className='advertisement-lft-box'>
                             <ul className='list-unstyled mb-0'>
                                 <li>
-                                    <span className='d-block'>Partagez le profil de l'entreprise sur les réseaux sociaux</span>
+                                    <span className='d-block'>Partagez le profil de l&apos;entreprise sur les réseaux sociaux</span>
                                     <div className='social-icon'>
                                         <ul className='list-unstyled mb-0'>
                                             <li>
@@ -159,7 +159,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 {/* professional-item */}
                             </div>
                             <div className='see-more-link text-center'>
-                                <Link href="/">Voir plus d'entreprises et de professionnels similaires</Link>
+                                <Link href="/">Voir plus d&apos;entreprises et de professionnels similaires</Link>
 
                             </div>
                         </div>
@@ -210,7 +210,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 {/* professional-item */}
                             </div>
                             <div className='see-more-link text-center'>
-                                <Link href="/">Voir plus d'entreprises et de professionnels similaires</Link>
+                                <Link href="/">Voir plus d&apos;entreprises et de professionnels similaires</Link>
                             </div>
                         </div>
                         {/* professional-box */}

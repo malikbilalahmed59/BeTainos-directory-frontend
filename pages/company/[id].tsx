@@ -1,16 +1,11 @@
 import { useDirectoryList } from '@/app/hooks/useAPIs';
-import Image from 'next/image';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { IComapany } from '@/app/types/landingpage';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Categories } from '../components/landing-page';
 import Loader from '../components/Loader';
-import { AdvertisementBox, Banner, ProfessionalBox } from '../components/sub-page';
-import Layout from "../layout";
-import AdvertiseImage from "/public/images/advertisement-img.jpg";
 import DirectoryProfile from '../components/sub-page/DirectoryProfile';
-import { IComapany } from '@/app/types/landingpage';
+import Layout from "../layout";
 
 const Index = () => {
   const { isLoading, data } = useDirectoryList();
@@ -27,7 +22,7 @@ const Index = () => {
     } else {
       router.push('/404')
     }
-  }, [id, isLoading, data])
+  }, [id, isLoading, data, router])
 
   if (isLoading) return <Loader />
 
