@@ -494,6 +494,19 @@
         font-size: 30px;
         margin-bottom: 30px;
     }
+    .transport-banner-box {
+        grid-template-columns: 48% 48%;
+    }
+    .company-logo {
+        grid-column: 1 / -1;
+    }
+    .professional-item-content span {
+        width: 100%;
+    }
+    .advertisement-rt-box h4{
+        font-size: 26px;
+        line-height: 26px;
+    }
 }
 @media only screen and (max-width: 767px) {
     .top-bar-text span {
@@ -687,6 +700,17 @@
     .services-box-content {
         padding-left: 0;
     }
+    .professional-box {
+        gap: 15px;
+        grid-template-columns: 100%;
+    }
+    .advertisement-box {
+        gap: 15px;
+        grid-template-columns: 100%;
+    }
+    .advertisement-box-con {
+        padding-bottom: 30px;
+    }
 }
 @media only screen and (max-width: 575px) {
     .top-bar-con{
@@ -827,5 +851,34 @@
     }
     .betainos-banner {
         padding: 0 10px;
+    }
+    .company-social-info .social-icon ul {
+        justify-content: center;
+    }
+    .transport-banner-box {
+        grid-template-columns: 100%;
+        gap: 0;
+        text-align: center;
+    }
+    .company-social-info .social-icon {
+        margin-bottom: 20px;
+    }
+    .company-info h4 {
+        margin-bottom: 16px;
+        font-size: 26px;
+        line-height: 26px;
+    }
+    .company-logo {
+        margin-bottom: 15px;
+    }
+    .transport-banner-box+p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .transport-banner {
+        padding: 66px 0 30px;
+    }
+    .professional-item {
+        padding: 20px;
     }
 }

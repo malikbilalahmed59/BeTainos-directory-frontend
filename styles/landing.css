@@ -98,6 +98,9 @@ h2 {
 .social-icon ul li a img {
     filter: brightness(0) invert(1);
 }
+.company-social-info .social-icon ul li a img{
+    filter: none;
+}
 
 .header-main-con {
     padding: 20px 0;
@@ -181,7 +184,7 @@ h2 {
     padding: 0 130px;
 }
 
-.discover-box-item figure {
+/* .discover-box-item figure {
     width: 154px;
     height: 154px;
     flex-shrink: 0;
@@ -189,13 +192,14 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .discover-box-content h3 {
     font-size: 28px;
     line-height: 28px;
     margin-bottom: 10px;
     font-weight: 700;
+    color: #000;
     text-transform: uppercase;
 }
 
@@ -203,11 +207,16 @@ h2 {
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 10px;
+    color: #9d9d9d;
+}
+.discover-box a{
+    text-decoration: none;
 }
 
 .discover-box-content span {
     font-size: 14px;
     font-weight: 700;
+    color: #000;
 }
 
 .discover-box-item {
@@ -410,6 +419,7 @@ h2 {
 .transport-banner-box {
     gap: 30px;
     display: grid;
+    align-items: center;
     border-bottom: 10px solid #9d9d9d;
     margin-bottom: 15px;
     grid-template-columns: 32% 40% 23%;
@@ -431,15 +441,18 @@ h2 {
     margin-bottom: 40px;
 }
 
-.company-logo figure {
+/* .company-logo figure {
     width: 100%;
     height: 205px;
     background: #9d9d9d;
     display: flex;
     align-items: center;
     justify-content: center;
+} */
+.company-logo figure img{
+    width: 100%;
+    height: auto;
 }
-
 .company-info {
     margin: 0 auto;
 }
@@ -552,7 +565,7 @@ h2 {
 .professional-box {
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(2, 48%);
+    grid-template-columns: repeat(2, 48.8%);
 }
 
 .professional-item ul li {

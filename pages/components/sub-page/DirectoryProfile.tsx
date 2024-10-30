@@ -2,6 +2,10 @@ import { IComapany } from '@/app/types/landingpage'
 import React from 'react'
 import Link from 'next/link';
 import Image from "next/image";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import "swiper/css/autoplay";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Logo from "/public/images/logo.jpg"
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import AdvertiseImage from "/public/images/advertisement-img.jpg"
@@ -99,7 +103,25 @@ const DirectoryProfile = ({ pageData }: Props) => {
                         </div>
                         <div className='advertisement-rt-box'>
                             <h4>Advertisement</h4>
-                            <figure className='mb-0'><Image width={216} height={63} src={AdvertiseImage} alt="logo" /></figure>
+                            <Swiper
+      slidesPerView={1}
+      loop={true}
+              autoplay={{
+                delay: 1000, // Slide transition delay (in ms)
+                disableOnInteraction: false, // Enable/Disable autoplay on user interaction
+              }}
+              modules={[Autoplay, Pagination, Navigation]}
+    >
+      <SwiperSlide>
+      <figure className='mb-0'><Image width={216} height={63} src={AdvertiseImage} alt="logo" /></figure>
+      </SwiperSlide>
+      <SwiperSlide>
+      <figure className='mb-0'><Image width={216} height={63} src={AdvertiseImage} alt="logo" /></figure>
+      </SwiperSlide>
+      <SwiperSlide>
+      <figure className='mb-0'><Image width={216} height={63} src={AdvertiseImage} alt="logo" /></figure>
+      </SwiperSlide>
+    </Swiper>
                         </div>
                     </div>
                     {/* container */}

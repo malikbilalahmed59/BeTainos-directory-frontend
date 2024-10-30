@@ -63,3 +63,11 @@
     right: -3px;
     top: -4px;
 }
+.sidebar-vertical li a span {
+    font-size: 15px;
+    line-height: 15px;
+    color: #909294;
+}
+.sidebar-vertical li {
+    margin-bottom: 24px;
+}
