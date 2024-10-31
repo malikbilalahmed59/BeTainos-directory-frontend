@@ -120,3 +120,22 @@ interface ITestimonial {
     Label: string;
     Description: string;
 }
+
+export interface IAdvertisementResponse {
+    data: IAdvertisementData[];
+}
+
+interface IAdvertisementData {
+    id: number;
+    documentId: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    SingleCompanyPage: ISingleCompanyPage[];
+}
+
+interface ISingleCompanyPage {
+    id: number;
+    link: string;
+    Banner: IImage;
+}

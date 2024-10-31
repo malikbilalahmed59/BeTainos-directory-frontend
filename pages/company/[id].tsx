@@ -9,18 +9,18 @@ import Layout from "../layout";
 
 const Index = () => {
   const { isLoading, data } = useDirectoryList();
-  const [pageData, setPageData] = useState<IComapany>()
+  const [pageData, setPageData] = useState<IComapany>();
   const router = useRouter();
   const { id } = router.query;
-  console.log(id)
 
   useEffect(() => {
-    const match = data?.companie.find(item => item.documentId == id);
-    console.log(match)
-    if (match) {
-      setPageData(match)
-    } else {
-      router.push('/404')
+    if (!isLoading) {
+      const match = data?.companie.find(item => item.documentId == id);
+      if (match) {
+        setPageData(match)
+      } else {
+        router.push('/404')
+      }
     }
   }, [id, isLoading, data, router])
 

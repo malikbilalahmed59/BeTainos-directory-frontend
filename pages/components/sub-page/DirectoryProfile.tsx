@@ -1,20 +1,20 @@
-import { IComapany } from '@/app/types/landingpage'
-import React from 'react'
-import Link from 'next/link';
+import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import { useAds } from '@/app/hooks/useAPIs';
+import { IComapany } from '@/app/types/landingpage';
 import Image from "next/image";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Link from 'next/link';
 import 'swiper/css';
 import "swiper/css/autoplay";
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Logo from "/public/images/logo.jpg"
-import { s3BucketStrapiUrl } from '@/app/helper/helper';
-import AdvertiseImage from "/public/images/advertisement-img.jpg"
-import businessesIcon from "/public/images/businesses-icon.jpeg"
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import businessesIcon from "/public/images/businesses-icon.jpeg";
+import Logo from "/public/images/logo.jpg";
 
 interface Props {
     pageData: IComapany | undefined
 }
 const DirectoryProfile = ({ pageData }: Props) => {
+    const { data } = useAds();
     return (
         <>
             <section className='transport-banner w-100 float-start'>
@@ -47,7 +47,10 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                     </ul>
                                     {/* social-icon */}
                                 </div>
-                                <div className='visit-site-link'><Link href={pageData?.Website || "#"} >Visit their site</Link></div>
+                                {
+                                    pageData?.Website && <div className='visit-site-link'><Link href={pageData?.Website || "#"} >Visitez leur site</Link></div>
+                                }
+
                             </div>
                         }
 
@@ -104,24 +107,20 @@ const DirectoryProfile = ({ pageData }: Props) => {
                         <div className='advertisement-rt-box'>
                             <h4>Advertisement</h4>
                             <Swiper
-      slidesPerView={1}
-      loop={true}
-              autoplay={{
-                delay: 1000, // Slide transition delay (in ms)
-                disableOnInteraction: false, // Enable/Disable autoplay on user interaction
-              }}
-              modules={[Autoplay, Pagination, Navigation]}
-    >
-      <SwiperSlide>
-      <figure className='mb-0'><Image width={216} height={63} src={AdvertiseImage} alt="logo" /></figure>
-      </SwiperSlide>
-      <SwiperSlide>
-      <figure className='mb-0'><Image width={216} height={63} src={AdvertiseImage} alt="logo" /></figure>
-      </SwiperSlide>
-      <SwiperSlide>
-      <figure className='mb-0'><Image width={216} height={63} src={AdvertiseImage} alt="logo" /></figure>
-      </SwiperSlide>
-    </Swiper>
+                                slidesPerView={1}
+                                loop={true}
+                                autoplay={{
+                                    delay: 1000, // Slide transition delay (in ms)
+                                    disableOnInteraction: false, // Enable/Disable autoplay on user interaction
+                                }}
+                                modules={[Autoplay, Pagination, Navigation]}
+                            >
+                                {
+                                    data?.data && data.data[0].SingleCompanyPage.map(slide => <SwiperSlide key={slide.id}>
+                                        <figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
+                                    </SwiperSlide>)
+                                }
+                            </Swiper>
                         </div>
                     </div>
                     {/* container */}
