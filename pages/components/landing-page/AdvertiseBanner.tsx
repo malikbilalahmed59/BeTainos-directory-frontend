@@ -23,6 +23,7 @@ const AdvertiseBanner = ({ pageData }: Props) => {
                 delay: 3000, // Slide transition delay (in ms)
                 disableOnInteraction: false, // Enable/Disable autoplay on user interaction
               }}
+              autoHeight={true}
               pagination={{
                 clickable: true,
               }}

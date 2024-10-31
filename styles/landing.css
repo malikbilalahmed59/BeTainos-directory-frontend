@@ -450,7 +450,7 @@ h2 {
     justify-content: center;
 } */
 .company-logo figure img{
-    width: 100%;
+    width: auto;
     height: auto;
 }
 .company-info {
@@ -500,6 +500,7 @@ h2 {
 .transport-banner-box+p {
     font-size: 20px;
     line-height: 24px;
+    text-align: justify;
 }
 
 .advertisement-box {
@@ -523,12 +524,14 @@ h2 {
 
 .advertisement-rt-box figure {
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
     overflow: hidden;
+    text-align: center;
 }
 
+
 .advertisement-rt-box img {
-    width: 100%;
+    /* width: 100%; */
     height: auto;
 }
 

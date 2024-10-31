@@ -110,14 +110,17 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 slidesPerView={1}
                                 loop={true}
                                 autoplay={{
-                                    delay: 1000, // Slide transition delay (in ms)
+                                    delay: 12000, // Slide transition delay (in ms)
                                     disableOnInteraction: false, // Enable/Disable autoplay on user interaction
                                 }}
+                                pagination={{
+                                    clickable: true,
+                                  }}
                                 modules={[Autoplay, Pagination, Navigation]}
                             >
                                 {
                                     data?.data && data.data[0].SingleCompanyPage.map(slide => <SwiperSlide key={slide.id}>
-                                        <figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
+                                        <figure className='mb-0'><Image width={256} height={256} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
                                     </SwiperSlide>)
                                 }
                             </Swiper>
