@@ -32,7 +32,7 @@ const Index = () => {
       </Head>
       <Layout>
         <MainBanner pageData={pageData} />
-        <BussinessCard />
+        <BussinessCard pageData={pageData} />
         <Categories />
         <ServicesBox pageData={pageData} />
         <BetainosBanner pageData={pageData} />

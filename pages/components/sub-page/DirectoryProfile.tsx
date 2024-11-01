@@ -1,5 +1,5 @@
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
-import { useAds } from '@/app/hooks/useAPIs';
+import { useAds, useDirectoryList } from '@/app/hooks/useAPIs';
 import { IComapany } from '@/app/types/landingpage';
 import Image from "next/image";
 import Link from 'next/link';
@@ -15,6 +15,10 @@ interface Props {
 }
 const DirectoryProfile = ({ pageData }: Props) => {
     const { data } = useAds();
+    const { data: list } = useDirectoryList();
+    const dataList = [...(list?.companie || []), ...(list?.professional || [])];
+    console.log(" flat list", dataList);
+
     return (
         <>
             <section className='transport-banner w-100 float-start'>
@@ -30,7 +34,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             <ul className='list-unstyled mb-0 company-contact'>
                                 <li><small className='d-inline-block'>Tel: </small><Link href={`tel:${pageData?.Phone}`} > &nbsp;{pageData?.Phone}</Link></li>
                             </ul>
-                            <span className='d-block text-uppercase'>transport:moving</span>
+                            <span className='d-block text-uppercase'>{pageData?.categories_list?.Name}</span>
                         </div>
                         {
                             pageData?.Socials && pageData?.Socials.length > 0 && <div className='company-social-info'>
@@ -115,7 +119,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 }}
                                 pagination={{
                                     clickable: true,
-                                  }}
+                                }}
                                 modules={[Autoplay, Pagination, Navigation]}
                             >
                                 {
@@ -130,6 +134,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                 </div>
                 {/* advertisement-box-con */}
             </section>
+
             <section className='w-100 float-start professional-con'>
                 <div className='container'>
                     <div className='professional-title text-center'>
@@ -139,102 +144,23 @@ const DirectoryProfile = ({ pageData }: Props) => {
                         <div className='professional-item-outer'>
                             <div className='professional-item'>
                                 <ul className='list-unstyled mb-0'>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
+                                    {
+                                        dataList.map(item => <li>
+                                            <Link href={`/company/${item.documentId}`} className='professional-item-box'>
+                                                <figure className='mb-0'><Image width={65} height={43} src={s3BucketStrapiUrl(item.Logo)} alt={item.Logo.alternativeText || "Logo"} /></figure>
+                                                <div className='professional-item-content'>
+                                                    <h4>{item.Name}</h4>
+                                                    <span className='d-inline-block'>{item.Description.slice(0, 100)}...</span>
+                                                </div>
+                                            </Link>
+                                        </li>)
+                                    }
                                 </ul>
                                 {/* professional-item */}
                             </div>
                             <div className='see-more-link text-center'>
                                 <Link href="/">Voir plus d&apos;entreprises et de professionnels similaires</Link>
 
-                            </div>
-                        </div>
-                        <div className='professional-item-outer'>
-                            <div className='professional-item'>
-                                <ul className='list-unstyled mb-0'>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className='professional-item-box'>
-                                            <figure className='mb-0'><Image width={65} height={43} src={businessesIcon} alt="logo" /></figure>
-                                            <div className='professional-item-content'>
-                                                <h4>abikayo</h4>
-                                                <span className='d-inline-block'>Lorem Ipsum is simply dummy text of the printing and typesetting industry</span>
-                                            </div>
-                                            {/* professional-item-box */}
-                                        </div>
-                                    </li>
-                                </ul>
-                                {/* professional-item */}
-                            </div>
-                            <div className='see-more-link text-center'>
-                                <Link href="/">Voir plus d&apos;entreprises et de professionnels similaires</Link>
                             </div>
                         </div>
                         {/* professional-box */}
