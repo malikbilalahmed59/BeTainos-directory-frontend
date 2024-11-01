@@ -12,8 +12,7 @@ export const useRegister = () => {
         mutationFn: (data) =>
             axios.post("/api/register", data).then((res) => res.data),
 
-        onSuccess: (res) => {
-            console.log(res)
+        onSuccess: () => {
             toast.success("Successfully Registered.");
         },
 

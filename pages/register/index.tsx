@@ -41,15 +41,16 @@ const Register = () => {
                     <Image width={216} height={63} src={Logo} alt="logo" />
                 </figure>
                 <div className="text-center login-title form-main-con">
-                    <h4 className="text-uppercase">Register</h4>
-                    <span className="d-block">Access to dashboard</span>
+                    <h4 className="text-uppercase">S&apos;inscrire</h4>
+                    <span className="d-block">Accéder au tableau de bord</span>
+
                     <form className="form-box" onSubmit={(e) => {
                         e.preventDefault();
                         handleSubmit();
                     }}>
                         <ul className="list-unstyled">
                             <li>
-                                <label className="d-inline-block">Username</label>
+                                <label className="d-inline-block">Nom d&apos;utilisateur</label>
                                 <input
                                     required
                                     type="text"
@@ -58,16 +59,17 @@ const Register = () => {
                                     onChange={e => setUsername(e.target.value)} />
                             </li>
                             <li>
-                                <label className="d-inline-block">Email</label>
+                                <label className="d-inline-block">E-mail</label>
                                 <input required type="email" placeholder="example@mail.com" value={email} onChange={e => setEmail(e.target.value)} />
                             </li>
                             <li>
-                                <label className="d-inline-block">Password</label>
+                                <label className="d-inline-block">Mot de passe</label>
                                 <input required type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             </li>
                         </ul>
-                        <Button loading={loading} type="submit" disabled={loading}>Register</Button>
-                        <span className="d-block text-center">Don&apos;t have an account yet? <Link href="/login">Login</Link></span>
+                        <Button loading={loading} type="submit" disabled={loading}>S&apos;inscrire</Button>
+                        <span className="d-block text-center">Vous n&apos;avez pas encore de compte ? <Link href="/login">Connexion</Link></span>
+
                     </form>
                 </div>
             </div>

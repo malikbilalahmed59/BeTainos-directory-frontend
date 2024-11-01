@@ -7,7 +7,6 @@ import 'swiper/css';
 import "swiper/css/autoplay";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import businessesIcon from "/public/images/businesses-icon.jpeg";
 import Logo from "/public/images/logo.jpg";
 
 interface Props {
@@ -17,7 +16,6 @@ const DirectoryProfile = ({ pageData }: Props) => {
     const { data } = useAds();
     const { data: list } = useDirectoryList();
     const dataList = [...(list?.companie || []), ...(list?.professional || [])];
-    console.log(" flat list", dataList);
 
     return (
         <>
@@ -145,7 +143,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             <div className='professional-item'>
                                 <ul className='list-unstyled mb-0'>
                                     {
-                                        dataList.map(item => <li>
+                                        dataList.map(item => <li key={item.id}>
                                             <Link href={`/company/${item.documentId}`} className='professional-item-box'>
                                                 <figure className='mb-0'><Image width={65} height={43} src={s3BucketStrapiUrl(item.Logo)} alt={item.Logo.alternativeText || "Logo"} /></figure>
                                                 <div className='professional-item-content'>

@@ -15,18 +15,17 @@ const Login = () => {
         setLoading(true);
         try {
             const result = await logged_in(email, password);
-            console.log("res", result?.status)
             if (result?.status == 200) {
                 router.push('/dashboard')
-                toast.success("Successfully signed in");
+                toast.success("Connexion réussie");
             } else {
-                toast.info("Invalid email or password");
+                toast.info("E-mail ou mot de passe invalide");
             }
             setLoading(false);
-        } catch (error) {
-            toast.info("Invalid email or password");
+        } catch (err) {
+            console.log(err)
+            toast.info("E-mail ou mot de passe invalide");
             setLoading(false);
-            console.log(error)
         }
 
     };
@@ -37,24 +36,24 @@ const Login = () => {
                     <Image width={216} height={63} src={Logo} alt="logo" />
                 </figure>
                 <div className="text-center login-title form-main-con">
-                    <h4 className="text-uppercase">Login</h4>
-                    <span className="d-block">Access to dashboard</span>
+                    <h4 className="text-uppercase">Connexion</h4>
+                    <span className="d-block">Accéder au tableau de bord</span>
                     <form className="form-box" onSubmit={(e) => {
                         e.preventDefault();
                         handleSubmit()
                     }}>
                         <ul className="list-unstyled">
                             <li>
-                                <label className="d-inline-block">Email</label>
+                                <label className="d-inline-block">E-mail</label>
                                 <input required type="email" placeholder="example@mail.com" value={email} onChange={e => setEmail(e.target.value)} />
                             </li>
                             <li>
-                                <label className="d-inline-block">Password</label>
+                                <label className="d-inline-block">Mot de passe</label>
                                 <input required type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             </li>
                         </ul>
                         <Button block loading={loading} type="submit" disabled={loading}>{'Login'}</Button>
-                        <span className="d-block text-center">Don&apos;t have an account yet? <Link href="/register">Register</Link></span>
+                        <span className="d-block text-center">Vous n&apos;avez pas encore de compte ? <Link href="/register">S&apos;inscrire</Link></span>
                     </form>
                 </div>
             </div>

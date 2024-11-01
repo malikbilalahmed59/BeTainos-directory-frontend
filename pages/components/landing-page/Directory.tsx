@@ -8,7 +8,6 @@ const Directory = () => {
     const { data } = useLandingPage();
     const pageData = data && data[0];
     const { data: list } = useDirectoryList()
-    console.log(list)
     return (
         <section className='w-100 float-start discover-con'>
             <div className='container'>

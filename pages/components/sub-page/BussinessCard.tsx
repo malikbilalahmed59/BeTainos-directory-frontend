@@ -28,8 +28,6 @@ const BussinessCard = ({ pageData }: Props) => {
                     {/* bussiness-card-box */}
                 </div>
                 <p>Vous souhaitez faire de la publicité sur notre site ? Découvrez nos offres pour les annonceurs en téléchargeant notre <strong>pack publicitaire</strong> et en remplissant le <strong>formulaire</strong></p>
-
-                {/* container */}
             </div>
             {/* bussiness-card-con */}
         </section>
