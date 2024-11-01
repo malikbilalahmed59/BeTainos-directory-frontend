@@ -8,7 +8,7 @@ const BussinessCard = ({ pageData }: Props) => {
     return (
         <section className='bussiness-card-con w-100 float-start'>
             <div className='container'>
-                <h2>Our offers <span className='d-inline-block'>Affaires et Professionnel</span></h2>
+                <h2>Nos offres <span className='d-inline-block'>Affaires et Professionnel</span></h2>
                 <div className='bussiness-card-box'>
                     {
                         pageData?.Packages.map(pkg => <div key={pkg.id} className='bussiness-card-item'>
