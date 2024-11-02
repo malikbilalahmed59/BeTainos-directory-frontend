@@ -7,7 +7,25 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button } from 'rsuite';
 import Logo from "/public/images/logo.png";
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/react';
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getSession(context);
 
+    if (session) {
+        // Redirect to the dashboard if user is already logged in
+        return {
+            redirect: {
+                destination: "/dashboard",
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+};
 const Register = () => {
     const [username, setUsername] = useState<string>("")
     const [email, setEmail] = useState<string>("")

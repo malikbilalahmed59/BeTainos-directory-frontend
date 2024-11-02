@@ -6,9 +6,28 @@ import Logo from "/public/images/logo.png"
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Button } from 'rsuite';
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/react';
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getSession(context);
+
+    if (session) {
+        // Redirect to the dashboard if user is already logged in
+        return {
+            redirect: {
+                destination: "/dashboard",
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {},
+    };
+};
 const Login = () => {
-    const [email, setEmail] = useState<string>("user@strapi.io")
-    const [password, setPassword] = useState<string>("strapiPassword")
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false);
     const router = useRouter()
     const handleSubmit = async () => {
