@@ -507,6 +507,12 @@
         font-size: 26px;
         line-height: 26px;
     }
+    .professional-item {
+        padding: 20px;
+    }
+    .professional-item ul {
+        grid-template-columns: 49% 49%;
+    }
 }
 @media only screen and (max-width: 767px) {
     .top-bar-text span {
@@ -711,8 +717,21 @@
     .advertisement-box-con {
         padding-bottom: 30px;
     }
+    .professional-item ul {
+        grid-template-columns: 100%;
+        gap: 15px;
+    }
 }
 @media only screen and (max-width: 575px) {
+    .professional-item-box {
+        gap: 10px;
+        flex-direction: column;
+        text-align: center;
+    }
+    .professional-item ul li a figure {
+        width: auto;
+        height: auto;
+    }
     .top-bar-con{
         display: none;
     }

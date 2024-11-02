@@ -566,15 +566,26 @@ h2 {
     color: #9f9f9f;
     margin-bottom: 20px;
 }
-
-.professional-box {
+.professional-item ul {
     display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(2, 48.8%);
+    grid-template-columns: 48% 48%;
+    gap: 30px 48px;
 }
 
 .professional-item ul li {
     margin-bottom: 30px;
+}
+.professional-item ul li a figure {
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.professional-item ul li a{
+    color: #000;
+    text-decoration: none;
 }
 
 .professional-item ul li:last-child {
@@ -780,11 +791,21 @@ h2 {
     padding: 19px 50px;
     border-radius: 30px;
 }
-
+.betainos-banner figure{
+    height: 300px !important;
+}
 .betainos-banner figure img {
     position: relative !important;
 }
-
+.advertisement-rt-box .swiper-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 256px;
+}
+.header-menu .dropdown-toggle::after{
+    display: none;
+}
 .help-con {
     padding: 45px 0 400px;
     background-size: cover;
@@ -944,7 +965,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     font-size: 18px;
     line-height: 24px;
     font-weight: 600;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }
 .bussiness-card-content ul li:last-child{
     margin-bottom: 0;
