@@ -33,8 +33,6 @@ const Directory = () => {
                                     {/* discover-box-item */}
                                 </Link>)
                         }
-
-
                         {/* discover-box */}
                     </div>
                 }

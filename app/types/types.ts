@@ -139,3 +139,17 @@ interface ISingleCompanyPage {
     link: string;
     Banner: IImage;
 }
+
+export interface IArticle {
+    id: number;
+    documentId: string;
+    Title: string;
+    Author: string;
+    Category: 'News' | 'Interviews' | 'Sakpase BeTaïnos';
+    Date: string; // Use Date type if you plan to work with date objects in TS, or keep it as string if it's a simple ISO date string
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    Description: string;
+    Photo: IImage
+}
