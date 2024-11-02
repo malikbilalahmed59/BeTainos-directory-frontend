@@ -73,7 +73,7 @@ const BlogGridPage = () => {
                         </div>
                         <div className="list-group">
                             {
-                                data?.data.map(cat => <div className="list-group-item d-flex">
+                                data?.data.reverse().slice(0, 5).map(cat => <div key={cat.id} className="list-group-item d-flex">
                                     <Image
                                         width={100}
                                         height={100}
@@ -121,7 +121,7 @@ const BlogGridPage = () => {
                                     alt={article.Title}
                                 />
                                 <div className="card-body p-2 bg-danger text-white">
-                                    <h6 className="card-title mb-1">{article.Title}</h6>
+                                    <h6 className="card-title mb-1">{article.Title.slice(0, 40)}...</h6>
                                     <small className="text-white">{article.Description.slice(0, 70)}...</small>
                                     <br />
                                     <small className="text-white">{article.Date}</small>

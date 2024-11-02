@@ -1,10 +1,56 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { Session } from "next-auth";
 import Image from 'next/image';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import logo from "../../public/images/logo.jpg";
+import { getSession, signOut } from "next-auth/react";
+import { GetServerSideProps } from 'next';
+import { Avatar, Dropdown, Popover, Whisper, WhisperInstance } from 'rsuite';
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getSession(context);
+    console.log(session)
+    if (!session) {
+        return {
+            redirect: {
+                destination: "/login", // Redirect to your login page
+                permanent: false,
+            },
+        };
+    }
 
-const Page = () => {
+    return {
+        props: { session },
+    };
+};
+interface ProtectedPageProps {
+    session: Session;
+}
+
+const Page = ({ session }: ProtectedPageProps) => {
+    console.log("session", session)
+    const trigger = useRef<WhisperInstance>(null);
+    useEffect(() => {
+        import('bootstrap/dist/js/bootstrap.bundle.min.js');
+    }, []);
+    const renderAdminSpeaker = ({ left, top, className }: any, ref: any) => {
+
+        return (
+            <Popover ref={ref} className={className} style={{ left, top }} full>
+                <Dropdown.Menu  >
+                    <Dropdown.Item panel style={{ padding: 10, width: 160 }}>
+                        <p>Signed in as</p>
+                        <strong>{session?.user?.username}</strong>
+                    </Dropdown.Item>
+                    <Dropdown.Item divider />
+                    <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
+                </Dropdown.Menu>
+            </Popover>
+        );
+    };
+    const handleLogout = () => {
+        signOut({
+            callbackUrl: "/login",
+        });
+    };
     return (
         <>
             <div className='dashboard-header w-100 float-start'>
@@ -16,7 +62,7 @@ const Page = () => {
                     </div>
                     <div className='header-menu'>
                         <ul className='list-unstyled mb-0'>
-                            <li>
+                            {/* <li>
                                 <form className="search-bar position-relative">
                                     <input type="text" placeholder="Search here" />
                                     <button className="search-btn2" type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
@@ -33,15 +79,17 @@ const Page = () => {
                                 <button className='nav-link'>
                                     <i className='fa-regular fa-comment'></i>
                                 </button>
-                            </li>
+                            </li> */}
                             <li className='nav-item dropdown'>
-                                <button className='dropdown-toggle person-name' data-bs-toggle='dropdown' aria-expanded='false'>
-                                    <div className='user-img position-relative'>
-                                        <Image src={logo} alt='topboffin-white-logo' width={30} height={30} />
-                                        <span className='status online'></span>
-                                    </div>
-                                    <span className='d-inline-block'>Admin</span>
-                                </button>
+                                <Whisper placement="bottomEnd" trigger="click" ref={trigger} speaker={renderAdminSpeaker}>
+                                    <Avatar
+                                        size="sm"
+                                        circle
+
+                                        alt={session?.user?.username?.slice(0, 1)}
+                                        style={{ marginLeft: 8 }}
+                                    />
+                                </Whisper>
                             </li>
                         </ul>
                     </div>
@@ -51,31 +99,23 @@ const Page = () => {
             <div className='dashboard-box w-100 float-start'>
                 <div className="page-wrapper">
                     <div className="content">
-                        <div className="content-header">
-                            <div className="page-title">
-                                <h1>Profile</h1>
-                                <ol className="breadcrumb mb-0">
-                                    <li className="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                    <li className="breadcrumb-item active" aria-current="page">Profile</li>
-                                </ol>
-                            </div>
-                        </div>
                         <div className="profile-view position-relative">
                             <div className="profile-img-wrap">
                                 <div className="profile-img">
-                                    <figure>
-                                        <Image src={logo} alt='topboffin-white-logo' width={30} height={30} />
-                                    </figure>
+                                    <Avatar
+                                        size="sm"
+                                        circle
+
+                                        alt={session?.user?.username?.slice(0, 1)}
+                                        style={{ marginLeft: 8 }}
+                                    />
                                 </div>
                                 <div className="profile-info-lft">
-                                    <h3 className="user-name">John Doe</h3>
-                                    <h6>UI/UX Design Team</h6>
-                                    <small>Web Designer</small>
-                                    <div className="staff-id">Employee ID : FT-0001</div>
-                                    <div className="join-date">Date of Join : 1st Jan 2023</div>
-                                    <div className="staff-msg">
-                                        <a href="#">Send Message</a>
-                                    </div>
+                                    <h3 className="user-name">{session?.user?.username}</h3>
+                                    <h6>{session?.user?.email}</h6>
+                                    <div className="staff-id">ID : BT-{session.user.id}</div>
+                                    {/* <div className="join-date">Date of Join : 1st Jan 2023</div> */}
+
                                 </div>
                             </div>
                             <div className="personal-rt-info">
