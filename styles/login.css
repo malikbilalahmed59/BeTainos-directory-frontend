@@ -55,15 +55,15 @@
 .form-box ul li input {
     width: 100%;
     font-size: 16px;
-    color: #d9d9d9;
-    line-height: 18px;
+    color: #000;
+    line-height: 24px;
     border-radius: 55px;
     padding: 13px 24px 15px;
     border: 1px solid #9d9d9d;
 }
 .form-box ul li input::placeholder {
     font-size: 16px;
-    color: #d9d9d9;
+    color: #000;
     line-height: 18px;
 }
 .form-box ul li input:focus {
