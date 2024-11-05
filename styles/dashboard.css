@@ -237,7 +237,12 @@
     color: #000;
     border-bottom: 2px solid #5545e5;
 }
-.tab-con #pills-home {
+.avatar-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tab-con #pills-home .tab-box {
     gap: 30px;
     display: grid;
     grid-template-columns: repeat(2, 49.5%);
@@ -336,4 +341,27 @@
     align-items: end;
     margin-bottom: 28px;
     justify-content: space-between;
+}
+@media only screen and (max-width: 1199px) {
+    .profile-view {
+        gap: 15%;
+    }
+    .profile-timeline ul li {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .tab-con #pills-home .tab-box {
+        grid-template-columns: 100%;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .profile-view {
+        gap: 15px;
+        flex-direction: column;
+    }
+    .personal-rt-info {
+        border-left: none;
+        padding-left: 0;
+    }
 }

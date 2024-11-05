@@ -151,6 +151,7 @@ const Page = ({ session }: ProtectedPageProps) => {
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
                                 <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div className='tab-box'> 
                                     <div className="profile-box generictab-box">
                                         <h4>Education Informations </h4>
                                         <div className="profile-timeline">
@@ -188,6 +189,7 @@ const Page = ({ session }: ProtectedPageProps) => {
                                             </ul>
                                         </div>
 
+                                    </div>
                                     </div>
                                 </div>
                                 <div className="tab-pane fade" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab">
