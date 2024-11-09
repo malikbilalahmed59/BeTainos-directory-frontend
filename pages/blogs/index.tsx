@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../layout';
-import { useBlogs } from '@/app/hooks/useAPIs';
+import { useAds, useBlogs } from '@/app/hooks/useAPIs';
 import Image from 'next/image';
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 
@@ -8,7 +8,8 @@ const BlogGridPage = () => {
     const { data } = useBlogs();
     const [activeCategory, setActiveCategory] = useState("All");
     const [currentPage, setCurrentPage] = useState(1);
-
+    const { data: ads } = useAds()
+    const adsData = ads && ads[0];
     const categories = ["All", "News", "Interviews", "Sakpase BeTaïnos"];
     const itemsPerPage = 8;
 
@@ -31,23 +32,23 @@ const BlogGridPage = () => {
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
-
+    console.log(adsData, 'ads')
     return (
         <Layout>
-            <div className="container my-5">
+            <div className="container my-5"  >
                 <div className="text-center mb-4">
-                    <h2 className="text-uppercase">The Pro Blog de Be Taïnos</h2>
-                    <p>news and articles on companies and professionals</p>
+                    <h2 className="text-uppercase">{adsData?.BlogsPage?.PageTitle}</h2>
+                    <p>{adsData?.BlogsPage?.PageDescription}</p>
                 </div>
 
                 {/* Search bar */}
-                <div className="d-flex justify-content-center mb-4">
+                <div className="d-flex justify-content-center mb-4 input-block">
                     <input
                         type="text"
-                        className="form-control w-50 me-2"
+                        className=" w-50 me-2 search-button-input"
                         placeholder="type here ..."
                     />
-                    <button className="btn btn-danger">Search</button>
+                    <button className="btn btn-danger search-button">Search</button>
                 </div>
 
                 <div className="row">
@@ -55,22 +56,19 @@ const BlogGridPage = () => {
                     <div className="col-lg-8 col-md-7 col-12 mb-4">
                         <div className="card border-0">
                             <img
-                                src="https://via.placeholder.com/600x400"
+                                src={s3BucketStrapiUrl(adsData?.BlogsPage.Banner || null)}
                                 className="card-img-top"
-                                alt="Top 10 of the month"
+                                alt={adsData?.BlogsPage.Banner.alternativeText || adsData?.BlogsPage?.BannerTitle || "Banner"}
                             />
-                            <div className="card-body text-center">
-                                <h4 className="card-title">TOP 10 of the month</h4>
-                                <p className="text-muted">03/11/2025</p>
+                            <div className="card-body d-flex justify-content-between justify-items-center">
+                                <h4 className="card-title">{adsData?.BlogsPage?.BannerTitle}</h4>
+                                <p className="text-muted">{adsData?.BlogsPage?.BannerDate}</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Sidebar with recent articles */}
                     <div className="col-lg-4 col-md-5 col-12">
-                        <div className="mb-3">
-                            <h5 className="border-bottom pb-2">Recent Articles</h5>
-                        </div>
                         <div className="list-group">
                             {
                                 data?.data.reverse().slice(0, 5).map(cat => <div key={cat.id} className="list-group-item d-flex">

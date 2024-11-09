@@ -9,7 +9,7 @@ export const fetchDirectoryPagetData = async (): Promise<IDirectoryPage[]> => {
 };
 export const useDirectoryPage = () => useGet<IDirectoryPage[]>('directory-page');
 export const useBlogs = () => useGet<{ data: IArticle[] }>('blogs?populate[Photo]=*');
-export const useAds = () => useGet<IAdvertisementResponse>('advertisements?populate[SingleCompanyPage][populate][Banner]=*');
+export const useAds = () => useGet<IAdvertisementResponse[]>('ads-page');
 export const useDirectoryList = () => useGet<{
     professional: [],
     companie: IComapany[]

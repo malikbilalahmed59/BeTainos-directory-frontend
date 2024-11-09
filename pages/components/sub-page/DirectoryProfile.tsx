@@ -121,7 +121,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 modules={[Autoplay, Pagination, Navigation]}
                             >
                                 {
-                                    data?.data && data.data[0].SingleCompanyPage.map(slide => <SwiperSlide key={slide.id}>
+                                    data && data[0].SingleCompanyPage.map(slide => <SwiperSlide key={slide.id}>
                                         <figure className='mb-0'><Image width={256} height={256} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
                                     </SwiperSlide>)
                                 }

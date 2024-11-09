@@ -121,17 +121,26 @@ interface ITestimonial {
     Description: string;
 }
 
-export interface IAdvertisementResponse {
-    data: IAdvertisementData[];
-}
 
-interface IAdvertisementData {
+
+export interface IAdvertisementResponse {
     id: number;
     documentId: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
     SingleCompanyPage: ISingleCompanyPage[];
+    BlogsPage: {
+        id: number,
+        BannerLink: string,
+        BannerDate: string,
+        PageTitle: string,
+        BannerTitle: string,
+        PageDescription: string,
+        Banner: IImage,
+        SingleBlogAds1: [],
+        SingleBlogAds2: []
+    }
 }
 
 interface ISingleCompanyPage {
