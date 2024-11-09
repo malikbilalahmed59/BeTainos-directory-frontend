@@ -94,7 +94,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 {
                                     pageData?.FounderName && <li>
                                         <span className='d-block'>Fondateur ou Directeur</span>
-                                        <small className='d-block'>J{pageData?.FounderName}</small>
+                                        <small className='d-block'>{pageData?.FounderName}</small>
                                     </li>
                                 }
                                 {

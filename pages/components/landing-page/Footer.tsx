@@ -20,7 +20,7 @@ const Footer = ({ pageData }: Props) => {
                         <h4>{pageData?.Footer.LeagalInformation?.Heading}</h4>
                         <ul className='list-unstyled'>
                             {
-                                (pageData?.Footer.LeagalInformation?.Links || []).map(l => <li key={l.id}><Link href={l.link || "#"}>{l.label}</Link></li>)
+                                (pageData?.Footer.LeagalInformation?.Links || []).map(l => <li key={l.id}><Link target='_blank' href={l.link || "#"}>{l.label}</Link></li>)
                             }
 
                         </ul>
@@ -30,11 +30,11 @@ const Footer = ({ pageData }: Props) => {
                         <ul className='list-unstyled footer-social'>
                             {
                                 (pageData?.Footer.FollowUs.Socials || []).map(l => <li key={l.id}>
-                                    <Link href={l.Link || "#"}><figure className='mb-0'><Image width={30} height={30} src={s3BucketStrapiUrl(l.Icon || null)} alt={pageData?.Footer.Logo?.alternativeText || "Logo"} /></figure></Link></li>)
+                                    <Link href={l.Link || "#"} target='_blank'><figure className='mb-0'><Image width={30} height={30} src={s3BucketStrapiUrl(l.Icon || null)} alt={pageData?.Footer.Logo?.alternativeText || "Logo"} /></figure></Link></li>)
                             }
 
                         </ul>
-                        <small className='d-block'><Link href="/">@be_tainos</Link></small>
+                        <small className='d-block'><Link href="/" >@be_tainos</Link></small>
                     </div>
 
                     {/* footer-box */}

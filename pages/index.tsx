@@ -29,9 +29,7 @@ export default function Home() {
       </Head>
       {
         isLoading ? <Loader /> : <Layout>
-          {
-            pageData?.Advertisement && <AdvertiseBanner pageData={pageData} />
-          }
+          <AdvertiseBanner pageData={pageData} />
           <HeroSection pageData={pageData} />
           <Directory />
           <Categories />
