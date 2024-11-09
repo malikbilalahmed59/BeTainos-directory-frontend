@@ -11,7 +11,9 @@ const Header = ({ pageData }: Props) => {
     const router = useRouter();
 
     // Function to determine if the link is active
-    const isActive = (path: string) => router.pathname === path;
+    const isActive = (path: string) => new RegExp(`^${path}(/|$)`).test(router.pathname);
+
+
     return (
         <div className='header-main-con w-100 float-start'>
             {

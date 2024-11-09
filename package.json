@@ -19,7 +19,9 @@
     "react": "^18",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18",
+    "react-markdown": "^9.0.1",
     "react-toastify": "^10.0.6",
+    "rehype-raw": "^7.0.0",
     "rsuite": "^5.73.0",
     "sharp": "^0.33.5",
     "swiper": "^11.1.14"

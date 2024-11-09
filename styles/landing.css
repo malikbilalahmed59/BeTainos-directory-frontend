@@ -39,7 +39,7 @@ h2 {
 }
 
 .header-con .navbar>.container-fluid {
-    align-items: end;
+    align-items: flex-end;
 }
 
 .cart-btn {
@@ -671,7 +671,7 @@ h2 {
 }
 
 .employee-form-box {
-    align-items: end;
+    align-items: flex-end;
 }
 
 .blog-card-box {
@@ -1351,4 +1351,15 @@ form.main-contact-box {
 
 .pagination .active .page-link {
     background-color: red !important;
+}
+
+/* NewsSection.module.css */
+.news-header .badge {
+    font-size: 1rem;
+    padding: 0.5em 1em;
+}
+
+.social-icons .btn-link i {
+    font-size: 1.5rem;
+    color: #000;
 }

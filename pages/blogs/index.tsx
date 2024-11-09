@@ -3,6 +3,9 @@ import Layout from '../layout';
 import { useAds, useBlogs } from '@/app/hooks/useAPIs';
 import Image from 'next/image';
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import Link from 'next/link';
+import PageHeader from './PageHeader';
+import RecentBlogs from './RecentBlogs';
 
 const BlogGridPage = () => {
     const { data } = useBlogs();
@@ -35,12 +38,8 @@ const BlogGridPage = () => {
     console.log(adsData, 'ads')
     return (
         <Layout>
-            <div className="container my-5"  >
-                <div className="text-center mb-4">
-                    <h2 className="text-uppercase">{adsData?.BlogsPage?.PageTitle}</h2>
-                    <p>{adsData?.BlogsPage?.PageDescription}</p>
-                </div>
-
+            <div className="container my-5">
+                <PageHeader />
                 {/* Search bar */}
                 <div className="d-flex justify-content-center mb-4 input-block">
                     <input
@@ -55,39 +54,26 @@ const BlogGridPage = () => {
                     {/* Main article section */}
                     <div className="col-lg-8 col-md-7 col-12 mb-4">
                         <div className="card border-0">
-                            <img
-                                src={s3BucketStrapiUrl(adsData?.BlogsPage.Banner || null)}
-                                className="card-img-top"
-                                alt={adsData?.BlogsPage.Banner.alternativeText || adsData?.BlogsPage?.BannerTitle || "Banner"}
-                            />
-                            <div className="card-body d-flex justify-content-between justify-items-center">
+                            <Link href={adsData?.BlogsPage.BannerLink || "#"} target='_blank'>
+                                <Image
+                                    height={600}
+                                    width={600}
+                                    quality={100}
+                                    src={s3BucketStrapiUrl(adsData?.BlogsPage.Banner || null)}
+                                    className="card-img-top"
+                                    alt={adsData?.BlogsPage.Banner.alternativeText || adsData?.BlogsPage?.BannerTitle || "Banner"}
+                                />
+                            </Link>
+                            <div className="card-body px-0 d-flex justify-content-between justify-items-center">
                                 <h4 className="card-title">{adsData?.BlogsPage?.BannerTitle}</h4>
-                                <p className="text-muted">{adsData?.BlogsPage?.BannerDate}</p>
+                                <p className="text-muted mb-0 pt-1">{adsData?.BlogsPage?.BannerDate}</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Sidebar with recent articles */}
                     <div className="col-lg-4 col-md-5 col-12">
-                        <div className="list-group">
-                            {
-                                data?.data.reverse().slice(0, 5).map(cat => <div key={cat.id} className="list-group-item d-flex">
-                                    <Image
-                                        width={100}
-                                        height={100}
-                                        src={s3BucketStrapiUrl(cat.Photo)}
-                                        alt={cat.Photo.alternativeText || "article thumbnail"}
-                                        className="me-3"
-                                    />
-                                    <div>
-                                        <h6 className="mb-1">{cat.Title}</h6>
-                                        <span className="badge bg-secondary me-1">{cat.Category}</span>
-                                        <small className="text-muted">{cat.Date}</small>
-                                    </div>
-                                </div>)
-                            }
-
-                        </div>
+                        <RecentBlogs />
                     </div>
                 </div>
             </div>
@@ -109,7 +95,7 @@ const BlogGridPage = () => {
                 {/* Articles Grid */}
                 <div className="row">
                     {paginatedArticles.map((article) => (
-                        <div key={article.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <Link style={{ textDecoration: 'none' }} href={'blogs/' + article.documentId} key={article.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                             <div className="card h-100 border-0 shadow">
                                 <Image
                                     width={100}
@@ -125,7 +111,7 @@ const BlogGridPage = () => {
                                     <small className="text-white">{article.Date}</small>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
 
