@@ -104,11 +104,11 @@ const Page = ({ session }: ProtectedPageProps) => {
                                     <ul>
                                         <li>
                                             <div className="title">Phone:</div>
-                                            <div className="text"><a href="javascript:;">9876543210</a></div>
+                                            <div className="text"><a href="#">9876543210</a></div>
                                         </li>
                                         <li>
                                             <div className="title">Email:</div>
-                                            <div className="text"><a href="javascript:;">johndoe@example.com</a></div>
+                                            <div className="text"><a href="#">johndoe@example.com</a></div>
                                         </li>
                                         <li>
                                             <div className="title">Birthday:</div>

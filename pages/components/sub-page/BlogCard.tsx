@@ -2,10 +2,36 @@
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import { useDirectoryList } from '@/app/hooks/useAPIs';
 import Image from "next/image";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { AutoComplete, IconButton, SelectPicker } from 'rsuite';
 
 const BlogCard = () => {
     const { data: list } = useDirectoryList();
-    const dataList = [...(list?.companie || []), ...(list?.professional || [])];
+    const [type, setType] = useState('');
+    const [location, setLocation] = useState('');
+    const listD = [...(list?.companie || []), ...(list?.professional || [])];
+    const [dataList, setDataList] = useState(listD)
+    useEffect(() => {
+        // Filter based on type and location
+        let filteredData = listD;
+
+        // Filter by type
+        if (type === 'Entreprise') {
+            filteredData = list?.companie || [];
+        } else if (type === 'Professionnel') {
+            filteredData = list?.professional || [];
+        }
+
+        // Further filter by location if a location is selected
+        if (location.trim() !== '') {
+            filteredData = filteredData.filter(item => item.PostelAddress === location);
+        }
+
+        // Update the data list with filtered results
+        setDataList(filteredData);
+    }, [type, location, list]);
+
     return (
         <>
             <div className='w-100 float-start employee-form-con'>
@@ -14,14 +40,39 @@ const BlogCard = () => {
                         <ul className='list-unstyled'>
                             <li>
                                 <label className='d-block'>What,who? Business, professional</label>
-                                <input type='text' />
+                                <SelectPicker
+                                    className='d-block'
+                                    onSelect={(e) => setType(e)}
+                                    searchable
+                                    size='lg'
+                                    style={{}}
+                                    data={[
+                                        {
+                                            value: 'Entreprise',
+                                            label: 'Entreprise'
+                                        }, {
+                                            value: 'Professionnel',
+                                            label: 'Professionnel'
+                                        }
+                                    ]} />
                             </li>
                             <li>
                                 <label className='d-block'>where? city, Department, Region</label>
-                                <input type='text' />
+                                <SelectPicker
+                                    searchable
+                                    size='lg'
+                                    className='d-block'
+
+                                    onSelect={(e) => setLocation(e)}
+                                    data={
+                                        Array.from(new Set([
+                                            ...listD.map(item => item.PostelAddress || ''),
+                                        ].filter(Boolean)))
+                                            .map(loc => ({ value: loc, label: loc }))
+                                    } />
                             </li>
                         </ul>
-                        <button type="submit" className="search-btn"><i className="fa-solid fa-magnifying-glass"></i></button>
+                        <IconButton style={{ background: "red", color: "white" }} icon={<i className="fa-solid fa-magnifying-glass"></i>} type="submit" className="search-btn"></IconButton>
                     </form>
                     {/* container */}
                 </div>
@@ -34,14 +85,14 @@ const BlogCard = () => {
                     </div>
                     <div className='blog-card-box'>
                         {
-                            dataList.map((item => <div key={item.id} className='blog-card-item'>
+                            dataList.map((item => <Link href={'company/' + item.documentId} key={item.id} style={{ textDecoration: 'none' }} className='blog-card-item'>
                                 <figure className='mb-0'><Image width={500} height={500} src={s3BucketStrapiUrl(item.Logo || null)} alt="logo" /></figure>
                                 <div className='blog-card-content'>
                                     <h5 >{item.Name.slice(0, 19)}...</h5>
                                     <p className='mb-0' style={{ textAlign: 'justify' }}>{item.Description.slice(0, 90)}...</p>
                                     {/* blog-card-content */}
                                 </div>
-                            </div>))
+                            </Link>))
                         }
 
                     </div>
