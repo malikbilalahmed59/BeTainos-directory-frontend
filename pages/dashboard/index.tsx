@@ -8,7 +8,6 @@ import { Avatar, Dropdown, Popover, Whisper, WhisperInstance } from 'rsuite';
 import AddCompany from './AddCompany';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
-    console.log(session)
     if (!session) {
         return {
             redirect: {
@@ -151,45 +150,45 @@ const Page = ({ session }: ProtectedPageProps) => {
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
                                 <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                    <div className='tab-box'> 
-                                    <div className="profile-box generictab-box">
-                                        <h4>Education Informations </h4>
-                                        <div className="profile-timeline">
-                                            <ul className="list-unstyled mb-0">
-                                                <li>
-                                                    <h6 className="d-block">International College of Arts and Science (UG)</h6>
-                                                    <small>Bsc Computer Science</small>
-                                                    <small className="d-block">2000 - 2003</small>
-                                                </li>
-                                                <li>
-                                                    <h6 className="d-block">International College of Arts and Science (PG)</h6>
-                                                    <small>Msc Computer Science</small>
-                                                    <small className="d-block">2000 - 2003</small>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div className='tab-box'>
+                                        <div className="profile-box generictab-box">
+                                            <h4>Education Informations </h4>
+                                            <div className="profile-timeline">
+                                                <ul className="list-unstyled mb-0">
+                                                    <li>
+                                                        <h6 className="d-block">International College of Arts and Science (UG)</h6>
+                                                        <small>Bsc Computer Science</small>
+                                                        <small className="d-block">2000 - 2003</small>
+                                                    </li>
+                                                    <li>
+                                                        <h6 className="d-block">International College of Arts and Science (PG)</h6>
+                                                        <small>Msc Computer Science</small>
+                                                        <small className="d-block">2000 - 2003</small>
+                                                    </li>
+                                                </ul>
+                                            </div>
 
-                                    </div>
-                                    <div className="profile-box generictab-box">
-                                        <h4>Experience </h4>
-                                        <div className="profile-timeline">
-                                            <ul className="list-unstyled mb-0">
-                                                <li>
-                                                    <h6 className="d-block">Web Designer at Zen Corporation</h6>
-                                                    <small className="d-block">Jan 2023 - Present (5 years 2 months)</small>
-                                                </li>
-                                                <li>
-                                                    <h6 className="d-block">Web Designer at Ron-tech</h6>
-                                                    <small className="d-block">Jan 2023 - Present (5 years 2 months)</small>
-                                                </li>
-                                                <li>
-                                                    <h6 className="d-block">Web Designer at Dalt Technology</h6>
-                                                    <small className="d-block">Jan 2023 - Present (5 years 2 months)</small>
-                                                </li>
-                                            </ul>
                                         </div>
+                                        <div className="profile-box generictab-box">
+                                            <h4>Experience </h4>
+                                            <div className="profile-timeline">
+                                                <ul className="list-unstyled mb-0">
+                                                    <li>
+                                                        <h6 className="d-block">Web Designer at Zen Corporation</h6>
+                                                        <small className="d-block">Jan 2023 - Present (5 years 2 months)</small>
+                                                    </li>
+                                                    <li>
+                                                        <h6 className="d-block">Web Designer at Ron-tech</h6>
+                                                        <small className="d-block">Jan 2023 - Present (5 years 2 months)</small>
+                                                    </li>
+                                                    <li>
+                                                        <h6 className="d-block">Web Designer at Dalt Technology</h6>
+                                                        <small className="d-block">Jan 2023 - Present (5 years 2 months)</small>
+                                                    </li>
+                                                </ul>
+                                            </div>
 
-                                    </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="tab-pane fade" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab">

@@ -1,13 +1,13 @@
 import { logged_in } from '@/app/services/next_auth_login';
-import React, { useState } from 'react'
-import { toast } from 'react-toastify';
-import Image from "next/image";
-import Logo from "/public/images/logo.png"
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { Button } from 'rsuite';
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
+import Image from "next/image";
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { Button } from 'rsuite';
+import Logo from "/public/images/logo.png";
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
 
@@ -29,14 +29,13 @@ const Login = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false);
-    const router = useRouter()
     const handleSubmit = async () => {
         setLoading(true);
         try {
             const result = await logged_in(email, password);
             if (result?.status == 200) {
-                router.push('/dashboard')
                 toast.success("Connexion réussie");
+                return redirect('/dashboard')
             } else {
                 toast.info("E-mail ou mot de passe invalide");
             }

@@ -685,9 +685,12 @@ h2 {
     margin-bottom: 20px;
 }
 
+
+
 .blog-card-item img {
     width: 100%;
-    height: auto;
+    height: 40vh;
+    min-height: 40vh;
 }
 
 .blog-card-content {

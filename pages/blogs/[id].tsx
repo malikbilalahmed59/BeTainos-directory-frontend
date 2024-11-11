@@ -28,7 +28,6 @@ const SingleBlog = () => {
     }, [id, isLoading, data, router])
 
     if (isLoading) return <Loader />
-    console.log(pageData)
     return (
         <Layout>
             <div className="container my-5">

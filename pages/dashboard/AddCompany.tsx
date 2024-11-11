@@ -105,7 +105,6 @@ const AddCompany = () => {
             console.log('Validation failed:', JSON.stringify(formError));
             return;
         }
-        console.log('Form submitted:', data);
     };
 
     const handleAddSocial = () => {
