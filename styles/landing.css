@@ -352,6 +352,7 @@ h2 {
     /* background: url("../public/images/contact-bg-img.jpeg") no-repeat center; */
     background-size: cover;
     background-repeat: no-repeat;
+    height: 70vh !important;
     background-position: center;
 }
 
