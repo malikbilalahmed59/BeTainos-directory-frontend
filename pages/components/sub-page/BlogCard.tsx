@@ -4,7 +4,7 @@ import { useDirectoryList } from '@/app/hooks/useAPIs';
 import Image from "next/image";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { AutoComplete, IconButton, SelectPicker } from 'rsuite';
+import { IconButton, SelectPicker } from 'rsuite';
 
 const BlogCard = () => {
     const { data: list } = useDirectoryList();
