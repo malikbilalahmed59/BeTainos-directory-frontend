@@ -3,7 +3,6 @@ import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import Image from "next/image";
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button } from 'rsuite';
@@ -35,7 +34,7 @@ const Login = () => {
             const result = await logged_in(email, password);
             if (result?.status == 200) {
                 toast.success("Connexion réussie");
-                return redirect('/dashboard')
+                window.location.href = '/dashboard';
             } else {
                 toast.info("E-mail ou mot de passe invalide");
             }

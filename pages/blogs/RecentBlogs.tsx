@@ -11,7 +11,7 @@ const RecentBlogs = () => {
         <>
             <div className="list-group">
                 {
-                    data?.data.reverse().slice(0, 5).map(cat => <Link href={''} key={cat.id} className="list-group-item d-flex">
+                    data?.data.reverse().slice(0, 5).map(cat => <Link href={'blogs/' + cat.documentId} key={cat.id} className="list-group-item d-flex">
                         <Image
                             width={100}
                             height={100}
