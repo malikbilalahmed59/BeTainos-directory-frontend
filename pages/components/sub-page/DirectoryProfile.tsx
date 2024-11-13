@@ -8,11 +8,29 @@ import "swiper/css/autoplay";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Logo from "/public/images/logo.jpg";
-
+import {
+    EmailIcon,
+    EmailShareButton,
+    FacebookIcon,
+    FacebookShareButton,
+    LineIcon,
+    LineShareButton,
+    LinkedinIcon,
+    LinkedinShareButton,
+    PinterestIcon,
+    PinterestShareButton,
+    TelegramIcon,
+    TelegramShareButton,
+    TwitterIcon,
+    TwitterShareButton,
+    WhatsappIcon,
+    WhatsappShareButton,
+} from "react-share";
 interface Props {
     pageData: IComapany | undefined
 }
 const DirectoryProfile = ({ pageData }: Props) => {
+    const linkShare = "#"
     const { data } = useAds();
     const { data: list } = useDirectoryList();
     const dataList = [...(list?.companie || []), ...(list?.professional || [])];
@@ -72,7 +90,60 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                     <span className='d-block'>Partagez le profil de l&apos;entreprise sur les réseaux sociaux</span>
                                     <div className='social-icon'>
                                         <ul className='list-unstyled mb-0'>
-                                            <li>
+                                            <div className="mx-auto flex w-full max-w-xs flex-wrap items-center justify-center gap-5 py-8">
+                                                <EmailShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                >
+                                                    <EmailIcon size={54} round />
+                                                </EmailShareButton>
+                                                <FacebookShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                >
+                                                    <FacebookIcon size={54} round />
+                                                </FacebookShareButton>
+
+                                                <TwitterShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                >
+                                                    <TwitterIcon size={54} round />
+                                                </TwitterShareButton>
+
+                                                <WhatsappShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                >
+                                                    <WhatsappIcon size={54} round />
+                                                </WhatsappShareButton>
+                                                <LineShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                >
+                                                    <LineIcon size={54} round />
+                                                </LineShareButton>
+                                                <PinterestShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                    media=""
+                                                >
+                                                    <PinterestIcon size={54} round />
+                                                </PinterestShareButton>
+                                                <LinkedinShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                >
+                                                    <LinkedinIcon size={54} round />
+                                                </LinkedinShareButton>
+                                                <TelegramShareButton
+                                                    url={linkShare}
+                                                    className="duration-300 hover:scale-105 hover:brightness-105"
+                                                >
+                                                    <TelegramIcon size={54} round />
+                                                </TelegramShareButton>
+                                            </div>
+                                            {/* <li>
                                                 <Link href="/"><i className="fa-brands fa-facebook-f"></i></Link>
                                             </li>
                                             <li>
@@ -86,7 +157,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                             </li>
                                             <li>
                                                 <Link href="/"><i className="fa-brands fa-tiktok"></i></Link>
-                                            </li>
+                                            </li> */}
                                         </ul>
                                         {/* social-icon */}
                                     </div>
