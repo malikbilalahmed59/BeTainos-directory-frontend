@@ -31,8 +31,9 @@ export default function Home() {
             {
                 isLoading ? <Loader /> : <Layout>
                     <DirectoryHeroSection pageData={pageData} />
+                    <section className="w-100 float-start">
                     <div className="container py-5">
-                        <div className="row justify-content-center" style={{ marginTop: "40rem " }}>
+                        <div className="row justify-content-center">
                             <div className="col-md-10 text-center col-sm-11 ">
                                 <h1 className="text-danger">
                                     BeTaïnos :
@@ -63,6 +64,8 @@ export default function Home() {
                         </div>
 
                     </div>
+                    </section>
+                    
                     <Categories />
 
                 </Layout>
