@@ -9,7 +9,6 @@ import { IconButton, SelectPicker } from 'rsuite';
 const BlogCard = () => {
     const { data: list } = useDirectoryList();
     const [type, setType] = useState('');
-    const [location, setLocation] = useState('');
     const listD = [...(list?.companie || []), ...(list?.professional || [])];
     const [dataList, setDataList] = useState(listD)
     useEffect(() => {
@@ -72,7 +71,6 @@ const BlogCard = () => {
                                 <label className='d-block'>where? city, Department, Region</label>
                                 <SelectPicker
                                     className="d-block"
-                                    onSelect={(e) => setLocation(e)}
                                     searchable
                                     size="lg"
                                     data={dataList.map(item => ({
