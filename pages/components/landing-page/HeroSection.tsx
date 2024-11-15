@@ -21,7 +21,7 @@ const HeroSection = ({ pageData }: Props) => {
           }
           {/* contact-title */}
         </div>
-        <HeroForm pageData={pageData} />
+        <HeroForm />
         {/* wrapper */}
       </div>
       {/* contact-con */}

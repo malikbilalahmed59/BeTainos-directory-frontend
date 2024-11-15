@@ -1,14 +1,14 @@
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import { useDirectoryList } from '@/app/hooks/useAPIs';
-import { ILandingPage } from '@/app/types/landingpage';
+import { useLandingPage } from '@/app/hooks/useLandingPage';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { IconButton, SelectPicker } from 'rsuite';
-interface Props {
-    pageData: ILandingPage | undefined
-}
-const HeroForm = ({ pageData }: Props) => {
+
+const HeroForm = () => {
+    const { data } = useLandingPage();
+    const pageData = data && data[0];
     const { data: list, isLoading } = useDirectoryList();
     const [type, setType] = useState('');
     const listD = [...(list?.companie || []), ...(list?.professional || [])];

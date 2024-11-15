@@ -1,20 +1,22 @@
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import { IDirectoryPage } from '@/app/types/types';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 interface Props {
     pageData: IDirectoryPage | undefined
 }
 const ServicesBox = ({ pageData }: Props) => {
+    console.log(pageData)
     return (
         <section className='w-100 float-start services-con'>
             <div className='container'>
                 <div className='services-box'>
                     <div className='services-box-item'>
-                        <figure className='mb-0'>
-                            <Image alt={pageData?.Services.Banner1?.alternativeText || "Banner"} width={626} height={560} src={s3BucketStrapiUrl(pageData?.Services.Banner1 || null)} />
-                        </figure>
+                        <Link href={pageData?.Services.Banner1?.Link || "#"} className='mb-0'>
+                            <Image alt={pageData?.Services.Banner1?.Banner?.alternativeText || "Banner"} width={626} height={560} src={s3BucketStrapiUrl(pageData?.Services.Banner1?.Banner || null)} />
+                        </Link>
                         {/* services-box-item */}
                     </div>
                     <div className='services-box-content'>
@@ -27,7 +29,9 @@ const ServicesBox = ({ pageData }: Props) => {
                         {/* services-box-item */}
                     </div>
                     <div className='services-box-item'>
-                        <Image alt={pageData?.Services.Banner2?.alternativeText || "Banner"} width={626} height={560} src={s3BucketStrapiUrl(pageData?.Services.Banner1 || null)} />
+                        <Link href={pageData?.Services.Banner1?.Link || "#"}>
+                            <Image alt={pageData?.Services.Banner2?.Banner?.alternativeText || "Banner"} width={626} height={560} src={s3BucketStrapiUrl(pageData?.Services.Banner2?.Banner || null)} />
+                        </Link>
                         {/* services-box-item */}
                     </div>
                     {/* services-box */}

@@ -3,6 +3,7 @@ import { ILandingPage } from '@/app/types/landingpage';
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Dropdown } from 'rsuite';
 
 interface Props {
     pageData: ILandingPage | undefined
@@ -43,16 +44,12 @@ const Header = ({ pageData }: Props) => {
                                                 </li>)
                                             }
                                         </ul>
-                                        {/* social-icon */}
                                     </div>
                                 }
 
                             </div>
-                            {/* top-bar-box */}
                         </div>
-                        {/* container */}
                     </div>
-                    {/* top-bar */}
                 </div>
             }
 
@@ -62,7 +59,7 @@ const Header = ({ pageData }: Props) => {
                         <div className="container-fluid p-0">
                             <Link href="/" className="navbar-brand">
                                 <figure className='mb-0'>
-                                    <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header.Banner || null)} alt="logo" />
+                                    <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header.Logo || null)} alt="logo" />
                                 </figure>
                             </Link>
                             <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,27 +70,38 @@ const Header = ({ pageData }: Props) => {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav mx-auto mb-lg-0">
                                     {
-                                        (pageData?.Header.MenuLink || []).map(item => <li key={item.id} className="nav-item " >
-                                            <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
-                                                {item.Name}</Link>
+                                        (pageData?.Header.MenuLink || []).map((item, i) => <li key={item.id} className="nav-item " >
+                                            {
+                                                i == 0 ? <Dropdown title={item.Name}>
+                                                    <Dropdown.Item>
+                                                        <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                            {item.Name}</Link>
+                                                    </Dropdown.Item>
+                                                    <Dropdown.Item>
+                                                        <Link href='directory' className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                            Directory</Link>
+                                                    </Dropdown.Item>
+                                                </Dropdown> : <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                    {item.Name}</Link>
+                                            }
+
                                         </li>)
                                     }
 
                                 </ul>
                             </div>
                             <div className='cart-btn'>
-                                <Link href='#' className="nav-link">
-                                    Add</Link>
+                                <Dropdown title="Add">
+                                    <Dropdown.Item>Add</Dropdown.Item>
+                                    <Dropdown.Item><Link href={'#'}>BeTainos</Link></Dropdown.Item>
+                                </Dropdown>
                                 <Link href='/login' className="nav-link">
                                     Login</Link>
                             </div>
                         </div>
                     </nav>
-                    {/* container */}
                 </div>
-                {/* header-con */}
             </header >
-            {/* header-main-con */}
         </div >
     )
 }

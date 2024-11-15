@@ -6,9 +6,10 @@ import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import Link from 'next/link';
 import PageHeader from './PageHeader';
 import RecentBlogs from './RecentBlogs';
+import Loader from '../components/Loader';
 
 const BlogGridPage = () => {
-    const { data } = useBlogs();
+    const { data, isLoading } = useBlogs();
     const [activeCategory, setActiveCategory] = useState("All");
     const [currentPage, setCurrentPage] = useState(1);
     const { data: ads } = useAds()
@@ -35,7 +36,7 @@ const BlogGridPage = () => {
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
-    console.log(adsData, 'ads')
+    if (isLoading) return <Loader />
     return (
         <Layout>
             <div className="container my-5">

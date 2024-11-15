@@ -16,7 +16,7 @@ interface IHeaderBar {
 }
 
 interface IHeader {
-    Banner: IImage | null,
+    Logo: IImage | null,
     MenuLink: {
         id: number,
         Link: string,

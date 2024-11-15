@@ -88,14 +88,17 @@ interface ISite {
     Title: string;
     Description: string;
 }
-
+interface IBanner {
+    Banner: IImage | null,
+    Link: string
+}
 interface IServices {
     id: number;
     Heading: string;
     Needs: INeed[];
-    Banner1: IImage | null,
-    Banner2: IImage | null,
-    Banner3: IImage[] | null,
+    Banner1: IBanner | null,
+    Banner2: IBanner | null,
+    Banner3: IBanner[] | null,
 }
 
 interface INeed {

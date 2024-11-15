@@ -35,10 +35,10 @@ const BetainosBanner = ({ pageData }: Props) => {
         className="mySwiper"
       >
         {
-          pageData?.Services.Banner3?.map(item => <SwiperSlide key={item.caption}>
+          pageData?.Services.Banner3?.map(item => <SwiperSlide key={item.Banner?.id}>
 
-            <figure key={item.id} className='mb-0'><Image layout="fill"
-              objectFit="cover" src={s3BucketStrapiUrl(item)} alt={item.alternativeText || "BetainoBanner"} /></figure>
+            <figure key={item.Banner?.id} className='mb-0'><Image layout="fill"
+              objectFit="cover" src={s3BucketStrapiUrl(item.Banner)} alt={item.Banner?.alternativeText || "BetainoBanner"} /></figure>
           </SwiperSlide>)
         }
       </Swiper>

@@ -3,11 +3,6 @@ import { useAds, useDirectoryList } from '@/app/hooks/useAPIs';
 import { IComapany } from '@/app/types/landingpage';
 import Image from "next/image";
 import Link from 'next/link';
-import 'swiper/css';
-import "swiper/css/autoplay";
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Logo from "/public/images/logo.jpg";
 import {
     EmailIcon,
     EmailShareButton,
@@ -26,11 +21,17 @@ import {
     WhatsappIcon,
     WhatsappShareButton,
 } from "react-share";
+import 'swiper/css';
+import "swiper/css/autoplay";
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Logo from "/public/images/logo.jpg";
 interface Props {
     pageData: IComapany | undefined
 }
 const DirectoryProfile = ({ pageData }: Props) => {
-    const linkShare = "#"
+    const linkShare = window.location.href;
+
     const { data } = useAds();
     const { data: list } = useDirectoryList();
     const dataList = [...(list?.companie || []), ...(list?.professional || [])];
@@ -68,7 +69,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                     {/* social-icon */}
                                 </div>
                                 {
-                                    pageData?.Website && <div className='visit-site-link'><Link href={pageData?.Website || "#"} >Visitez leur site</Link></div>
+                                    pageData?.Website && <div className='visit-site-link'><Link href={pageData?.Website || "#"} target='_blank' >Visitez leur site</Link></div>
                                 }
 
                             </div>
@@ -143,21 +144,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                                     <TelegramIcon size={54} round />
                                                 </TelegramShareButton>
                                             </div>
-                                            {/* <li>
-                                                <Link href="/"><i className="fa-brands fa-facebook-f"></i></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/"><i className="fa-brands fa-instagram"></i></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/"><i className="fa-brands fa-x-twitter"></i></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/"><i className="fa-brands fa-youtube"></i></Link>
-                                            </li>
-                                            <li>
-                                                <Link href="/"><i className="fa-brands fa-tiktok"></i></Link>
-                                            </li> */}
+
                                         </ul>
                                         {/* social-icon */}
                                     </div>
@@ -183,7 +170,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 slidesPerView={1}
                                 loop={true}
                                 autoplay={{
-                                    delay: 12000, // Slide transition delay (in ms)
+                                    delay: 4500, // Slide transition delay (in ms)
                                     disableOnInteraction: false, // Enable/Disable autoplay on user interaction
                                 }}
                                 pagination={{
@@ -192,7 +179,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 modules={[Autoplay, Pagination, Navigation]}
                             >
                                 {
-                                    data && data[0].SingleCompanyPage.map(slide => <SwiperSlide key={slide.id}>
+                                    data && data[0].SingleCompanyPage.map(slide => <SwiperSlide style={{ cursor: "pointer" }} onClick={() => window.open(slide.link, '_blank')} key={slide.id}>
                                         <figure className='mb-0'><Image width={256} height={256} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
                                     </SwiperSlide>)
                                 }
@@ -214,7 +201,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             <div className='professional-item'>
                                 <ul className='list-unstyled mb-0'>
                                     {
-                                        dataList.map(item => <li key={item.id}>
+                                        dataList.reverse().slice(0, 6).map(item => <li key={item.id}>
                                             <Link href={`/company/${item.documentId}`} className='professional-item-box'>
                                                 <figure className='mb-0'><Image width={65} height={43} src={s3BucketStrapiUrl(item.Logo)} alt={item.Logo.alternativeText || "Logo"} /></figure>
                                                 <div className='professional-item-content'>
