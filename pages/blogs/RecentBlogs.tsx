@@ -9,7 +9,7 @@ const RecentBlogs = () => {
 
     return (
         <>
-            <div className="list-group">
+            <div className="list-group list-box">
                 {
                     data?.data.reverse().slice(0, 5).map(cat => <Link href={'blogs/' + cat.documentId} key={cat.id} className="list-group-item d-flex">
                         <Image

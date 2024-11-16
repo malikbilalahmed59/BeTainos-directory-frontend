@@ -39,6 +39,7 @@ const BlogGridPage = () => {
     if (isLoading) return <Loader />
     return (
         <Layout>
+            <div className='w-100 float-start'>
             <div className="container my-5">
                 <PageHeader />
                 {/* Search bar */}
@@ -78,8 +79,9 @@ const BlogGridPage = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="container my-5">
+            </div>
+<div className='w-100 float-start'>
+<div className="container my-5">
                 {/* Category Filter */}
                 <div className="d-flex justify-content-center mb-4">
                     {categories.map((category) => (
@@ -131,6 +133,7 @@ const BlogGridPage = () => {
                     </nav>
                 </div>
             </div>
+</div>
         </Layout>
     );
 };

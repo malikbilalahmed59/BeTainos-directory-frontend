@@ -30,6 +30,7 @@ const SingleBlog = () => {
     if (isLoading) return <Loader />
     return (
         <Layout>
+            <div className='w-100 float-start'>
             <div className="container my-5">
                 <PageHeader />
                 <div className="row mb-3">
@@ -75,6 +76,7 @@ const SingleBlog = () => {
                         <RecentBlogs />
                     </div>
                 </div>
+            </div>
             </div>
         </Layout>
     )

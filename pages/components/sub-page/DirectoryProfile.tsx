@@ -91,7 +91,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                     <span className='d-block'>Partagez le profil de l&apos;entreprise sur les réseaux sociaux</span>
                                     <div className='social-icon'>
                                         <ul className='list-unstyled mb-0'>
-                                            <div className="mx-auto flex w-full max-w-xs flex-wrap items-center justify-center gap-5 py-8">
+                                            <div className="flex w-full max-w-xs flex-wrap items-center justify-center gap-5 py-8">
                                                 <EmailShareButton
                                                     url={linkShare}
                                                     className="duration-300 hover:scale-105 hover:brightness-105"
@@ -180,7 +180,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             >
                                 {
                                     data && data[0].SingleCompanyPage.map(slide => <SwiperSlide style={{ cursor: "pointer" }} onClick={() => window.open(slide.link, '_blank')} key={slide.id}>
-                                        <figure className='mb-0'><Image width={256} height={256} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
+                                        <figure className='mb-0'><Image width={300} height={600} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
                                     </SwiperSlide>)
                                 }
                             </Swiper>

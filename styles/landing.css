@@ -42,17 +42,23 @@ h2 {
 .header-con .navbar-nav {
     gap: 20px;
 }
-
+.list-box{
+    height: 455px;
+    overflow: auto;
+}
 .header-con .navbar-expand-lg .navbar-nav .nav-link,
-.search-button {
+.search-button,.header-con .rs-dropdown-toggle, .rs-dropdown-toggle.rs-btn {
     font-size: 18px;
     line-height: 18px;
     color: #fff;
     background: #9d9d9d;
     text-transform: capitalize;
-    padding: 10px 20px;
+    padding: 10px 30px 10px 20px;
     border-radius: 20px;
     display: inline-block;
+}
+.header-con .rs-dropdown{
+    border-radius: 20px;
 }
 
 .search-button {
@@ -1085,9 +1091,6 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
     text-align: center;
 }
 
-.betainos-banner .swiper-pagination {
-    display: none !important;
-}
 
 .development-con {
     padding: 80px 0;
