@@ -1,4 +1,5 @@
 import { useCategories } from '@/app/hooks/useAPIs';
+import { addCompanySchema } from '@/app/validation/registrationSchema';
 import InfoOutlineIcon from '@rsuite/icons/InfoOutline';
 import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
@@ -61,51 +62,73 @@ const initialState: IState = {
 const AddCompany = () => {
     const [data, setData] = useState<IState>(initialState);
     const [formError, setFormError] = useState<{ [key: string]: string }>({});
-    const { data: catList, isLoading: catLoading } = useCategories()
+    const { data: catList, isLoading: catLoading } = useCategories();
     const triggerRef = React.useRef<any>();
+
     const handleChange = (value: Partial<IState>) => {
         setData({ ...data, ...value });
     };
 
     const validate = () => {
-        const errors: { [key: string]: string } = {};
+        const { error } = addCompanySchema.validate(data, { abortEarly: false });
 
-        if (!data.name) {
-            errors.name = 'Name is required';
+        if (error) {
+            const errors: { [key: string]: string } = {};
+            error.details.forEach((err: any) => {
+                errors[err?.context.key] = err.message;
+            });
+            setFormError(errors);
+            return false;
         }
-        if (!data.postalAddress) {
-            errors.postalAddress = 'Postal Address is required';
-        }
-        if (!data.description) {
-            errors.description = 'Description is required';
-        }
-        if (!data.phone) {
-            errors.phone = 'Phone is required';
-        }
-        if (!data.founderName) {
-            errors.phone = 'Founder Name is required';
-        }
-        if (!data.email) {
-            errors.email = 'Email is required';
-        } else if (!/\S+@\S+\.\S+/.test(data.email)) {
-            errors.email = 'Invalid email format';
-        }
-        // if (!data.website) {
-        //     errors.website = 'Website is required';
-        // } else if (!/^https?:\/\/\S+\.\S+$/.test(data.website)) {
-        //     errors.website = 'Invalid website URL';
-        // }
 
-        setFormError(errors);
-        return Object.keys(errors).length === 0;
+        setFormError({});
+        return true;
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!validate()) {
             console.log('Validation failed:', JSON.stringify(formError));
             return;
         }
+        console.log("pass")
+        try {
+            // Prepare FormData object
+            const formData = new FormData();
+
+            // Append fields to FormData
+            formData.append('logo', data.logo);
+            formData.append('name', data.name);
+            formData.append('postalAddress', data.postalAddress);
+            formData.append('phone', data.phone);
+            formData.append('email', data.email);
+            formData.append('website', data.website);
+            formData.append('coFounderName', data.coFounderName);
+            formData.append('founderName', data.founderName);
+            formData.append('description', data.description);
+            formData.append('fieldOfExpertise', data.fieldOfExpertise);
+
+            // Add array fields as JSON strings
+            formData.append('categoriesList', JSON.stringify(data.categoriesList));
+            formData.append('socials', JSON.stringify(data.socials));
+
+            // Make API call
+            const response = await fetch('/api/addData', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Data successfully submitted:', result);
+            } else {
+                const error = await response.json();
+                console.error('Error submitting data:', error);
+            }
+        } catch (error) {
+            console.error('Unexpected error:', error);
+        }
     };
+
 
     const handleAddSocial = () => {
         setData(prevData => ({
@@ -126,13 +149,16 @@ const AddCompany = () => {
         updatedSocials[index][field] = value;
         setData({ ...data, socials: updatedSocials });
     };
-    const speaker = (<Popover title="Social Icons">
-        <span>
-            <Link href={'https://lucide.dev/icons/'} target='_blank'>Click here</Link>&nbsp; to download the icons.
-        </span>
 
-    </Popover>)
-    const catsList = catList?.map(item => ({ label: item.Name, value: item.Name }))
+    const speaker = (
+        <Popover title="Social Icons">
+            <span>
+                <Link href={'https://lucide.dev/icons/'} target='_blank'>Click here</Link> to download the icons.
+            </span>
+        </Popover>
+    );
+
+    const catsList = catList?.map(item => ({ label: item.Name, value: item.Name }));
 
     return (
         <div className='profile-box generictab-box'>
@@ -175,26 +201,37 @@ const AddCompany = () => {
                     <Form.Control name="website" value={data.website} onChange={(value) => handleChange({ website: value })} />
                     {formError.website && <Form.HelpText style={{ color: 'red' }}>{formError.website}</Form.HelpText>}
                 </Form.Group>
+
                 <Form.Group controlId="founderName">
                     <Form.ControlLabel>Founder Name*</Form.ControlLabel>
                     <Form.Control name="founderName" value={data.founderName} onChange={(value) => handleChange({ founderName: value })} />
                     {formError.founderName && <Form.HelpText style={{ color: 'red' }}>{formError.founderName}</Form.HelpText>}
                 </Form.Group>
-                <Form.Group controlId="selectPicker">
-                    <Form.ControlLabel>Category</Form.ControlLabel>
-                    <Form.Control name="selectPicker" loading={catLoading} accepter={SelectPicker} data={catsList || []} />
-                </Form.Group>
-                <Form.Group controlId="uploader">
-                    <Form.ControlLabel>Logo</Form.ControlLabel>
-                    {/* <Uploader action="#" onUpload={(file) => handleChange({ logo: file.blobFile as string })} /> */}
+
+                <Form.Group controlId="categories">
+                    <Form.ControlLabel>Categories</Form.ControlLabel>
+                    <Form.Control
+                        name="categories"
+                        accepter={SelectPicker}
+                        data={catsList || []}
+                        loading={catLoading}
+                        onChange={(value) => handleChange({ categoriesList: value })}
+                    />
+                    {formError.categoriesList && <Form.HelpText style={{ color: 'red' }}>{formError.categoriesList}</Form.HelpText>}
+
                 </Form.Group>
 
                 <Form.Group controlId="description">
                     <Form.ControlLabel>Description*</Form.ControlLabel>
-                    <Form.Control name="description" accepter={Textarea} rows={3} value={data.description} onChange={(value) => handleChange({ description: value })} />
+                    <Form.Control
+                        name="description"
+                        accepter={Textarea}
+                        rows={3}
+                        value={data.description}
+                        onChange={(value) => handleChange({ description: value })}
+                    />
                     {formError.description && <Form.HelpText style={{ color: 'red' }}>{formError.description}</Form.HelpText>}
                 </Form.Group>
-
 
                 <Form.Group controlId="socials">
                     <Stack justifyContent='flex-start' alignItems='center' spacing={8}>
@@ -210,27 +247,7 @@ const AddCompany = () => {
                                     value={social.name}
                                     onChange={(value) => handleSocialChange(index, 'name', value)}
                                 />
-                            </Form.Group>
-                            <Form.Group controlId={`socials-icon-${index}`}>
-                                <Form.HelpText style={{ position: 'relative' }}>
-                                    <Form.ControlLabel>
-                                        Icon
-                                        <Whisper ref={triggerRef} placement="top" trigger="hover" controlId="control-id-hover" speaker={speaker}>
-                                            <IconButton
-                                                icon={<InfoOutlineIcon />}
-                                                style={{
-                                                    position: 'absolute',
-                                                    top: '-6px',
-                                                    left: '12.2%',
-                                                    zIndex: 99
-                                                }}
-                                                appearance="default"
-                                                size="xs"
-                                            />
-                                        </Whisper>
-                                    </Form.ControlLabel>
-                                </Form.HelpText>
-                                {/* <Uploader action="#" onUpload={(file) => handleSocialChange(index, 'icon', file.blobFile as string)} /> */}
+                                {formError[`socials.${index}.name`] && <Form.HelpText style={{ color: 'red' }}>{formError[`socials.${index}.name`]}</Form.HelpText>}
                             </Form.Group>
                             <Form.Group controlId={`socials-link-${index}`}>
                                 <Form.ControlLabel>Link</Form.ControlLabel>
@@ -239,10 +256,51 @@ const AddCompany = () => {
                                     value={social.link}
                                     onChange={(value) => handleSocialChange(index, 'link', value)}
                                 />
+                                {formError[`socials.${index}.link`] && <Form.HelpText style={{ color: 'red' }}>{formError[`socials.${index}.link`]}</Form.HelpText>}
                             </Form.Group>
                             <IconButton icon={<TrashIcon />} appearance="ghost" color="red" onClick={() => handleDeleteSocial(index)} />
                         </div>
                     ))}
+                </Form.Group>
+                <Form.Group controlId="logo">
+                    <Form.ControlLabel>Logo</Form.ControlLabel>
+                    <input
+                        className='form-control'
+                        type="file"
+                        accept="image/*"
+                        name="logo"
+                        onChange={(event) => {
+                            console.log(event)
+                            const file = event.target.files?.[0];
+                            if (file) {
+                                // Validate file type
+                                if (!file.type.startsWith('image/')) {
+                                    setFormError((prev) => ({
+                                        ...prev,
+                                        logo: 'Only image files are allowed',
+                                    }));
+                                    return;
+                                }
+
+                                // Validate file size (e.g., max 5MB)
+                                if (file.size > 5 * 1024 * 1024) {
+                                    setFormError((prev) => ({
+                                        ...prev,
+                                        logo: 'File size exceeds 5MB limit',
+                                    }));
+                                    return;
+                                }
+
+                                setFormError((prev) => ({ ...prev, logo: '' })); // Clear any previous errors
+                                handleChange({ logo: file.name }); // Save file name or the file object
+                            } else {
+                                // Clear the logo field and any error if no file is selected
+                                setFormError((prev) => ({ ...prev, logo: '' }));
+                                handleChange({ logo: '' });
+                            }
+                        }}
+                    />
+                    {formError.logo && <Form.HelpText style={{ color: 'red' }}>{formError.logo}</Form.HelpText>}
                 </Form.Group>
 
                 <Form.Group>

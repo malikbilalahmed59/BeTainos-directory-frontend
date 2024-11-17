@@ -92,7 +92,7 @@ const Header = ({ pageData }: Props) => {
                             </div>
                             <div className='cart-btn'>
                                 <Dropdown title="Add">
-                                    <Dropdown.Item>Add</Dropdown.Item>
+                                    <Dropdown.Item><Link href={'login'}>Add</Link></Dropdown.Item>
                                     <Dropdown.Item><Link href={'#'}>BeTainos</Link></Dropdown.Item>
                                 </Dropdown>
                                 <Link href='/login' className="nav-link">
