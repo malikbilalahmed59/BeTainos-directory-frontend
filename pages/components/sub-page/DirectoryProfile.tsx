@@ -26,11 +26,14 @@ import "swiper/css/autoplay";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Logo from "/public/images/logo.jpg";
+import { useRouter } from 'next/router';
 interface Props {
     pageData: IComapany | undefined
 }
 const DirectoryProfile = ({ pageData }: Props) => {
-    const linkShare = window.location.href;
+    const router = useRouter();
+    const { asPath } = router;
+    const linkShare = asPath;
 
     const { data } = useAds();
     const { data: list } = useDirectoryList();
@@ -179,16 +182,14 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 modules={[Autoplay, Pagination, Navigation]}
                             >
                                 {
-                                    data && data[0].SingleCompanyPage.map(slide => <SwiperSlide style={{ cursor: "pointer" }} onClick={() => window.open(slide.link, '_blank')} key={slide.id}>
-                                        <figure className='mb-0'><Image width={300} height={600} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></figure>
+                                    data && data[0].SingleCompanyPage.map(slide => <SwiperSlide style={{ cursor: "pointer" }} key={slide.id}>
+                                        <Link href={slide.link} target='_blank' className='mb-0'><Image width={300} height={600} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></Link>
                                     </SwiperSlide>)
                                 }
                             </Swiper>
                         </div>
                     </div>
-                    {/* container */}
                 </div>
-                {/* advertisement-box-con */}
             </section>
 
             <section className='w-100 float-start professional-con'>
@@ -216,13 +217,10 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             </div>
                             <div className='see-more-link text-center'>
                                 <Link href="/">Voir plus d&apos;entreprises et de professionnels similaires</Link>
-
                             </div>
                         </div>
-                        {/* professional-box */}
                     </div>
                 </div>
-                {/* professional-con */}
             </section>
         </>
     )

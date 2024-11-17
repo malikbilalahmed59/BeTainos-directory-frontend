@@ -143,7 +143,8 @@ export interface IAdvertisementResponse {
         Banner: IImage,
         SingleBlogAds1: [],
         SingleBlogAds2: []
-    }
+    },
+    DirectoryPageAds: { id: number, Link: string, Banner: IImage | null }[]
 }
 
 interface ISingleCompanyPage {
