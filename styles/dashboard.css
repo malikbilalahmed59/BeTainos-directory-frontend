@@ -397,7 +397,15 @@
     margin-bottom: 28px;
     justify-content: space-between;
 }
-
+.generictab-box .rs-picker-toggle-wrapper{
+    width: 300px;
+}
+.generictab-box .rs-form-horizontal .rs-form-group .rs-form-control-label{
+    text-align: left;
+}
+.generictab-box  .form-control[type="file"]{
+    width: 300px;
+}
 @media only screen and (max-width: 1199px) {
     .profile-view {
         gap: 15%;
@@ -423,5 +431,20 @@
     .personal-rt-info {
         border-left: none;
         padding-left: 0;
+    }
+}
+@media only screen and (max-width: 575px) {
+    .generictab-box .rs-form-horizontal .rs-form-group .rs-form-control-wrapper {
+        float: left;
+        width: 100%;
+    }
+    .generictab-box .form-control[type="file"]{
+        width: 100%;
+    }
+    .generictab-box .rs-form-horizontal .rs-form-group .rs-btn-toolbar {
+        padding-left: 0;
+    }
+    .generictab-box .rs-form-control-wrapper>.rs-input{
+        width: 100%;
     }
 }

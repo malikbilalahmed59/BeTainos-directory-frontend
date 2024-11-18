@@ -18,7 +18,7 @@ const AdvertisementBox2 = () => {
           640: { slidesPerView: 1, spaceBetween: 30 },
           768: { slidesPerView: 1.3, spaceBetween: 30 },
           1024: { slidesPerView: 1.3, spaceBetween: 30 },
-        }}
+        }} 
         spaceBetween={30}
         centeredSlides={true}
         freeMode={true}
