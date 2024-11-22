@@ -1,51 +1,44 @@
+import axiosInstance from '@/app/services/axiosInstance';
+import { getServerSession } from 'next-auth/next'; // Use getServerSession 
 import { NextRequest, NextResponse } from 'next/server';
-import formidable from 'formidable';
-
-// Disable the default body parser in Next.js
-export const config = {
-    api: {
-        bodyParser: false,
-    },
-};
-
-// Helper to parse form data
-const parseFormData = (req: any) => {
-    const form = new formidable.IncomingForm();
-
-    return new Promise((resolve, reject) => {
-        form.parse(req, (err, fields, files) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ fields, files });
-            }
-        });
-    });
-};
+import { authOptions } from '../auth/[...nextauth]/route';
 
 export async function POST(req: NextRequest) {
     try {
-        console.log("API reached");
+        // Retrieve the session from NextAuth
+        const session: any = await getServerSession(authOptions);
+        if (!session || !session.user?.token) {
+            return new Response(
+                JSON.stringify({ message: "Unauthorized: No valid session found." }),
+                { status: 401 }
+            );
+        }
 
-        // Convert the NextRequest to a Node.js request-like object
-        const nodeReq = await req.blob().then(async (blob) => {
-            const buffer = Buffer.from(await blob.arrayBuffer());
-            return Object.assign(buffer, {
-                headers: Object.fromEntries(req.headers),
-                method: req.method,
-                url: req.url,
-            });
+        console.log("Session Token:", session.user.token);
+        const formData = await req.formData();
+        // Convert browser-native FormData to Node.js FormData
+
+        // Convert FormData to a plain object
+        const formObject: any = {};
+        for (const [key, value] of formData.entries()) {
+            formObject[key] = value;
+        }
+
+        console.log('Form Object:', formObject);;
+
+        // Send the FormData to the external API
+        const response = await axiosInstance.post('companies', { data: formObject }, {
+            headers: {
+                'Authorization': `Bearer ${session.user.token}`,
+                'Content-Type': 'multipart/form-data',
+            },
         });
-
-        const { fields, files } = await parseFormData(nodeReq);
-
-        console.log("Parsed fields:", fields);
-        console.log("Parsed files:", files);
-
-        // Handle form data further (e.g., validation, saving files)
-        return NextResponse.json({ message: "Form processed successfully!" });
+        console.log(response)
+        return new Response(JSON.stringify({ message: "Registration successful!" }), {
+            status: 200,
+        });
     } catch (error) {
-        console.error("Error processing form data:", error);
+        console.error("Error processing form data:", error.response || error.message);
         return NextResponse.json({ message: "Error processing form data" }, { status: 500 });
     }
 }

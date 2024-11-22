@@ -4,24 +4,21 @@
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
     border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar
-{
-	width: 8px;
+::-webkit-scrollbar {
+    width: 8px;
     border-radius: 10px;
-	background-color: #F5F5F5;
+    background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
     border-radius: 10px;
-	background-color: red;
+    background-color: red;
 }
 
 
@@ -42,12 +39,16 @@ h2 {
 .header-con .navbar-nav {
     gap: 20px;
 }
-.list-box{
+
+.list-box {
     height: 455px;
     overflow: auto;
 }
+
 .header-con .navbar-expand-lg .navbar-nav .nav-link,
-.search-button,.header-con .rs-dropdown-toggle, .rs-dropdown-toggle.rs-btn {
+.search-button,
+.header-con .rs-dropdown-toggle,
+.rs-dropdown-toggle.rs-btn {
     font-size: 18px;
     line-height: 18px;
     color: #fff;
@@ -57,7 +58,8 @@ h2 {
     border-radius: 20px;
     display: inline-block;
 }
-.header-con .rs-dropdown{
+
+.header-con .rs-dropdown {
     border-radius: 20px;
 }
 
@@ -105,7 +107,7 @@ h2 {
     align-items: center;
 }
 
-.social-icon ul > div{
+.social-icon ul>div {
     display: flex;
     gap: 10px !important;
     justify-content: center;
@@ -383,12 +385,14 @@ h2 {
     /* height: 70vh !important; */
     background-position: center;
 }
-.main-contact-form ul li label{
+
+.main-contact-form ul li label {
     font-size: 16px;
     line-height: 16px;
     color: #fff;
     margin-bottom: 20px;
 }
+
 .main-contact-form button.search-btn.rs-btn-icon.rs-btn-icon-placement-left.rs-btn.rs-btn-default {
     height: 42px !important;
     padding: 10px 25px;
@@ -429,7 +433,7 @@ h2 {
 
 .main-contact-form {
     gap: 20px;
-    align-items: end;
+    align-items: flex-end;
     display: flex;
 }
 
@@ -586,16 +590,17 @@ h2 {
     text-align: center;
 }
 
-.social-icon ul{
+.social-icon ul {
     gap: 10px;
     display: flex;
 }
+
 .advertisement-rt-box img {
     /* width: 100%; */
     height: 366px;
     object-fit: cover;
     object-position: center;
-    
+
 }
 
 .advertisement-box-con {
@@ -739,14 +744,17 @@ h2 {
     min-height: 100%;
     object-fit: cover;
 }
+
 .blog-card-item {
     display: flex;
     flex-direction: column;
 }
+
 .blog-card-item figure {
     height: 300px;
 }
-.employee-form-con .rs-btn-icon.rs-btn{
+
+.employee-form-con .rs-btn-icon.rs-btn {
     height: auto;
     padding: 14px 10px;
 }

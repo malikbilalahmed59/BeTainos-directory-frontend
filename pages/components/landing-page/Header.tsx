@@ -1,4 +1,4 @@
-import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import { handleSocialMedia, s3BucketStrapiUrl } from '@/app/helper/helper';
 import { ILandingPage } from '@/app/types/landingpage';
 import Image from "next/image";
 import Link from 'next/link';
@@ -39,7 +39,7 @@ const Header = ({ pageData }: Props) => {
                                             {
                                                 pageData.HeaderBar.Socials.map(s => <li key={s.id}>
                                                     <Link href={s.Link || "#"}>
-                                                        <Image src={s.Icon.url} height={20} width={20} alt={s.Icon.alternativeText || s.Name} />
+                                                        {handleSocialMedia(s.Name)}
                                                     </Link>
                                                 </li>)
                                             }

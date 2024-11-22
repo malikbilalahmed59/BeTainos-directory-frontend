@@ -5,7 +5,6 @@ export interface ISocial {
     id: number;
     Link: string;
     Name: string;
-    Icon: IImage;
 }
 
 interface IHeaderBar {
@@ -86,15 +85,6 @@ export interface ICategory {
 }
 
 
-interface ICategoryRel {
-    id: number;
-    documentId: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string | null;
-    locale: string | null;
-    Name: string;
-}
 export interface IComapany {
     id: number;
     documentId: string;
@@ -113,5 +103,5 @@ export interface IComapany {
     Description: string;
     Logo: IImage;
     Socials: ISocial[];
-    categories_list: ICategoryRel;
+    Category: string;
 }

@@ -1,9 +1,8 @@
 import { useCategories } from '@/app/hooks/useAPIs';
 import { addCompanySchema } from '@/app/validation/registrationSchema';
-import InfoOutlineIcon from '@rsuite/icons/InfoOutline';
 import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
-import Link from 'next/link';
+import { getSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import {
     Button,
@@ -13,11 +12,9 @@ import {
     IconButton,
     Input,
     Message,
-    Popover,
     SelectPicker,
     Stack,
-    Text,
-    Whisper
+    Text
 } from 'rsuite';
 
 const Textarea = React.forwardRef<HTMLInputElement, any>((props, ref: any) => (
@@ -63,7 +60,6 @@ const AddCompany = () => {
     const [data, setData] = useState<IState>(initialState);
     const [formError, setFormError] = useState<{ [key: string]: string }>({});
     const { data: catList, isLoading: catLoading } = useCategories();
-    const triggerRef = React.useRef<any>();
 
     const handleChange = (value: Partial<IState>) => {
         setData({ ...data, ...value });
@@ -85,35 +81,42 @@ const AddCompany = () => {
         return true;
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
         if (!validate()) {
             console.log('Validation failed:', JSON.stringify(formError));
             return;
         }
-        console.log("pass")
+
+        console.log("pass", data.categoriesList)
         try {
             // Prepare FormData object
             const formData = new FormData();
 
             // Append fields to FormData
-            formData.append('logo', data.logo);
-            formData.append('name', data.name);
-            formData.append('postalAddress', data.postalAddress);
-            formData.append('phone', data.phone);
-            formData.append('email', data.email);
-            formData.append('website', data.website);
-            formData.append('coFounderName', data.coFounderName);
-            formData.append('founderName', data.founderName);
-            formData.append('description', data.description);
-            formData.append('fieldOfExpertise', data.fieldOfExpertise);
+            // formData.append('logo', data.logo);
+            formData.append('Name', data.name);
+            formData.append('PostelAddress', data.postalAddress);
+            formData.append('Phone', data.phone);
+            formData.append('Email', data.email);
+            formData.append('Website', data.website);
+            formData.append('CoFounderName', data.coFounderName);
+            formData.append('FounderName', data.founderName);
+            formData.append('Description', data.description);
+            formData.append('FieldOfExpertise', data.fieldOfExpertise);
 
             // Add array fields as JSON strings
-            formData.append('categoriesList', JSON.stringify(data.categoriesList));
-            formData.append('socials', JSON.stringify(data.socials));
+            formData.append('categories_list', data.categoriesList);
+            // formData.append('socials', JSON.stringify(data.socials));
+            const session = await getSession();  // Retrieve the session from NextAuth.js
 
             // Make API call
             const response = await fetch('/api/addData', {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${session?.user?.token}`,
+                    // 'Content-Type': 'multipart/form-data'
+                },
                 body: formData,
             });
 
@@ -150,13 +153,7 @@ const AddCompany = () => {
         setData({ ...data, socials: updatedSocials });
     };
 
-    const speaker = (
-        <Popover title="Social Icons">
-            <span>
-                <Link href={'https://lucide.dev/icons/'} target='_blank'>Click here</Link> to download the icons.
-            </span>
-        </Popover>
-    );
+
 
     const catsList = catList?.map(item => ({ label: item.Name, value: item.Name }));
 
@@ -209,7 +206,7 @@ const AddCompany = () => {
                 </Form.Group>
 
                 <Form.Group controlId="categories">
-                    <Form.ControlLabel>Categories</Form.ControlLabel>
+                    <Form.ControlLabel>Categories*</Form.ControlLabel>
                     <Form.Control
                         name="categories"
                         accepter={SelectPicker}

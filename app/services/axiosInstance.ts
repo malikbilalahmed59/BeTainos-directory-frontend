@@ -6,13 +6,10 @@ const axiosInstance = axios.create({
     withCredentials: true
 });
 
-axiosInstance.interceptors.request.use((config) => {
-    // const token = localStorage.getItem(TokenKey);
-    // config.headers['ngrok-skip-browser-warning'] = `69420`;
-    // if (token) { 
-    //     config.headers.Authorization = `Bearer ${token}`;
-    config.headers["Content-Type"] = "application/json";
-    // }
+axiosInstance.interceptors.request.use(async (config: any) => {
+
+
+    // config.headers['ngrok-skip-browser-warning'] = '69420';
 
     return config;
 });

@@ -1,8 +1,61 @@
+import React from "react";
 import { NO_IMAGE_FOUND, s3FileUrl } from "../constants/constants";
 import { IImage } from "../types/types";
 import { isMobile } from "react-device-detect";
 import { QueryClient, DehydratedState, dehydrate } from '@tanstack/react-query';
+import { Facebook, Instagram, X, Linkedin } from 'lucide-react'
+import { FaPinterestP } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
+import { FaSnapchat } from "react-icons/fa6";
+import { CiYoutube } from "react-icons/ci";
+import { FaWhatsapp } from "react-icons/fa";
+import { AiOutlineReddit } from "react-icons/ai";
+import { PiTelegramLogoLight } from "react-icons/pi";
+import { PiDiscordLogo } from "react-icons/pi";
 
+export function handleSocialMedia(platform: string) {
+    switch (platform.toLowerCase()) {
+        case "facebook":
+            return <Facebook />;
+
+        case "instagram":
+            return <Instagram />
+
+        case "twitter":
+        case "x": // Alternative for Twitter (X)
+            return <X />
+
+        case "linkedin":
+            return <Linkedin />
+
+        case "tiktok":
+            <FaTiktok />
+
+        case "snapchat":
+            <FaSnapchat />
+
+        case "pinterest":
+            <FaPinterestP />
+
+        case "reddit":
+            return <AiOutlineReddit />
+        case "youtube":
+            return < CiYoutube />
+
+        case "whatsapp":
+            return <FaWhatsapp />
+
+        case "telegram":
+            return <PiTelegramLogoLight />
+
+        case "discord":
+            return <PiDiscordLogo />
+
+        default:
+            console.log("Platform not recognized:", platform);
+            break;
+    }
+}
 export const s3BucketStrapiUrl = (image: IImage | null) => {
     if (!image) return NO_IMAGE_FOUND;
 

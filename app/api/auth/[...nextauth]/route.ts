@@ -1,22 +1,21 @@
-import axiosInstance from "@/app/services/axiosInstance";
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import axiosInstance from "@/app/services/axiosInstance";
 
-const handler = NextAuth({
+// Define the NextAuth options
+export const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
-            name: 'Credentials',
+            name: "Credentials",
             credentials: {
                 email: { label: "Email", type: "text", placeholder: "you@example.com" },
-                password: { label: "Password", type: "password" }
+                password: { label: "Password", type: "password" },
             },
             async authorize(credentials) {
                 try {
-
-
                     const data = {
                         identifier: credentials?.email,
-                        password: credentials?.password
+                        password: credentials?.password,
                     };
                     const res = await axiosInstance.post("auth/local", data);
                     const response = res.data;
@@ -27,25 +26,22 @@ const handler = NextAuth({
                             id: user.id,
                             email: user.email,
                             token,
-                            username: user.username
+                            username: user.username,
                         };
                     } else if (response && response.error) {
-                        // If there's an error in the response, throw it
                         throw new Error(response.error.message || "Authentication failed");
                     }
 
-                    return null; // No valid response
-
+                    return null;
                 } catch (error: any) {
-                    console.error('Error during authentication:', error);
-                    throw new Error(
-                        error.message || "An error occurred");
+                    console.error("Error during authentication:", error);
+                    throw new Error(error.message || "An error occurred");
                 }
-            }
+            },
         }),
     ],
     pages: {
-        signIn: '/login',
+        signIn: "/login",
     },
     callbacks: {
         async jwt({ token, user }) {
@@ -64,12 +60,16 @@ const handler = NextAuth({
             session.user.token = token.token as string;
             session.user.username = token.username as string | undefined;
             return session;
-        }
+        },
     },
     session: {
-        strategy: "jwt"
+        strategy: "jwt",
     },
-    secret: process.env.NEXTAUTH_SECRET
-});
+    secret: process.env.NEXTAUTH_SECRET,
+};
 
+// Pass options to the NextAuth handler
+const handler = NextAuth(authOptions);
+
+// Export the GET and POST handlers explicitly
 export { handler as GET, handler as POST };
