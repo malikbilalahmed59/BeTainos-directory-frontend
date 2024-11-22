@@ -398,13 +398,25 @@
     justify-content: space-between;
 }
 .generictab-box .rs-picker-toggle-wrapper{
-    width: 300px;
+    width: 100%;
+}
+.generictab-box .rs-form-horizontal .rs-form-group .rs-btn-toolbar{
+    padding-left: 0;
 }
 .generictab-box .rs-form-horizontal .rs-form-group .rs-form-control-label{
     text-align: left;
+    width: 100%;
+    padding: 0;
+}
+.generictab-box .rs-form-control-wrapper>.rs-input{
+    width: 100%;
+    max-height: 36px;
+}
+.generictab-box .rs-form-horizontal .rs-form-group .rs-form-control-wrapper{
+    width: 100%;
 }
 .generictab-box  .form-control[type="file"]{
-    width: 300px;
+    width: 100%;
 }
 @media only screen and (max-width: 1199px) {
     .profile-view {

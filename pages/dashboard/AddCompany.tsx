@@ -163,14 +163,14 @@ const AddCompany = () => {
                 Please fill out the form below to add company details. Fields marked as required must be completed. You can add multiple social links by clicking &quot;Add Social&quot; and remove any entry with the delete icon.
             </Message>
             <Divider />
-            <Form className="basic-form" layout="horizontal">
-                <Form.Group controlId="name">
+            <Form className="basic-form row" layout="horizontal">
+                <Form.Group controlId="name" className='col-lg-6'>
                     <Form.ControlLabel>Name*</Form.ControlLabel>
                     <Form.Control name="name" value={data.name} onChange={(value) => handleChange({ name: value })} />
                     {formError.name && <Form.HelpText style={{ color: 'red' }}>{formError.name}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="postalAddress">
+                <Form.Group controlId="postalAddress" className='col-lg-6'>
                     <Form.ControlLabel>Postal Address*</Form.ControlLabel>
                     <Form.Control
                         name="postalAddress"
@@ -181,31 +181,31 @@ const AddCompany = () => {
                     {formError.postalAddress && <Form.HelpText style={{ color: 'red' }}>{formError.postalAddress}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="phone">
+                <Form.Group controlId="phone" className='col-lg-6'>
                     <Form.ControlLabel>Phone*</Form.ControlLabel>
                     <Form.Control name="phone" value={data.phone} onChange={(value) => handleChange({ phone: value })} />
                     {formError.phone && <Form.HelpText style={{ color: 'red' }}>{formError.phone}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="email">
+                <Form.Group controlId="email" className='col-lg-6'>
                     <Form.ControlLabel>Email*</Form.ControlLabel>
                     <Form.Control name="email" value={data.email} onChange={(value) => handleChange({ email: value })} />
                     {formError.email && <Form.HelpText style={{ color: 'red' }}>{formError.email}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="website">
+                <Form.Group controlId="website" className='col-lg-6'>
                     <Form.ControlLabel>Website</Form.ControlLabel>
                     <Form.Control name="website" value={data.website} onChange={(value) => handleChange({ website: value })} />
                     {formError.website && <Form.HelpText style={{ color: 'red' }}>{formError.website}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="founderName">
+                <Form.Group controlId="founderName" className='col-lg-6'>
                     <Form.ControlLabel>Founder Name*</Form.ControlLabel>
                     <Form.Control name="founderName" value={data.founderName} onChange={(value) => handleChange({ founderName: value })} />
                     {formError.founderName && <Form.HelpText style={{ color: 'red' }}>{formError.founderName}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="categories">
+                <Form.Group controlId="categories" className='col-lg-6'>
                     <Form.ControlLabel>Categories*</Form.ControlLabel>
                     <Form.Control
                         name="categories"
@@ -218,7 +218,7 @@ const AddCompany = () => {
 
                 </Form.Group>
 
-                <Form.Group controlId="description">
+                <Form.Group controlId="description" className='col-lg-6'>
                     <Form.ControlLabel>Description*</Form.ControlLabel>
                     <Form.Control
                         name="description"
@@ -230,7 +230,7 @@ const AddCompany = () => {
                     {formError.description && <Form.HelpText style={{ color: 'red' }}>{formError.description}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="socials">
+                <Form.Group controlId="socials" className='col-lg-6'>
                     <Stack justifyContent='flex-start' alignItems='center' spacing={8}>
                         <Text weight='bold'>Socials</Text>
                         <IconButton icon={<PlusIcon />} appearance="primary" onClick={handleAddSocial} />
@@ -259,7 +259,7 @@ const AddCompany = () => {
                         </div>
                     ))}
                 </Form.Group>
-                <Form.Group controlId="logo">
+                <Form.Group controlId="logo" className='col-lg-6'>
                     <Form.ControlLabel>Logo</Form.ControlLabel>
                     <input
                         className='form-control'
