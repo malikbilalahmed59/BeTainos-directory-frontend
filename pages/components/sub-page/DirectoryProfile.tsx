@@ -1,4 +1,4 @@
-import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import { handleSocialMedia, s3BucketStrapiUrl } from '@/app/helper/helper';
 import { useAds, useDirectoryList } from '@/app/hooks/useAPIs';
 import { IComapany } from '@/app/types/landingpage';
 import Image from "next/image";
@@ -54,7 +54,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             <ul className='list-unstyled mb-0 company-contact'>
                                 <li><small className='d-inline-block'>Tel: </small><Link href={`tel:${pageData?.Phone}`} > &nbsp;{pageData?.Phone}</Link></li>
                             </ul>
-                            <span className='d-block text-uppercase'>{pageData?.categories_list?.Name}</span>
+                            <span className='d-block text-uppercase'>{pageData?.Category}</span>
                         </div>
                         {
                             pageData?.Socials && pageData?.Socials.length > 0 && <div className='company-social-info'>
@@ -64,7 +64,9 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                         {
                                             pageData?.Socials.map(item => <li key={item.id}>
                                                 <Link href={item.Link || "#"} target='_blank' >
-                                                    <Image src={item.Icon.url} height={20} width={20} alt={item.Icon.alternativeText || item.Name} /></Link>
+                                                    {
+                                                        handleSocialMedia(item.Name)
+                                                    } </Link>
                                             </li>)
                                         }
 

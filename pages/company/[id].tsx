@@ -34,7 +34,7 @@ const Index = () => {
     : "Discover top companies and services tailored to your needs.";
 
   const keywords = pageData
-    ? `${pageData.Name}, services, ${pageData.categories_list.Name || "business directory"}`
+    ? `${pageData.Name}, services, ${pageData.Category || "business directory"}`
     : "business directory, top companies, services";
 
   return (

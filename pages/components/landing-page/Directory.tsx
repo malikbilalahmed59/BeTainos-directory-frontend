@@ -27,7 +27,7 @@ const Directory = () => {
                                     <div className='discover-box-content'>
                                         <h3>{card?.Name.slice(0, 25)}</h3>
                                         <p>{card?.Description.slice(0, 110)}...</p>
-                                        <span className='d-inline-block'>Category: {card?.categories_list?.Name}</span>
+                                        <span className='d-inline-block'>Category: {card?.Category}</span>
                                         {/* discover-box-content */}
                                     </div>
                                     {/* discover-box-item */}

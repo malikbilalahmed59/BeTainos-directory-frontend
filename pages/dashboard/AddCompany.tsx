@@ -36,7 +36,7 @@ interface IState {
     }[];
     coFounderName: string;
     founderName: string;
-    categoriesList: string[];
+    categoriesList: string;
     description: string;
     fieldOfExpertise: string;
 }
@@ -51,7 +51,7 @@ const initialState: IState = {
     socials: [],
     coFounderName: '',
     founderName: '',
-    categoriesList: [],
+    categoriesList: '',
     description: '',
     fieldOfExpertise: '',
 };

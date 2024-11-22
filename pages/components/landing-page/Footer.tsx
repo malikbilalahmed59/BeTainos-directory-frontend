@@ -1,4 +1,4 @@
-import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import { handleSocialMedia, s3BucketStrapiUrl } from '@/app/helper/helper';
 import { ILandingPage } from '@/app/types/landingpage';
 import Image from "next/image";
 import Link from 'next/link';
@@ -30,7 +30,9 @@ const Footer = ({ pageData }: Props) => {
                         <ul className='list-unstyled footer-social'>
                             {
                                 (pageData?.Footer.FollowUs.Socials || []).map(l => <li key={l.id}>
-                                    <Link href={l.Link || "#"} target='_blank'><figure className='mb-0'><Image width={30} height={30} src={s3BucketStrapiUrl(l.Icon || null)} alt={pageData?.Footer.Logo?.alternativeText || "Logo"} /></figure></Link></li>)
+                                    <Link href={l.Link || "#"} target='_blank'><figure className='mb-0'>
+                                        {handleSocialMedia(l.Name)}
+                                    </figure></Link></li>)
                             }
 
                         </ul>
