@@ -163,7 +163,7 @@ const AddCompany = () => {
                 Please fill out the form below to add company details. Fields marked as required must be completed. You can add multiple social links by clicking &quot;Add Social&quot; and remove any entry with the delete icon.
             </Message>
             <Divider />
-            <Form className="basic-form row" layout="horizontal">
+            <Form className="basic-form row" onSubmit={(e: any) => e.preventDefault()} layout="horizontal">
                 <Form.Group controlId="name" className='col-lg-6'>
                     <Form.ControlLabel>Name*</Form.ControlLabel>
                     <Form.Control name="name" value={data.name} onChange={(value) => handleChange({ name: value })} />

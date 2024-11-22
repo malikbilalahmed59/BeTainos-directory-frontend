@@ -3,7 +3,7 @@ import { NO_IMAGE_FOUND, s3FileUrl } from "../constants/constants";
 import { IImage } from "../types/types";
 import { isMobile } from "react-device-detect";
 import { QueryClient, DehydratedState, dehydrate } from '@tanstack/react-query';
-import { Facebook, Instagram, X, Linkedin } from 'lucide-react'
+import { Facebook, Instagram, Linkedin } from 'lucide-react'
 import { FaPinterestP } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaSnapchat } from "react-icons/fa6";
@@ -12,6 +12,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { AiOutlineReddit } from "react-icons/ai";
 import { PiTelegramLogoLight } from "react-icons/pi";
 import { PiDiscordLogo } from "react-icons/pi";
+import { FaXTwitter } from "react-icons/fa6";
 
 export function handleSocialMedia(platform: string) {
     switch (platform.toLowerCase()) {
@@ -22,8 +23,9 @@ export function handleSocialMedia(platform: string) {
             return <Instagram />
 
         case "twitter":
+        case " X twitter":
         case "x": // Alternative for Twitter (X)
-            return <X />
+            return <FaXTwitter />
 
         case "linkedin":
             return <Linkedin />
@@ -53,7 +55,7 @@ export function handleSocialMedia(platform: string) {
 
         default:
             console.log("Platform not recognized:", platform);
-            break;
+            return <FaXTwitter />
     }
 }
 export const s3BucketStrapiUrl = (image: IImage | null) => {
