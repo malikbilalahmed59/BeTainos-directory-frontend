@@ -63,13 +63,13 @@ export const authOptions: NextAuthOptions = {
         },
     },
     session: {
-        strategy: "jwt",
+        strategy: "jwt", // Explicitly set to "jwt"
     },
     secret: process.env.NEXTAUTH_SECRET,
 };
 
-// Pass options to the NextAuth handler
+// Use NextAuth to create the handler
 const handler = NextAuth(authOptions);
 
-// Export the GET and POST handlers explicitly
+// Export only the route handlers
 export { handler as GET, handler as POST };
