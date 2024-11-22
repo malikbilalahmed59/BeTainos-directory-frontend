@@ -4,6 +4,7 @@ import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
 import { getSession } from 'next-auth/react';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import {
     Button,
     ButtonToolbar,
@@ -106,7 +107,7 @@ const AddCompany = () => {
             formData.append('FieldOfExpertise', data.fieldOfExpertise);
 
             // Add array fields as JSON strings
-            formData.append('categories_list', data.categoriesList);
+            formData.append('Category', data.categoriesList);
             // formData.append('socials', JSON.stringify(data.socials));
             const session = await getSession();  // Retrieve the session from NextAuth.js
 
@@ -119,10 +120,8 @@ const AddCompany = () => {
                 },
                 body: formData,
             });
-
             if (response.ok) {
-                const result = await response.json();
-                console.log('Data successfully submitted:', result);
+                toast.success("successfully submitted.")
             } else {
                 const error = await response.json();
                 console.error('Error submitting data:', error);
