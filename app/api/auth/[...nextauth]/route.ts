@@ -1,9 +1,9 @@
-import axiosInstance from "@/app/services/axiosInstance";
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import axiosInstance from "@/app/services/axiosInstance";
 
 // Define the NextAuth options
-export const authOptions: any = {
+const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -71,6 +71,5 @@ export const authOptions: any = {
 // Use NextAuth to create the handler
 const handler = NextAuth(authOptions);
 
-// Export only the route handlers
-export { handler as GET, handler as POST };
-
+// Export only the HTTP method handlers
+export { handler as GET, handler as POST, authOptions };
