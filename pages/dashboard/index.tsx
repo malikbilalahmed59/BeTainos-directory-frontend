@@ -6,6 +6,9 @@ import { getSession, signOut } from "next-auth/react";
 import { GetServerSideProps } from 'next';
 import { Avatar, Dropdown, Popover, Whisper, WhisperInstance } from 'rsuite';
 import AddCompany from './AddCompany';
+import Link from 'next/link';
+import { s3BucketStrapiUrl } from '@/app/helper/helper';
+import { useLandingPage } from '@/app/hooks/useLandingPage';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
     if (!session) {
@@ -26,6 +29,8 @@ interface ProtectedPageProps {
 }
 
 const Page = ({ session }: ProtectedPageProps) => {
+    const { data } = useLandingPage();
+    const pageData = data && data[0];
     const trigger = useRef<WhisperInstance>(null);
     useEffect(() => {
         import('bootstrap/dist/js/bootstrap.bundle.min.js');
@@ -55,9 +60,11 @@ const Page = ({ session }: ProtectedPageProps) => {
             <div className='dashboard-header w-100 float-start'>
                 <div className='dashboard-header-box'>
                     <div className='header-logo'>
-                        <figure className='mb-0'>
-                            <Image src={logo} alt='topboffin-white-logo' width={128} height={45} />
-                        </figure>
+                        <Link href="/" className="navbar-brand">
+                            <figure className='mb-0'>
+                                <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header.Logo || null)} alt="logo" />
+                            </figure>
+                        </Link>
                     </div>
                     <div className='header-menu'>
                         <ul className='list-unstyled mb-0'>
