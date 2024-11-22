@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import axiosInstance from "@/app/services/axiosInstance";
 
 // Define the NextAuth options
-export const authOptions: NextAuthOptions = {
+export const authOptions: any = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
