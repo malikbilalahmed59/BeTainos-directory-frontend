@@ -107,45 +107,6 @@ const Page = ({ session }: ProtectedPageProps) => {
 
                                 </div>
                             </div>
-                            <div className="personal-rt-info">
-                                <div className="personal-info">
-                                    <ul>
-                                        <li>
-                                            <div className="title">Phone:</div>
-                                            <div className="text"><a href="#">9876543210</a></div>
-                                        </li>
-                                        <li>
-                                            <div className="title">Email:</div>
-                                            <div className="text"><a href="#">johndoe@example.com</a></div>
-                                        </li>
-                                        <li>
-                                            <div className="title">Birthday:</div>
-                                            <div className="text">24th July</div>
-                                        </li>
-                                        <li>
-                                            <div className="title">Address:</div>
-                                            <div className="text"> 1861 Bayonne Ave, Manchester Township, NJ, 08759 </div>
-                                        </li>
-                                        <li>
-                                            <div className="title">Gender:</div>
-                                            <div className="text">Male</div>
-                                        </li>
-                                        <li>
-                                            <div className="title">Reports to:</div>
-                                            <div className="text">
-                                                <div className="avatar-box">
-                                                    <div className="avatar avatar-xs">
-                                                        <figure className="mb-0">
-                                                            <Image src={logo} alt='topboffin-white-logo' width={30} height={30} />
-                                                        </figure>
-                                                    </div>
-                                                    <a href="#"> Jeffery Lalor </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                         <div className="tab-con">
                             <ul className="nav nav-pills list-unstyled" id="pills-tab" role="tablist">

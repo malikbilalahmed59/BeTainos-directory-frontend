@@ -35,8 +35,8 @@ const Login = () => {
         try {
             const result = await logged_in(email, password);
             if (result?.status == 200) {
-                toast.success("Connexion réussie");
                 router.push('dashboard');
+                toast.success("Connexion réussie");
             } else {
                 toast.info("E-mail ou mot de passe invalide");
             }
