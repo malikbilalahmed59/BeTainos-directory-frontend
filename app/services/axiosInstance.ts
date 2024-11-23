@@ -9,6 +9,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(async (config: any) => {
     const session = await getSession();  // Retrieve the session from NextAuth.js 
+    console.log(session)
     if (session && session?.user?.token) {
         config.headers['Authorization'] = `Bearer ${session?.user?.token}`;
         config.headers['Content-Type'] = 'application/json';

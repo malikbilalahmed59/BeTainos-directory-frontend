@@ -1,14 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import { Session } from "next-auth";
-import Image from 'next/image';
-import logo from "../../public/images/logo.jpg";
-import { getSession, signOut } from "next-auth/react";
-import { GetServerSideProps } from 'next';
-import { Avatar, Dropdown, Popover, Whisper, WhisperInstance } from 'rsuite';
-import AddCompany from './AddCompany';
-import Link from 'next/link';
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import { useLandingPage } from '@/app/hooks/useLandingPage';
+import { GetServerSideProps } from 'next';
+import { Session } from "next-auth";
+import { getSession, signOut } from "next-auth/react";
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
+import { Avatar, Dropdown, Popover, Whisper, WhisperInstance } from 'rsuite';
+import AddCompany from './AddCompany';
 import MyCampnies from './MyCampnies';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
