@@ -61,7 +61,7 @@ const AddCompany = () => {
     const [data, setData] = useState<IState>(initialState);
     const [formError, setFormError] = useState<{ [key: string]: string }>({});
     const { data: catList, isLoading: catLoading } = useCategories();
-
+    const [isLoading, setIsLoading] = useState(false)
     const handleChange = (value: Partial<IState>) => {
         setData({ ...data, ...value });
     };
@@ -88,8 +88,6 @@ const AddCompany = () => {
             console.log('Validation failed:', JSON.stringify(formError));
             return;
         }
-
-        console.log("pass", data.categoriesList)
         try {
             // Prepare FormData object
             const formData = new FormData();
@@ -108,7 +106,8 @@ const AddCompany = () => {
 
             // Add array fields as JSON strings
             formData.append('Category', data.categoriesList);
-            // formData.append('socials', JSON.stringify(data.socials));
+
+            setIsLoading(true)
             const session = await getSession();  // Retrieve the session from NextAuth.js
 
             // Make API call
@@ -121,12 +120,15 @@ const AddCompany = () => {
                 body: formData,
             });
             if (response.ok) {
+                setIsLoading(false)
                 toast.success("successfully submitted.")
             } else {
                 const error = await response.json();
+                setIsLoading(false)
                 console.error('Error submitting data:', error);
             }
         } catch (error) {
+            setIsLoading(false)
             console.error('Unexpected error:', error);
         }
     };
@@ -301,8 +303,8 @@ const AddCompany = () => {
 
                 <Form.Group>
                     <ButtonToolbar>
-                        <Button appearance="primary" onClick={handleSubmit}>Submit</Button>
-                        <Button appearance="default">Cancel</Button>
+                        <Button loading={isLoading} appearance="primary" block onClick={handleSubmit}>Submit</Button>
+                        {/* <Button appearance="default">Cancel</Button> */}
                     </ButtonToolbar>
                 </Form.Group>
             </Form>

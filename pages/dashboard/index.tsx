@@ -9,6 +9,7 @@ import AddCompany from './AddCompany';
 import Link from 'next/link';
 import { s3BucketStrapiUrl } from '@/app/helper/helper';
 import { useLandingPage } from '@/app/hooks/useLandingPage';
+import MyCampnies from './MyCampnies';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
     if (!session) {
@@ -205,52 +206,7 @@ const Page = ({ session }: ProtectedPageProps) => {
                                     <AddCompany />
                                 </div>
                                 <div className="tab-pane fade" id="pills-table" role="tabpanel" aria-labelledby="pills-table-tab">
-                                    <div className='profile-box generictab-box'>
-                                        <div className='table-responsive'>
-                                        <table className="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">First</th>
-                                                    <th scope="col">Last</th>
-                                                    <th scope="col">Handle</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">4</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">5</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div>
+                                    <MyCampnies />
                                 </div>
                             </div>
                         </div>

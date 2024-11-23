@@ -166,3 +166,24 @@ export interface IArticle {
     Description: string;
     Photo: IImage
 }
+export interface IBusiness {
+    id: number;
+    documentId: string;
+    Name: string;
+    PostelAddress: string;
+    Phone: string;
+    Email: string;
+    Website: string;
+    CoFounderName: string | null;
+    FounderName: string;
+    ApplicationStatus: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string | null;
+    Description: string;
+    FieldOfExpertise: string;
+    Category: string | null;
+    // Logo: ILogo;
+    // Socials: any[];
+}
