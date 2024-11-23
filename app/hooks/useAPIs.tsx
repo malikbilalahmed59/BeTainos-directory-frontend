@@ -1,6 +1,6 @@
 import { ICategory, IComapany } from "../types/landingpage";
 import { IAdvertisementResponse, IArticle, IBusiness, IDirectoryPage } from "../types/types";
-import { fetchData, useGet, useGetByAuth } from "./common/useGet";
+import { fetchData, useGet } from "./common/useGet";
 
 export const useCategories = () => useGet<ICategory[]>('categories-list');
 
