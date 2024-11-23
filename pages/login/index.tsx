@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button } from 'rsuite';
 import Logo from "/public/images/logo.png";
+import { useRouter } from 'next/router';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
 
@@ -28,13 +29,14 @@ const Login = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [loading, setLoading] = useState(false);
+    const router = useRouter()
     const handleSubmit = async () => {
         setLoading(true);
         try {
             const result = await logged_in(email, password);
             if (result?.status == 200) {
                 toast.success("Connexion réussie");
-                window.location.href = '/dashboard';
+                router.push('dashboard');
             } else {
                 toast.info("E-mail ou mot de passe invalide");
             }
@@ -62,7 +64,7 @@ const Login = () => {
                         <ul className="list-unstyled">
                             <li>
                                 <label className="d-inline-block">E-mail</label>
-                                <input required type="email" placeholder="example@mail.com" value={email} onChange={e => setEmail(e.target.value)} />
+                                <input required type="email" placeholder="" value={email} onChange={e => setEmail(e.target.value)} />
                             </li>
                             <li>
                                 <label className="d-inline-block">Mot de passe</label>
