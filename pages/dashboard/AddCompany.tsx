@@ -234,7 +234,7 @@ const AddCompany = () => {
                 <Form.Group controlId="socials" className='col-lg-6'>
                     <Stack justifyContent='flex-start' alignItems='center' spacing={8}>
                         <Text weight='bold'>Socials</Text>
-                        <IconButton icon={<PlusIcon />} appearance="primary" onClick={handleAddSocial} />
+                        <IconButton disabled icon={<PlusIcon />} appearance="primary" onClick={handleAddSocial} />
                     </Stack>
                     {data.socials.map((social, index) => (
                         <div key={index} style={{ marginBottom: '10px' }}>
@@ -263,6 +263,7 @@ const AddCompany = () => {
                 <Form.Group controlId="logo" className='col-lg-6'>
                     <Form.ControlLabel>Logo</Form.ControlLabel>
                     <input
+                        disabled
                         className='form-control'
                         type="file"
                         accept="image/*"

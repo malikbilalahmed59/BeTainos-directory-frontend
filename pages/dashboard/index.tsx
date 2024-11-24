@@ -109,18 +109,18 @@ const Page = ({ session }: ProtectedPageProps) => {
                         </div>
                         <div className="tab-con">
                             <ul className="nav nav-pills list-unstyled" id="pills-tab" role="tablist">
-                                <li className="nav-item" role="presentation">
+                                {/* <li className="nav-item" role="presentation">
                                     <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Profile</button>
+                                </li> */}
+                                <li className="nav-item" role="presentation">
+                                    <button className="nav-link active" id="pills-company-tab" data-bs-toggle="pill" data-bs-target="#pills-company" type="button" role="tab" aria-controls="pills-company" aria-selected="false">Add Company</button>
                                 </li>
                                 <li className="nav-item" role="presentation">
-                                    <button className="nav-link" id="pills-company-tab" data-bs-toggle="pill" data-bs-target="#pills-company" type="button" role="tab" aria-controls="pills-company" aria-selected="false">Add Company</button>
-                                </li>
-                                <li className="nav-item" role="presentation">
-                                    <button className="nav-link" id="pills-table-tab" data-bs-toggle="pill" data-bs-target="#pills-table" type="button" role="tab" aria-controls="pills-table" aria-selected="false">Table</button>
+                                    <button className="nav-link" id="pills-table-tab" data-bs-toggle="pill" data-bs-target="#pills-table" type="button" role="tab" aria-controls="pills-table" aria-selected="false">Companies</button>
                                 </li>
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
-                                <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                {/* <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                     <div className='tab-box'>
                                         <div className="profile-box generictab-box">
                                             <h4>Education Informations </h4>
@@ -161,8 +161,8 @@ const Page = ({ session }: ProtectedPageProps) => {
 
                                         </div>
                                     </div>
-                                </div>
-                                <div className="tab-pane fade" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab">
+                                </div> */}
+                                <div className="tab-pane fade show active" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab">
                                     <AddCompany />
                                 </div>
                                 <div className="tab-pane fade" id="pills-table" role="tabpanel" aria-labelledby="pills-table-tab">
