@@ -4,22 +4,32 @@ import { getSession } from "next-auth/react";
 
 const axiosInstance = axios.create({
     baseURL: API_URL,
-    withCredentials: true
+    withCredentials: true, // Include cookies for CORS
 });
 
-axiosInstance.interceptors.request.use(async (config: any) => {
-    const session = await getSession();  // Retrieve the session from NextAuth.js 
-    console.log(session)
-    if (session && session?.user?.token) {
-        config.headers['Authorization'] = `Bearer ${session?.user?.token}`;
-        config.headers['Content-Type'] = 'application/json';
+axiosInstance.interceptors.request.use(async (config) => {
+    const session = await getSession(); // Retrieve session data from NextAuth.js
+
+    // List of routes that require authentication
+    const authRequiredRoutes = ["my-companies"];
+
+    // Check if the current request URL matches any route requiring authentication
+    const requiresAuth = authRequiredRoutes.some((route) => config.url?.includes(route));
+
+    if (requiresAuth) {
+        if (session && session?.user?.token) {
+            config.headers["Authorization"] = `Bearer ${session.user.token}`;
+        } else {
+            console.error("Authentication required but no session token found.");
+        }
     }
 
-    // config.headers['ngrok-skip-browser-warning'] = '69420';
+    // Ensure Content-Type is set for all requests
+    config.headers["Content-Type"] = "application/json";
 
     return config;
+}, (error) => {
+    return Promise.reject(error);
 });
-
-
 
 export default axiosInstance;
