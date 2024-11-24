@@ -72,40 +72,89 @@ const authOptions: NextAuthOptions = {
 
 export async function POST(req: NextRequest) {
     try {
-        // Retrieve the session from NextAuth
+        // Step 1: Retrieve the session from NextAuth
         const session: any = await getServerSession(authOptions);
         if (!session || !session.user?.token) {
             return new Response(
-                JSON.stringify({ message: "Unauthorized: No valid session found." }),
+                JSON.stringify({ message: "Unauthorized." }),
                 { status: 401 }
             );
         }
 
-        console.log("Session Token:", session.user.token);
+        // Step 2: Parse the FormData from the request
         const formData = await req.formData();
-        // Convert browser-native FormData to Node.js FormData
 
-        // Convert FormData to a plain object
+        // Step 3: Handle the `logo` file (if provided)
+        const logoFile = formData.get("logo");
+        let uploadedLogoId = null; // Default to null if no logo
+
+        if (logoFile && logoFile instanceof File) {
+            console.log("Uploading logo...");
+            const logoFormData = new FormData();
+            logoFormData.append("files", logoFile, logoFile.name);
+
+
+            try {
+                const uploadResponse = await axiosInstance.post("upload", formData, {
+                    headers: {
+                        'Authorization': `Bearer ${session.user.token}`,
+                    },
+                });
+
+                console.log("Upload Response:", uploadResponse.data);
+                uploadedLogoId = uploadResponse.data[0]?.id;
+
+                if (!uploadedLogoId) {
+                    return new Response(
+                        JSON.stringify({ message: "Failed to upload logo." }),
+                        { status: 500 }
+                    );
+                }
+            } catch (uploadError: any) {
+                console.error("Error during file upload:", uploadError.response?.data || uploadError.message);
+                return new Response(
+                    JSON.stringify({ message: "Error uploading file", details: uploadError.response?.data }),
+                    { status: 500 }
+                );
+            }
+        }
+
+
+        // Step 4: Prepare the remaining data for the `companies` endpoint
         const formObject: any = {};
-        for (const [key, value] of (formData as any).entries()) {
+        for (const [key, value] of formData.entries()) {
             formObject[key] = value;
         }
 
-        console.log('Form Object:', formObject);;
+        // Add the uploaded logo's ID if it exists
+        if (uploadedLogoId) {
+            formObject.logo = uploadedLogoId;
+        }
 
-        // Send the FormData to the external API
-        const response = await axiosInstance.post('companies', { data: formObject }, {
-            headers: {
-                'Authorization': `Bearer ${session.user.token}`,
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-        console.log(response)
-        return new Response(JSON.stringify({ message: "Registration successful!" }), {
-            status: 200,
-        });
+        // Step 5: Send the form data to the `companies` endpoint
+        const response = await axiosInstance.post(
+            "companies",
+            { data: formObject },
+            {
+                headers: {
+                    'Authorization': `Bearer ${session.user.token}`,
+                    'Content-Type': 'application/json', // JSON for non-file uploads
+                },
+            }
+        );
+
+        console.log("Companies API Response:", response.data);
+
+        return new Response(
+            JSON.stringify({ message: "Registration successful!" }),
+            { status: 200 }
+        );
     } catch (error: any) {
-        console.error("Error processing form data:", error.response || error.message);
-        return NextResponse.json({ message: "Error processing form data" }, { status: 500 });
+        console.error("Error processing form data:", error.response?.data || error.message);
+        return new Response(
+            JSON.stringify({ message: "Error processing form data", details: error.response?.data }),
+            { status: 500 }
+        );
     }
 }
+
