@@ -57,7 +57,7 @@ const initialState: IState = {
     fieldOfExpertise: '',
 };
 
-const AddCompany = () => {
+const AddProfessional = () => {
     const [data, setData] = useState<IState>(initialState);
     const [formError, setFormError] = useState<{ [key: string]: string }>({});
     const { data: catList, isLoading: catLoading } = useCategories();
@@ -313,4 +313,4 @@ const AddCompany = () => {
     );
 };
 
-export default AddCompany;
+export default AddProfessional;

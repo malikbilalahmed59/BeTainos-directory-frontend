@@ -1,9 +1,9 @@
 import { useMyCompanies } from '@/app/hooks/useAPIs'
 import React from 'react'
-import { Table, Pagination, Tag } from 'rsuite';
+import { Table, Pagination } from 'rsuite';
 
 const { Column, HeaderCell, Cell } = Table;
-const MyCampnies = () => {
+const MyProfessionals = () => {
     const { data: defaultData, isLoading } = useMyCompanies()
     const [limit, setLimit] = React.useState(10);
     const [page, setPage] = React.useState(1);
@@ -19,8 +19,6 @@ const MyCampnies = () => {
         return i >= start && i < end;
     });
     console.log(data)
-    // Custom cell for application status with colored labels
-
     return (
         <>
             <div className='profile-box generictab-box'>
@@ -53,11 +51,7 @@ const MyCampnies = () => {
                     </Column>
                     <Column width={200}>
                         <HeaderCell>ApplicationStatus</HeaderCell>
-                        <Cell>
-                            {rowData =>
-                                <Tag color={rowData.ApplicationStatus == 'Verified' ? 'green' : 'cyan'}  >{rowData.ApplicationStatus}</Tag>
-                            }
-                        </Cell>
+                        <Cell dataKey="ApplicationStatus" />
                     </Column>
                 </Table>
                 <div style={{ padding: 20 }}>
@@ -84,4 +78,4 @@ const MyCampnies = () => {
     )
 }
 
-export default MyCampnies
+export default MyProfessionals
