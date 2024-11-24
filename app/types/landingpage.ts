@@ -105,3 +105,23 @@ export interface IComapany {
     Socials: ISocial[];
     Category: string;
 }
+export interface IProfesioanl {
+    id: number;
+    documentId: string;
+    Name: string;
+    PostelAddress: string;
+    Phone: string;
+    Email: string;
+    Website: string;
+    ApplicationStatus: string;
+    Description: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string | null;
+    officeHours: string;
+    ServicesOffered: string;
+    Category: string;
+    Logo: IImage;
+    Socials: ISocial[];
+}

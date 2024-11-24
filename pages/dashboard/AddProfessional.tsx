@@ -1,5 +1,5 @@
 import { useCategories } from '@/app/hooks/useAPIs';
-import { addCompanySchema } from '@/app/validation/registrationSchema';
+import { addProfSchema } from '@/app/validation/registrationSchema';
 import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
 import { getSession } from 'next-auth/react';
@@ -35,11 +35,10 @@ interface IState {
         link: string;
         name: string;
     }[];
-    coFounderName: string;
-    founderName: string;
     categoriesList: string;
     description: string;
-    fieldOfExpertise: string;
+    ServicesOffered: string;
+    officeHours: string;
 }
 
 const initialState: IState = {
@@ -50,11 +49,10 @@ const initialState: IState = {
     email: '',
     website: '',
     socials: [],
-    coFounderName: '',
-    founderName: '',
     categoriesList: '',
     description: '',
-    fieldOfExpertise: '',
+    ServicesOffered: '',
+    officeHours: ''
 };
 
 const AddProfessional = () => {
@@ -67,7 +65,7 @@ const AddProfessional = () => {
     };
 
     const validate = () => {
-        const { error } = addCompanySchema.validate(data, { abortEarly: false });
+        const { error } = addProfSchema.validate(data, { abortEarly: false });
 
         if (error) {
             const errors: { [key: string]: string } = {};
@@ -99,10 +97,9 @@ const AddProfessional = () => {
             formData.append('Phone', data.phone);
             formData.append('Email', data.email);
             formData.append('Website', data.website);
-            formData.append('CoFounderName', data.coFounderName);
-            formData.append('FounderName', data.founderName);
             formData.append('Description', data.description);
-            formData.append('FieldOfExpertise', data.fieldOfExpertise);
+            formData.append('ServicesOffered', data.ServicesOffered);
+            formData.append('officeHours', data.officeHours);
 
             // Add array fields as JSON strings
             formData.append('Category', data.categoriesList);
@@ -111,7 +108,7 @@ const AddProfessional = () => {
             const session = await getSession();  // Retrieve the session from NextAuth.js
 
             // Make API call
-            const response = await fetch('/api/addData', {
+            const response = await fetch('/api/addProf', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${session?.user?.token}`,
@@ -120,8 +117,9 @@ const AddProfessional = () => {
                 body: formData,
             });
             if (response.ok) {
+                setData(initialState)
                 setIsLoading(false)
-                toast.success("successfully submitted.")
+                toast.success("Successfully submitted.")
             } else {
                 const error = await response.json();
                 setIsLoading(false)
@@ -200,11 +198,6 @@ const AddProfessional = () => {
                     {formError.website && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.website}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="founderName" className='col-lg-6'>
-                    <Form.ControlLabel>Founder Name*</Form.ControlLabel>
-                    <Form.Control name="founderName" value={data.founderName} onChange={(value) => handleChange({ founderName: value })} />
-                    {formError.founderName && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.founderName}</Form.HelpText>}
-                </Form.Group>
 
                 <Form.Group controlId="categories" className='col-lg-6'>
                     <Form.ControlLabel>Categories*</Form.ControlLabel>
@@ -230,7 +223,28 @@ const AddProfessional = () => {
                     />
                     {formError.description && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.description}</Form.HelpText>}
                 </Form.Group>
-
+                <Form.Group controlId="servicesOffered" className='col-lg-6'>
+                    <Form.ControlLabel>ServicesOffered*</Form.ControlLabel>
+                    <Form.Control
+                        name="ServicesOffered"
+                        accepter={Textarea}
+                        rows={3}
+                        value={data.ServicesOffered}
+                        onChange={(value) => handleChange({ ServicesOffered: value })}
+                    />
+                    {formError.ServicesOffered && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.ServicesOffered}</Form.HelpText>}
+                </Form.Group>
+                <Form.Group controlId="officeHours" className='col-lg-6'>
+                    <Form.ControlLabel>officeHours*</Form.ControlLabel>
+                    <Form.Control
+                        name="officeHours"
+                        accepter={Textarea}
+                        rows={3}
+                        value={data.officeHours}
+                        onChange={(value) => handleChange({ officeHours: value })}
+                    />
+                    {formError.officeHours && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.officeHours}</Form.HelpText>}
+                </Form.Group>
                 <Form.Group controlId="socials" className='col-lg-6'>
                     <Stack justifyContent='flex-start' alignItems='center' spacing={8}>
                         <Text weight='bold'>Socials</Text>
@@ -305,7 +319,6 @@ const AddProfessional = () => {
                 <Form.Group>
                     <ButtonToolbar>
                         <Button loading={isLoading} appearance="primary" block onClick={handleSubmit}>Submit</Button>
-                        {/* <Button appearance="default">Cancel</Button> */}
                     </ButtonToolbar>
                 </Form.Group>
             </Form>

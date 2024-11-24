@@ -1,6 +1,6 @@
 import { useMyCompanies } from '@/app/hooks/useAPIs'
 import React from 'react'
-import { Table, Pagination } from 'rsuite';
+import { Table, Pagination, Tag } from 'rsuite';
 
 const { Column, HeaderCell, Cell } = Table;
 const MyProfessionals = () => {
@@ -13,7 +13,7 @@ const MyProfessionals = () => {
         setLimit(dataKey);
     };
 
-    const data = (defaultData?.companie || []).filter((v, i) => {
+    const data = (defaultData?.professional || []).filter((v, i) => {
         const start = limit * (page - 1);
         const end = start + limit;
         return i >= start && i < end;
@@ -36,10 +36,15 @@ const MyProfessionals = () => {
                     </Column>
 
                     <Column width={200} >
-                        <HeaderCell>FounderName</HeaderCell>
-                        <Cell dataKey="FounderName" />
+                        <HeaderCell>ServicesOffered
+                        </HeaderCell>
+                        <Cell dataKey="ServicesOffered" />
                     </Column>
-
+                    <Column width={200} >
+                        <HeaderCell>officeHours
+                        </HeaderCell>
+                        <Cell dataKey="officeHours" />
+                    </Column>
                     <Column width={200}  >
                         <HeaderCell>Phone
                         </HeaderCell>
@@ -51,7 +56,11 @@ const MyProfessionals = () => {
                     </Column>
                     <Column width={200}>
                         <HeaderCell>ApplicationStatus</HeaderCell>
-                        <Cell dataKey="ApplicationStatus" />
+                        <Cell>
+                            {rowData =>
+                                <Tag color={rowData.ApplicationStatus == 'Verified' ? 'green' : 'cyan'}  >{rowData.ApplicationStatus}</Tag>
+                            }
+                        </Cell>
                     </Column>
                 </Table>
                 <div style={{ padding: 20 }}>

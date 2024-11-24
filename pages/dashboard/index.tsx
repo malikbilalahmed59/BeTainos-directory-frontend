@@ -10,6 +10,7 @@ import { Avatar, Dropdown, Popover, Whisper, WhisperInstance } from 'rsuite';
 import AddCompany from './AddCompany';
 import MyCampnies from './MyCampnies';
 import AddProfessional from './AddProfessional';
+import MyProfessionals from './MyProfessionals';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
     if (!session) {
@@ -152,8 +153,30 @@ const Page = ({ session }: ProtectedPageProps) => {
                                         Companies
                                     </button>
                                 </li>
+                                <li className="nav-item" role="presentation">
+                                    <button
+                                        className="nav-link"
+                                        id="pills-table-tab-prof"
+                                        data-bs-toggle="pill"
+                                        data-bs-target="#pills-table-prof"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="pills-table"
+                                        aria-selected="false"
+                                    >
+                                        Professional
+                                    </button>
+                                </li>
                             </ul>
                             <div className="tab-content" id="pills-tabContent">
+                                <div
+                                    className="tab-pane fade"
+                                    id="pills-table-prof"
+                                    role="tabpanel"
+                                    aria-labelledby="pills-table-tab-prof"
+                                >
+                                    <MyProfessionals />
+                                </div>
                                 <div
                                     className="tab-pane fade show active"
                                     id="pills-company"

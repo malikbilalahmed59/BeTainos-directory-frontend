@@ -18,7 +18,7 @@ const MyCampnies = () => {
         const end = start + limit;
         return i >= start && i < end;
     });
-    console.log(data)
+    console.log(defaultData)
     // Custom cell for application status with colored labels
 
     return (

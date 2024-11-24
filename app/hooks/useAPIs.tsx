@@ -1,4 +1,4 @@
-import { ICategory, IComapany } from "../types/landingpage";
+import { ICategory, IComapany, IProfesioanl } from "../types/landingpage";
 import { IAdvertisementResponse, IArticle, IBusiness, IDirectoryPage } from "../types/types";
 import { fetchData, useGet } from "./common/useGet";
 
@@ -15,4 +15,7 @@ export const useDirectoryList = () => useGet<{
     companie: IComapany[]
 }>('directory-list');
 
-export const useMyCompanies = () => useGet<{ companie: IBusiness[] }>('my-companies');
+export const useMyCompanies = () => useGet<{
+    companie: IBusiness[],
+    professional: IProfesioanl[]
+}>('my-companies');

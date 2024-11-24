@@ -120,8 +120,9 @@ const AddCompany = () => {
                 body: formData,
             });
             if (response.ok) {
+                setData(initialState)
                 setIsLoading(false)
-                toast.success("successfully submitted.")
+                toast.success("Successfully submitted.")
             } else {
                 const error = await response.json();
                 setIsLoading(false)
