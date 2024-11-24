@@ -15,4 +15,4 @@ export const useDirectoryList = () => useGet<{
     companie: IComapany[]
 }>('directory-list');
 
-export const useMyCompanies = () => useGet<IBusiness[]>('my-companies');
+export const useMyCompanies = () => useGet<{ companie: IBusiness[] }>('my-companies');

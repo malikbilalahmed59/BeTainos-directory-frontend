@@ -4,7 +4,6 @@ import { getSession } from "next-auth/react";
 
 const axiosInstance = axios.create({
     baseURL: API_URL,
-    withCredentials: true, // Include cookies for CORS
 });
 
 axiosInstance.interceptors.request.use(async (config) => {
@@ -19,6 +18,7 @@ axiosInstance.interceptors.request.use(async (config) => {
     if (requiresAuth) {
         if (session && session?.user?.token) {
             config.headers["Authorization"] = `Bearer ${session.user.token}`;
+
         } else {
             console.error("Authentication required but no session token found.");
         }

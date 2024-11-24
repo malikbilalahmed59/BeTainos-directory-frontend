@@ -13,7 +13,7 @@ const MyCampnies = () => {
         setLimit(dataKey);
     };
 
-    const data = (defaultData || []).filter((v, i) => {
+    const data = (defaultData?.companie || []).filter((v, i) => {
         const start = limit * (page - 1);
         const end = start + limit;
         return i >= start && i < end;
@@ -65,7 +65,7 @@ const MyCampnies = () => {
                         maxButtons={5}
                         size="xs"
                         layout={['total', '-', 'limit', '|', 'pager', 'skip']}
-                        total={(defaultData || []).length}
+                        total={(defaultData?.companie || []).length}
                         limitOptions={[10, 30, 50]}
                         limit={limit}
                         activePage={page}
