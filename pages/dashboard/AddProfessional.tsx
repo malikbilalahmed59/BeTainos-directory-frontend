@@ -3,7 +3,6 @@ import { useCategories } from '@/app/hooks/useAPIs';
 import { addProfSchema } from '@/app/validation/registrationSchema';
 import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
-import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { getSession, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
@@ -83,7 +82,6 @@ const AddProfessional = () => {
         setFormError({});
         return true;
     };
-    const queryClient = useQueryClient();
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -144,9 +142,9 @@ const AddProfessional = () => {
                 toast.success("Successfully submitted.");
                 setData(initialState)
                 setFile(null)
-                queryClient.invalidateQueries({
-                    queryKey: [`my-companies`],
-                });
+                setTimeout(() => {
+                    window.location.reload()
+                }, 1000)
             } else {
                 const error = await response.json();
                 setIsLoading(false);
@@ -157,8 +155,6 @@ const AddProfessional = () => {
             console.error('Unexpected error:', error);
         }
     };
-
-
 
     const handleAddSocial = () => {
         setData(prevData => ({
@@ -179,9 +175,6 @@ const AddProfessional = () => {
         updatedSocials[index] = { ...updatedSocials[index], [field]: value };
         setData({ ...data, Socials: updatedSocials });
     };
-
-
-
 
     const catsList = catList?.map(item => ({ label: item.Name, value: item.Name }));
 

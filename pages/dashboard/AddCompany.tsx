@@ -1,10 +1,8 @@
 import { API_URL, socialPlatforms } from '@/app/constants/constants';
 import { useCategories } from '@/app/hooks/useAPIs';
-import axiosInstance from '@/app/services/axiosInstance';
 import { addCompanySchema } from '@/app/validation/registrationSchema';
 import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
-import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { getSession, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
@@ -67,7 +65,6 @@ const AddCompany = () => {
     const [formError, setFormError] = useState<{ [key: string]: string }>({});
     const { data: catList, isLoading: catLoading } = useCategories();
     const [isLoading, setIsLoading] = useState(false)
-    const queryClient = useQueryClient();
     const handleChange = (value: Partial<IState>) => {
         setData({ ...data, ...value });
     };
@@ -144,9 +141,9 @@ const AddCompany = () => {
                 setFile(null);
                 setIsLoading(false);
                 toast.success("Successfully submitted.");
-                queryClient.invalidateQueries({
-                    queryKey: [`my-companies`],
-                });
+                setTimeout(() => {
+                    window.location.reload()
+                }, 1000)
             } else {
                 const error = await response.json();
                 setIsLoading(false);
@@ -183,9 +180,6 @@ const AddCompany = () => {
         updatedSocials[index] = { ...updatedSocials[index], [field]: value }; // Create a deep copy of the object
         setData({ ...data, socials: updatedSocials });
     };
-
-
-
 
     const catsList = catList?.map(item => ({ label: item.Name, value: item.Name }));
 
