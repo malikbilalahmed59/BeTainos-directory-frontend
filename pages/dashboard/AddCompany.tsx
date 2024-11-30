@@ -144,9 +144,11 @@ const AddCompany = () => {
                 setFile(null);
                 setIsLoading(false);
                 toast.success("Successfully submitted.");
+                setData(initialState)
+                setFile(null)
                 queryClient.invalidateQueries({
                     queryKey: [`my-companies`],
-                });;
+                });
             } else {
                 const error = await response.json();
                 setIsLoading(false);

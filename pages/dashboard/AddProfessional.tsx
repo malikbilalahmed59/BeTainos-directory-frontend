@@ -1,8 +1,11 @@
+import { API_URL } from '@/app/constants/constants';
 import { useCategories } from '@/app/hooks/useAPIs';
 import { addProfSchema } from '@/app/validation/registrationSchema';
 import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
-import { getSession } from 'next-auth/react';
+import { useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
+import { getSession, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -56,6 +59,7 @@ const initialState: IState = {
 };
 
 const AddProfessional = () => {
+    const [file, setFile] = useState<null | File>(null)
     const [data, setData] = useState<IState>(initialState);
     const [formError, setFormError] = useState<{ [key: string]: string }>({});
     const { data: catList, isLoading: catLoading } = useCategories();
@@ -63,6 +67,7 @@ const AddProfessional = () => {
     const handleChange = (value: Partial<IState>) => {
         setData({ ...data, ...value });
     };
+    const userSession = useSession()
 
     const validate = () => {
         const { error } = addProfSchema.validate(data, { abortEarly: false });
@@ -79,6 +84,7 @@ const AddProfessional = () => {
         setFormError({});
         return true;
     };
+    const queryClient = useQueryClient();
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -87,11 +93,28 @@ const AddProfessional = () => {
             return;
         }
         try {
-            // Prepare FormData object
-            const formData = new FormData();
+            setIsLoading(true);
+            let uploadedLogoId = null;
+            if (file) {
+                const logoData = new FormData();
+                logoData.append('files', file); // Use 'files' as the key or change to match backend expectations
+                const uploadResponse = await axios.post(API_URL + "upload", logoData, {
+                    headers: {
+                        'Authorization': `Bearer ${userSession?.data?.user.token}`,
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
 
-            // Append fields to FormData
-            // formData.append('logo', data.logo);
+                uploadedLogoId = uploadResponse.data?.[0]?.id;
+            }
+
+            // Prepare FormData object for the company details
+            const formData = new FormData();
+            if (uploadedLogoId) {
+                formData.append('Logo', uploadedLogoId);
+            }
+            // Prepare FormData object
+
             formData.append('Name', data.name);
             formData.append('PostelAddress', data.postalAddress);
             formData.append('Phone', data.phone);
@@ -104,7 +127,6 @@ const AddProfessional = () => {
             // Add array fields as JSON strings
             formData.append('Category', data.categoriesList);
 
-            setIsLoading(true)
             const session = await getSession();  // Retrieve the session from NextAuth.js
 
             // Make API call
@@ -120,6 +142,11 @@ const AddProfessional = () => {
                 setData(initialState)
                 setIsLoading(false)
                 toast.success("Successfully submitted.")
+                setData(initialState)
+                setFile(null)
+                queryClient.invalidateQueries({
+                    queryKey: [`my-companies`],
+                });
             } else {
                 const error = await response.json();
                 setIsLoading(false)
@@ -245,6 +272,45 @@ const AddProfessional = () => {
                     />
                     {formError.officeHours && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.officeHours}</Form.HelpText>}
                 </Form.Group>
+                <Form.Group controlId="logo" className='col-lg-6'>
+                    <Form.ControlLabel>Logo</Form.ControlLabel>
+                    <input
+                        className='form-control'
+                        type="file"
+                        accept="image/*"
+                        name="logo"
+                        onChange={(event) => {
+                            console.log(event)
+                            const file = event.target.files?.[0];
+                            if (file) {
+                                // Validate file type
+                                if (!file.type.startsWith('image/')) {
+                                    setFormError((prev) => ({
+                                        ...prev,
+                                        logo: 'Only image files are allowed',
+                                    }));
+                                    return;
+                                }
+
+                                // Validate file size (e.g., max 5MB)
+                                if (file.size > 5 * 1024 * 1024) {
+                                    setFormError((prev) => ({
+                                        ...prev,
+                                        logo: 'File size exceeds 5MB limit',
+                                    }));
+                                    return;
+                                }
+                                setFormError((prev) => ({ ...prev, logo: '' })); // Clear any previous errors
+                                setFile(file)
+                            } else {
+                                // Clear the logo field and any error if no file is selected
+                                setFormError((prev) => ({ ...prev, logo: '' }));
+                                handleChange({ logo: '' });
+                            }
+                        }}
+                    />
+                    {formError.logo && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.logo}</Form.HelpText>}
+                </Form.Group>
                 <Form.Group controlId="socials" className='col-lg-6'>
                     <Stack justifyContent='flex-start' alignItems='center' spacing={8}>
                         <Text weight='bold'>Socials</Text>
@@ -274,47 +340,7 @@ const AddProfessional = () => {
                         </div>
                     ))}
                 </Form.Group>
-                <Form.Group controlId="logo" className='col-lg-6'>
-                    <Form.ControlLabel>Logo</Form.ControlLabel>
-                    <input
-                        disabled
-                        className='form-control'
-                        type="file"
-                        accept="image/*"
-                        name="logo"
-                        onChange={(event) => {
-                            console.log(event)
-                            const file = event.target.files?.[0];
-                            if (file) {
-                                // Validate file type
-                                if (!file.type.startsWith('image/')) {
-                                    setFormError((prev) => ({
-                                        ...prev,
-                                        logo: 'Only image files are allowed',
-                                    }));
-                                    return;
-                                }
 
-                                // Validate file size (e.g., max 5MB)
-                                if (file.size > 5 * 1024 * 1024) {
-                                    setFormError((prev) => ({
-                                        ...prev,
-                                        logo: 'File size exceeds 5MB limit',
-                                    }));
-                                    return;
-                                }
-
-                                setFormError((prev) => ({ ...prev, logo: '' })); // Clear any previous errors
-                                handleChange({ logo: file.name }); // Save file name or the file object
-                            } else {
-                                // Clear the logo field and any error if no file is selected
-                                setFormError((prev) => ({ ...prev, logo: '' }));
-                                handleChange({ logo: '' });
-                            }
-                        }}
-                    />
-                    {formError.logo && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.logo}</Form.HelpText>}
-                </Form.Group>
 
                 <Form.Group>
                     <ButtonToolbar>

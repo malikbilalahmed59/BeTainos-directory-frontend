@@ -59,6 +59,9 @@ export const addCompanySchema = Joi.object({
     fieldOfExpertise: Joi.string().allow('').max(200).label('Field of Expertise'),
 });
 export const addProfSchema = Joi.object({
+    logo: Joi.any().optional().allow('').messages({
+        'string.empty': 'Logo is optional but must be a valid image if provided',
+    }),
     name: Joi.string().min(3).max(100).required().label('Name'),
     postalAddress: Joi.string().min(10).required().label('Postal Address'),
     ServicesOffered: Joi.string().min(10).required().label('Services Offered'),
