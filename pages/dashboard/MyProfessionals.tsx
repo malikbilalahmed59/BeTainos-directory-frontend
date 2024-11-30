@@ -22,7 +22,7 @@ const MyProfessionals = () => {
     return (
         <>
             <div className='profile-box generictab-box'>
-                <Table height={420} data={data} loading={isLoading}
+                <Table height={420} data={data.reverse()} loading={isLoading}
 
                 >
                     <Column align="center">

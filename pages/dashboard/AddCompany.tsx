@@ -1,8 +1,12 @@
+import { API_URL } from '@/app/constants/constants';
 import { useCategories } from '@/app/hooks/useAPIs';
+import axiosInstance from '@/app/services/axiosInstance';
 import { addCompanySchema } from '@/app/validation/registrationSchema';
 import PlusIcon from '@rsuite/icons/Plus';
 import TrashIcon from '@rsuite/icons/Trash';
-import { getSession } from 'next-auth/react';
+import { useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
+import { getSession, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -58,10 +62,13 @@ const initialState: IState = {
 };
 
 const AddCompany = () => {
+    const [file, setFile] = useState<null | File>(null)
     const [data, setData] = useState<IState>(initialState);
+    const userSession = useSession()
     const [formError, setFormError] = useState<{ [key: string]: string }>({});
     const { data: catList, isLoading: catLoading } = useCategories();
     const [isLoading, setIsLoading] = useState(false)
+    const queryClient = useQueryClient();
     const handleChange = (value: Partial<IState>) => {
         setData({ ...data, ...value });
     };
@@ -81,19 +88,34 @@ const AddCompany = () => {
         setFormError({});
         return true;
     };
-
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         if (!validate()) {
             console.log('Validation failed:', JSON.stringify(formError));
             return;
         }
-        try {
-            // Prepare FormData object
-            const formData = new FormData();
+        setIsLoading(true);
 
-            // Append fields to FormData
-            // formData.append('logo', data.logo);
+        try {
+            let uploadedLogoId = null;
+            if (file) {
+                const logoData = new FormData();
+                logoData.append('files', file); // Use 'files' as the key or change to match backend expectations
+                const uploadResponse = await axios.post(API_URL + "upload", logoData, {
+                    headers: {
+                        'Authorization': `Bearer ${userSession?.data?.user.token}`,
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                uploadedLogoId = uploadResponse.data?.[0]?.id;
+            }
+
+            // Prepare FormData object for the company details
+            const formData = new FormData();
+            if (uploadedLogoId) {
+                formData.append('Logo', uploadedLogoId);
+            }
             formData.append('Name', data.name);
             formData.append('PostelAddress', data.postalAddress);
             formData.append('Phone', data.phone);
@@ -103,36 +125,39 @@ const AddCompany = () => {
             formData.append('FounderName', data.founderName);
             formData.append('Description', data.description);
             formData.append('FieldOfExpertise', data.fieldOfExpertise);
-
-            // Add array fields as JSON strings
             formData.append('Category', data.categoriesList);
 
-            setIsLoading(true)
-            const session = await getSession();  // Retrieve the session from NextAuth.js
+
+            const session = await getSession();
 
             // Make API call
             const response = await fetch('/api/addData', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${session?.user?.token}`,
-                    // 'Content-Type': 'multipart/form-data'
                 },
                 body: formData,
             });
+
             if (response.ok) {
-                setData(initialState)
-                setIsLoading(false)
-                toast.success("Successfully submitted.")
+                setData(initialState);
+                setFile(null);
+                setIsLoading(false);
+                toast.success("Successfully submitted.");
+                queryClient.invalidateQueries({
+                    queryKey: [`my-companies`],
+                });;
             } else {
                 const error = await response.json();
-                setIsLoading(false)
+                setIsLoading(false);
                 console.error('Error submitting data:', error);
             }
         } catch (error) {
-            setIsLoading(false)
+            setIsLoading(false);
             console.error('Unexpected error:', error);
         }
     };
+
 
 
     const handleAddSocial = () => {
@@ -264,7 +289,6 @@ const AddCompany = () => {
                 <Form.Group controlId="logo" className='col-lg-6'>
                     <Form.ControlLabel>Logo</Form.ControlLabel>
                     <input
-                        disabled
                         className='form-control'
                         type="file"
                         accept="image/*"
@@ -292,7 +316,7 @@ const AddCompany = () => {
                                 }
 
                                 setFormError((prev) => ({ ...prev, logo: '' })); // Clear any previous errors
-                                handleChange({ logo: file.name }); // Save file name or the file object
+                                setFile(file) // Save file name or the file object
                             } else {
                                 // Clear the logo field and any error if no file is selected
                                 setFormError((prev) => ({ ...prev, logo: '' }));

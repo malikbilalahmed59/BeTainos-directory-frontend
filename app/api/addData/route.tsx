@@ -84,51 +84,11 @@ export async function POST(req: NextRequest) {
         // Step 2: Parse the FormData from the request
         const formData = await req.formData();
 
-        // Step 3: Handle the `logo` file (if provided)
-        const logoFile = formData.get("logo");
-        let uploadedLogoId = null; // Default to null if no logo
-
-        if (logoFile && logoFile instanceof File) {
-            console.log("Uploading logo...");
-            const logoFormData = new FormData();
-            logoFormData.append("files", logoFile, logoFile.name);
-
-
-            try {
-                const uploadResponse = await axiosInstance.post("upload", formData, {
-                    headers: {
-                        'Authorization': `Bearer ${session.user.token}`,
-                    },
-                });
-
-                console.log("Upload Response:", uploadResponse.data);
-                uploadedLogoId = uploadResponse.data[0]?.id;
-
-                if (!uploadedLogoId) {
-                    return new Response(
-                        JSON.stringify({ message: "Failed to upload logo." }),
-                        { status: 500 }
-                    );
-                }
-            } catch (uploadError: any) {
-                console.error("Error during file upload:", uploadError.response?.data || uploadError.message);
-                return new Response(
-                    JSON.stringify({ message: "Error uploading file", details: uploadError.response?.data }),
-                    { status: 500 }
-                );
-            }
-        }
-
 
         // Step 4: Prepare the remaining data for the `companies` endpoint
         const formObject: any = {};
-        for (const [key, value] of formData.entries()) {
+        for (const [key, value] of (formData as any).entries()) {
             formObject[key] = value;
-        }
-
-        // Add the uploaded logo's ID if it exists
-        if (uploadedLogoId) {
-            formObject.logo = uploadedLogoId;
         }
 
         // Step 5: Send the form data to the `companies` endpoint
