@@ -81,30 +81,29 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const formData = await req.formData();
-        // Convert browser-native FormData to Node.js FormData
+        const body = await req.json();
 
-        // Convert FormData to a plain object
-        const formObject: any = {};
-        for (const [key, value] of (formData as any).entries()) {
-            formObject[key] = value;
-        }
+        await axiosInstance.post(
+            'professionals',
+            { data: body },
+            {
+                headers: {
+                    Authorization: `Bearer ${session.user.token}`, // Authorization header
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
 
-        console.log('Form Object:', formObject);;
-
-        // Send the FormData to the external API
-        const response = await axiosInstance.post('professionals', { data: formObject }, {
-            headers: {
-                'Authorization': `Bearer ${session.user.token}`,
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-        console.log(response)
-        return new Response(JSON.stringify({ message: "Registration successful!" }), {
-            status: 200,
-        });
+        return new Response(
+            JSON.stringify({ message: "Registration successful!" }),
+            { status: 200 }
+        );
     } catch (error: any) {
-        console.error("Error processing form data:", error.response || error.message);
-        return NextResponse.json({ message: "Error processing form data" }, { status: 500 });
+        console.error("Error processing JSON data:", error.response || error.message);
+        return NextResponse.json(
+            { message: "Error processing JSON data", details: error.response?.data || error.message },
+            { status: 500 }
+        );
     }
 }
+

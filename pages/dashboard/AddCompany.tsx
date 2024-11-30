@@ -1,4 +1,4 @@
-import { API_URL } from '@/app/constants/constants';
+import { API_URL, socialPlatforms } from '@/app/constants/constants';
 import { useCategories } from '@/app/hooks/useAPIs';
 import axiosInstance from '@/app/services/axiosInstance';
 import { addCompanySchema } from '@/app/validation/registrationSchema';
@@ -35,7 +35,6 @@ interface IState {
     email: string;
     website: string;
     socials: {
-        icon: string;
         link: string;
         name: string;
     }[];
@@ -98,45 +97,46 @@ const AddCompany = () => {
 
         try {
             let uploadedLogoId = null;
+
+            // Upload the logo file if it exists
             if (file) {
                 const logoData = new FormData();
-                logoData.append('files', file); // Use 'files' as the key or change to match backend expectations
+                logoData.append('files', file); // Upload file using FormData
                 const uploadResponse = await axios.post(API_URL + "upload", logoData, {
                     headers: {
                         'Authorization': `Bearer ${userSession?.data?.user.token}`,
-                        'Content-Type': 'multipart/form-data',
                     },
                 });
 
-                uploadedLogoId = uploadResponse.data?.[0]?.id;
+                uploadedLogoId = uploadResponse.data?.[0]?.id; // Get uploaded logo ID
             }
 
-            // Prepare FormData object for the company details
-            const formData = new FormData();
-            if (uploadedLogoId) {
-                formData.append('Logo', uploadedLogoId);
-            }
-            formData.append('Name', data.name);
-            formData.append('PostelAddress', data.postalAddress);
-            formData.append('Phone', data.phone);
-            formData.append('Email', data.email);
-            formData.append('Website', data.website);
-            formData.append('CoFounderName', data.coFounderName);
-            formData.append('FounderName', data.founderName);
-            formData.append('Description', data.description);
-            formData.append('FieldOfExpertise', data.fieldOfExpertise);
-            formData.append('Category', data.categoriesList);
+            // Prepare a JSON payload for the company details
+            const payload = {
+                Logo: uploadedLogoId, // Include the uploaded logo ID
+                Name: data.name,
+                PostelAddress: data.postalAddress,
+                Phone: data.phone,
+                Email: data.email,
+                Website: data.website,
+                CoFounderName: data.coFounderName,
+                FounderName: data.founderName,
+                Description: data.description,
+                FieldOfExpertise: data.fieldOfExpertise,
+                Category: data.categoriesList,
+                Socials: data.socials.map(item => ({ Link: item.link, Name: item.name }))
+            };
 
+            const session = await getSession(); // Retrieve the session from NextAuth.js
 
-            const session = await getSession();
-
-            // Make API call
+            // Send the payload as JSON
             const response = await fetch('/api/addData', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${session?.user?.token}`,
+                    'Content-Type': 'application/json', // Specify JSON content type
                 },
-                body: formData,
+                body: JSON.stringify(payload), // Send payload as JSON string
             });
 
             if (response.ok) {
@@ -144,8 +144,6 @@ const AddCompany = () => {
                 setFile(null);
                 setIsLoading(false);
                 toast.success("Successfully submitted.");
-                setData(initialState)
-                setFile(null)
                 queryClient.invalidateQueries({
                     queryKey: [`my-companies`],
                 });
@@ -162,10 +160,14 @@ const AddCompany = () => {
 
 
 
+
+
+
+
     const handleAddSocial = () => {
         setData(prevData => ({
             ...prevData,
-            socials: [...prevData.socials, { icon: '', link: '', name: '' }]
+            socials: [...prevData.socials, { link: '', name: '' }]
         }));
     };
 
@@ -178,9 +180,10 @@ const AddCompany = () => {
 
     const handleSocialChange = (index: number, field: keyof IState["socials"][0], value: string) => {
         const updatedSocials = [...data.socials];
-        updatedSocials[index][field] = value;
+        updatedSocials[index] = { ...updatedSocials[index], [field]: value }; // Create a deep copy of the object
         setData({ ...data, socials: updatedSocials });
     };
+
 
 
 
@@ -259,35 +262,7 @@ const AddCompany = () => {
                     {formError.description && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.description}</Form.HelpText>}
                 </Form.Group>
 
-                <Form.Group controlId="socials" className='col-lg-6'>
-                    <Stack justifyContent='flex-start' alignItems='center' spacing={8}>
-                        <Text weight='bold'>Socials</Text>
-                        <IconButton disabled icon={<PlusIcon />} appearance="primary" onClick={handleAddSocial} />
-                    </Stack>
-                    {data.socials.map((social, index) => (
-                        <div key={index} style={{ marginBottom: '10px' }}>
-                            <Form.Group controlId={`socials-name-${index}`}>
-                                <Form.ControlLabel>Name</Form.ControlLabel>
-                                <Form.Control
-                                    name={`socials-${index}-name`}
-                                    value={social.name}
-                                    onChange={(value) => handleSocialChange(index, 'name', value)}
-                                />
-                                {formError[`socials.${index}.name`] && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError[`socials.${index}.name`]}</Form.HelpText>}
-                            </Form.Group>
-                            <Form.Group controlId={`socials-link-${index}`}>
-                                <Form.ControlLabel>Link</Form.ControlLabel>
-                                <Form.Control
-                                    name={`socials-${index}-link`}
-                                    value={social.link}
-                                    onChange={(value) => handleSocialChange(index, 'link', value)}
-                                />
-                                {formError[`socials.${index}.link`] && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError[`socials.${index}.link`]}</Form.HelpText>}
-                            </Form.Group>
-                            <IconButton icon={<TrashIcon />} appearance="ghost" color="red" onClick={() => handleDeleteSocial(index)} />
-                        </div>
-                    ))}
-                </Form.Group>
+
                 <Form.Group controlId="logo" className='col-lg-6'>
                     <Form.ControlLabel>Logo</Form.ControlLabel>
                     <input
@@ -327,6 +302,51 @@ const AddCompany = () => {
                         }}
                     />
                     {formError.logo && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.logo}</Form.HelpText>}
+                </Form.Group>
+                <Form.Group controlId="socials" className="col-lg-6">
+                    <Stack justifyContent="flex-start" alignItems="center" spacing={8}>
+                        <Text weight="bold">Socials</Text>
+                        <IconButton icon={<PlusIcon />} appearance="primary" onClick={handleAddSocial} />
+                    </Stack>
+                    {data.socials.map((social, index) => (
+                        <div key={index} style={{ marginBottom: '10px' }}>
+                            <Form.Group controlId={`socials-name-${index}`}>
+                                <Form.ControlLabel>Name</Form.ControlLabel>
+                                <Form.Control
+                                    name="Socials"
+                                    accepter={SelectPicker}
+                                    data={socialPlatforms || []}
+                                    value={social.name} // Bind value to the specific field
+                                    onChange={(value) => handleSocialChange(index, 'name', value)}
+                                />
+
+                                {formError[`socials.${index}.name`] && (
+                                    <Form.HelpText style={{ color: 'red', marginLeft: '0px' }}>
+                                        {formError[`socials.${index}.name`]}
+                                    </Form.HelpText>
+                                )}
+                            </Form.Group>
+                            <Form.Group controlId={`socials-link-${index}`}>
+                                <Form.ControlLabel>Link</Form.ControlLabel>
+                                <Form.Control
+                                    name={`socials-${index}-link`}
+                                    value={social.link} // Bind value to the specific field
+                                    onChange={(value) => handleSocialChange(index, 'link', value)}
+                                />
+                                {formError[`socials.${index}.link`] && (
+                                    <Form.HelpText style={{ color: 'red', marginLeft: '0px' }}>
+                                        {formError[`socials.${index}.link`]}
+                                    </Form.HelpText>
+                                )}
+                            </Form.Group>
+                            <IconButton
+                                icon={<TrashIcon />}
+                                appearance="ghost"
+                                color="red"
+                                onClick={() => handleDeleteSocial(index)}
+                            />
+                        </div>
+                    ))}
                 </Form.Group>
 
                 <Form.Group>

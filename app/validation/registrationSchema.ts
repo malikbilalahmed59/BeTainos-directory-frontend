@@ -42,8 +42,7 @@ export const addCompanySchema = Joi.object({
     socials: Joi.array().optional()
         .items(
             Joi.object({
-                icon: Joi.string().uri().allow('').label('Social Icon'),
-                link: Joi.string().uri().required().label('Social Link'),
+                link: Joi.string().required().label('Social Link'),
                 name: Joi.string().min(2).max(50).required().label('Social Name'),
             })
         )
@@ -81,12 +80,11 @@ export const addProfSchema = Joi.object({
             "string.pattern.base": "Must be a valid email."
         }),
     website: Joi.string().allow('').uri().label('Website'),
-    socials: Joi.array().optional()
+    Socials: Joi.array().optional()
         .items(
             Joi.object({
-                icon: Joi.string().uri().allow('').label('Social Icon'),
-                link: Joi.string().uri().required().label('Social Link'),
-                name: Joi.string().min(2).max(50).required().label('Social Name'),
+                Link: Joi.string().required().label('Social Link'),
+                Name: Joi.string().min(2).max(50).required().label('Social Name'),
             })
         )
         .label('Social Links'),

@@ -72,49 +72,39 @@ const authOptions: NextAuthOptions = {
 
 export async function POST(req: NextRequest) {
     try {
-        // Step 1: Retrieve the session from NextAuth
+        // Retrieve the session from NextAuth
         const session: any = await getServerSession(authOptions);
         if (!session || !session.user?.token) {
             return new Response(
-                JSON.stringify({ message: "Unauthorized." }),
+                JSON.stringify({ message: "Unauthorized: No valid session found." }),
                 { status: 401 }
             );
         }
 
-        // Step 2: Parse the FormData from the request
-        const formData = await req.formData();
+        const body = await req.json();
 
-
-        // Step 4: Prepare the remaining data for the `companies` endpoint
-        const formObject: any = {};
-        for (const [key, value] of (formData as any).entries()) {
-            formObject[key] = value;
-        }
-
-        // Step 5: Send the form data to the `companies` endpoint
-        const response = await axiosInstance.post(
-            "companies",
-            { data: formObject },
+        await axiosInstance.post(
+            'companies',
+            { data: body },
             {
                 headers: {
-                    'Authorization': `Bearer ${session.user.token}`,
-                    'Content-Type': 'application/json', // JSON for non-file uploads
+                    Authorization: `Bearer ${session.user.token}`, // Authorization header
+                    'Content-Type': 'application/json',
                 },
             }
         );
-
-        console.log("Companies API Response:", response.data);
 
         return new Response(
             JSON.stringify({ message: "Registration successful!" }),
             { status: 200 }
         );
     } catch (error: any) {
-        console.error("Error processing form data:", error.response?.data || error.message);
-        return new Response(
-            JSON.stringify({ message: "Error processing form data", details: error.response?.data }),
+        console.error("Error processing JSON data:", error.response || error.message);
+        return NextResponse.json(
+            { message: "Error processing JSON data", details: error.response?.data || error.message },
             { status: 500 }
         );
     }
 }
+
 
