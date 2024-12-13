@@ -10,11 +10,8 @@ interface Props {
 }
 const Header = ({ pageData }: Props) => {
     const router = useRouter();
-
     // Function to determine if the link is active
     const isActive = (path: string) => new RegExp(`^${path}(/|$)`).test(router.pathname);
-
-
     return (
         <div className='header-main-con w-100 float-start'>
             {
@@ -26,7 +23,6 @@ const Header = ({ pageData }: Props) => {
                                 {
                                     pageData?.HeaderBar.Title && <span className='d-block'>{pageData?.HeaderBar.Title}</span>
                                 }
-
                             </div>
                             <div className='top-bar-info'>
                                 <div className='input-block'>
@@ -59,7 +55,7 @@ const Header = ({ pageData }: Props) => {
                         <div className="container-fluid p-0">
                             <Link href="/" className="navbar-brand">
                                 <figure className='mb-0'>
-                                    <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header.Logo || null)} alt="logo" />
+                                    <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header.Logo || null)} alt="Annuaire Betainos Logo" />
                                 </figure>
                             </Link>
                             <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -9,6 +9,7 @@ import { Button } from 'rsuite';
 import Logo from "/public/images/logo.png";
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
+import Meta from '../components/Meta';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
 
@@ -52,8 +53,18 @@ const Register = () => {
             }
         );
     };
+    const title = "Inscrivez-vous | BeTaïnos";
+    const description =
+        "Rejoignez BeTaïnos en vous inscrivant pour accéder à des offres, des services, et bien plus encore. Inscription facile et rapide.";
+    const keywords = "BeTaïnos, inscription, créer un compte, rejoindre";
+
     return (
         <>
+            <Meta
+                title={title}
+                description={description}
+                keywords={keywords}
+            />
             <div className="login-form-con">
                 <figure className=''>
                     <Image width={216} height={63} src={Logo} alt="logo" />

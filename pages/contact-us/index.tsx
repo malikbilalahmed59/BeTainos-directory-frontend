@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Head from "next/head";
-import Layout from '../layout';
 import { useContactSubmit } from "@/app/hooks/useContactUsSubmit";
+import React, { useState } from "react";
 import { Button } from "rsuite";
+import Meta from "../components/Meta";
+import Layout from '../layout';
 
 interface IContactForm {
   name: string;
@@ -86,11 +86,17 @@ const Index = () => {
     }
   };
 
+  const title = "Prenez contact avec BeTaino";
+  const description = "Contactez BeTaino pour toutes vos questions, demandes ou collaborations.";
+  const keywords = "BeTaino, contact, questions, demandes, collaborations";
+
   return (
     <>
-      <Head>
-        <title>Contactez-nous</title>
-      </Head>
+      <Meta
+        title={title}
+        description={description}
+        keywords={keywords}
+      />
       <Layout>
         <section className='w-100 float-start main-contact-con'>
           <div className='container'>

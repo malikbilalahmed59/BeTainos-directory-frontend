@@ -5,7 +5,7 @@ export const API_URL = "https://betainos.fr/api/"
 export const NO_IMAGE_FOUND =
     'https://dream-code-labs.s3.eu-north-1.amazonaws.com/Whats_App_Image_2024_10_20_at_1_29_02_AM_6fa21b59fe.jpeg';
 
-export const s3FileUrl = "https://dream-code-labs.s3.eu-north-1.amazonaws.com"
+export const s3FileUrl = "https://betainos-cms.s3.eu-north-1.amazonaws.com"
 export const socialPlatforms = [
     { label: "Facebook", value: "Facebook" },
     { label: "Instagram", value: "Instagram" },

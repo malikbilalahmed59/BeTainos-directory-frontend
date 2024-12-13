@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { Button } from 'rsuite';
 import Logo from "/public/images/logo.png";
 import { useRouter } from 'next/router';
+import Meta from '../components/Meta';
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
 
@@ -48,8 +49,18 @@ const Login = () => {
         }
 
     };
+    const title = "Connectez-vous | BeTaïnos";
+    const description =
+        "Connectez-vous à votre compte BeTaïnos pour accéder à des offres exclusives, des services professionnels, et bien plus encore.";
+    const keywords = "BeTaïnos, connexion, se connecter, compte";
+
     return (
         <>
+            <Meta
+                title={title}
+                description={description}
+                keywords={keywords}
+            />
             <div className="login-form-con">
                 <figure className=''>
                     <Image width={216} height={63} src={Logo} alt="logo" />

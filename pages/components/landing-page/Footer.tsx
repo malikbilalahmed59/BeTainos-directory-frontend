@@ -12,7 +12,7 @@ const Footer = ({ pageData }: Props) => {
                 <div className='footer-box'>
                     <div className='footer-logo'>
                         <Link href="/">
-                            <figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(pageData?.Footer.Logo || null)} alt={pageData?.Footer.Logo?.alternativeText || "Logo"} /></figure>
+                            <figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(pageData?.Footer.Logo || null)} alt={pageData?.Footer.Logo?.alternativeText || "Annuaire Betainos Logo"} /></figure>
                         </Link>
                         <p className='mb-0'>{pageData?.Footer.Description}</p>
                     </div>

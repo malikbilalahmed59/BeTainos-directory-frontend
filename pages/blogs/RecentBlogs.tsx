@@ -6,7 +6,6 @@ import React from 'react'
 
 const RecentBlogs = () => {
     const { data } = useBlogs();
-
     return (
         <>
             <div className="list-group list-box">
@@ -17,7 +16,7 @@ const RecentBlogs = () => {
                             height={100}
                             quality={100}
                             src={s3BucketStrapiUrl(cat.Photo)}
-                            alt={cat.Photo.alternativeText || "article thumbnail"}
+                            alt={cat.Photo?.alternativeText || "article thumbnail"}
                             className="me-3"
                         />
                         <div>

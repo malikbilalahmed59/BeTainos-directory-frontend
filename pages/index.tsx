@@ -1,10 +1,10 @@
+import { prefetchQuery } from "@/app/helper/helper";
 import { fetchLandingPagetData, useLandingPage } from "@/app/hooks/useLandingPage";
-import Head from "next/head";
 import { useEffect } from "react";
 import { AdvertiseBanner, Categories, Directory, HeroSection } from "./components/landing-page";
 import Loader from "./components/Loader";
+import Meta from "./components/Meta";
 import Layout from "./layout";
-import { prefetchQuery } from "@/app/helper/helper";
 export async function getServerSideProps() {
   const { dehydratedState } = await prefetchQuery({
     queryKey: 'landing-page',
@@ -22,11 +22,16 @@ export default function Home() {
   }, []);
   const { data, isLoading } = useLandingPage();
   const pageData = data && data[0];
+  const title = "HOME BeTaïnos | Annuaire des entreprises | 100% afro caribéen";
+  const description = "Page d’accueil";
+  const keywords = "Annuaire, BeTaïnos, Professionnel, Afro-caribéen";
   return (
     <>
-      <Head>
-        <title>Home</title>
-      </Head>
+      <Meta
+        title={title}
+        description={description}
+        keywords={keywords}
+      />
       {
         isLoading ? <Loader /> : <Layout>
           <AdvertiseBanner pageData={pageData} />
