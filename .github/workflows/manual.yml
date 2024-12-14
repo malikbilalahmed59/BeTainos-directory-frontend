@@ -21,6 +21,8 @@ jobs:
       - name: Debug Environment
         run: |
           ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           echo "PATH: $PATH"
           node -v || echo "Node.js not found"
           npm -v || echo "npm not found"
@@ -29,6 +31,8 @@ jobs:
       - name: Deploy to VPS
         run: |
           ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           cd /home/debian/BeTainos-directory-frontend/.scripts
           ./deploy.sh
           EOF
