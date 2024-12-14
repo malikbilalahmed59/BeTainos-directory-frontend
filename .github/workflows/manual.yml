@@ -3,27 +3,27 @@ name: Deploy to VPS
 on:
   push:
     branches:
-      - main
+      - main # Trigger deployment on pushes to the 'main' branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository code
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Set up SSH agent with the private key from GitHub Secrets
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
 
+      # Deploy the application
       - name: Deploy to VPS
         run: |
-          ssh -o StrictHostKeyChecking=no deploy@162.19.67.31 << 'EOF'
-          cd BeTainos-directory-frontend/
-          git pull origin main
-          npm install --production
-          npm run build
-          pm2 restart all
+          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+          cd /home/debian/BeTainos-directory-frontend
+          ./deploy.sh
           EOF
