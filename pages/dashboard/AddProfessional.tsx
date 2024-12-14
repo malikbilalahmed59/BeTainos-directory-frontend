@@ -87,7 +87,6 @@ const AddProfessional = () => {
         e.preventDefault();
 
         if (!validate()) {
-            console.log('Validation failed:', JSON.stringify(formError));
             return;
         }
 
@@ -275,7 +274,6 @@ const AddProfessional = () => {
                         accept="image/*"
                         name="logo"
                         onChange={(event) => {
-                            console.log(event)
                             const file = event.target.files?.[0];
                             if (file) {
                                 // Validate file type

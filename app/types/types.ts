@@ -140,7 +140,7 @@ export interface IAdvertisementResponse {
         PageTitle: string,
         BannerTitle: string,
         PageDescription: string,
-        Banner: IImage,
+        Banner: IImage | null,
         SingleBlogAds1: [],
         SingleBlogAds2: []
     },
@@ -150,7 +150,7 @@ export interface IAdvertisementResponse {
 interface ISingleCompanyPage {
     id: number;
     link: string;
-    Banner: IImage;
+    Banner: IImage | null;
 }
 
 export interface IArticle {
@@ -164,7 +164,7 @@ export interface IArticle {
     updatedAt: string;
     publishedAt: string;
     Description: string;
-    Photo: IImage
+    Photo: IImage | null
 }
 export interface IBusiness {
     id: number;

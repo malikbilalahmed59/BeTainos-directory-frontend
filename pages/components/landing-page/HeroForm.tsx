@@ -24,7 +24,7 @@ const HeroForm = () => {
             filteredData = list?.professional || [];
         }
         setDataList(filteredData);
-    }, [type, list, listD]);
+    }, [type, list]);
     const renderSelectedItem = (value: any, item: any) => (
         <div style={{ display: 'flex', alignItems: 'center' }}>
             <Image

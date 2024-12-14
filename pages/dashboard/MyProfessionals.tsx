@@ -18,7 +18,6 @@ const MyProfessionals = () => {
         const end = start + limit;
         return i >= start && i < end;
     });
-    console.log(data)
     return (
         <>
             <div className='profile-box generictab-box'>

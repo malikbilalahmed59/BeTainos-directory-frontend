@@ -46,7 +46,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                     <div className='transport-banner-box'>
                         <div className='company-logo'>
                             <figure className='mb-0'>
-                                <Image width={216} height={63} src={s3BucketStrapiUrl(pageData?.Logo || null) || Logo} alt={pageData?.Logo.alternativeText || "logo"} /></figure>
+                                <Image width={216} height={63} src={s3BucketStrapiUrl(pageData?.Logo || null) || Logo} alt={pageData?.Logo?.alternativeText || "logo"} /></figure>
                         </div>
                         <div className='company-info'>
                             <h4>{pageData?.Name}</h4>
@@ -185,7 +185,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             >
                                 {
                                     data && data[0].SingleCompanyPage.map(slide => <SwiperSlide style={{ cursor: "pointer" }} key={slide.id}>
-                                        <Link href={slide.link} target='_blank' className='mb-0'><Image width={300} height={600} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner.alternativeText || "logo"} /></Link>
+                                        <Link href={slide.link} target='_blank' className='mb-0'><Image width={300} height={600} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner?.alternativeText || "logo"} /></Link>
                                     </SwiperSlide>)
                                 }
                             </Swiper>
@@ -206,7 +206,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                     {
                                         dataList.reverse().slice(0, 6).map(item => <li key={item.id}>
                                             <Link href={`/company/${item.documentId}`} className='professional-item-box'>
-                                                <figure className='mb-0'><Image width={65} height={43} src={s3BucketStrapiUrl(item.Logo)} alt={item.Logo.alternativeText || "Logo"} /></figure>
+                                                <figure className='mb-0'><Image width={65} height={43} src={s3BucketStrapiUrl(item.Logo)} alt={item.Logo?.alternativeText || "Logo"} /></figure>
                                                 <div className='professional-item-content'>
                                                     <h4>{item.Name}</h4>
                                                     <span className='d-inline-block'>{item.Description.slice(0, 100)}...</span>

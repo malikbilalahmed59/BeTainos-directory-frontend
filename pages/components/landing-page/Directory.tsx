@@ -22,7 +22,7 @@ const Directory = () => {
                             list?.companie.reverse().slice(0, 6).map(card =>
                                 <Link href={'company/' + card.documentId || "#"} key={card.id} className='discover-box-item'>
                                     <figure className='mb-0'>
-                                        <Image width={154} height={154} src={s3BucketStrapiUrl(card?.Logo)} alt={card?.Logo.alternativeText || "Beta Inc Icon"} />
+                                        <Image width={154} height={154} src={s3BucketStrapiUrl(card?.Logo)} alt={card?.Logo?.alternativeText || "Beta Inc Icon"} />
                                     </figure>
                                     <div className='discover-box-content'>
                                         <h3>{card?.Name.slice(0, 25)}</h3>

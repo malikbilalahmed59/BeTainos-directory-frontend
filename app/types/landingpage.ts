@@ -101,7 +101,7 @@ export interface IComapany {
     locale: string | null;
     ApplicationStatus: string;
     Description: string;
-    Logo: IImage;
+    Logo: IImage | null;
     Socials: ISocial[];
     Category: string;
 }
@@ -122,6 +122,6 @@ export interface IProfesioanl {
     officeHours: string;
     ServicesOffered: string;
     Category: string;
-    Logo: IImage;
+    Logo: IImage | null;
     Socials: ISocial[];
 }

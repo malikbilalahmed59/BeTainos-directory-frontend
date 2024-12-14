@@ -8,7 +8,6 @@ interface Props {
     pageData: IDirectoryPage | undefined
 }
 const ServicesBox = ({ pageData }: Props) => {
-    console.log(pageData)
     return (
         <section className='w-100 float-start services-con'>
             <div className='container'>

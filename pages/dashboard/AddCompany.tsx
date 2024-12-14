@@ -87,7 +87,6 @@ const AddCompany = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         if (!validate()) {
-            console.log('Validation failed:', JSON.stringify(formError));
             return;
         }
         setIsLoading(true);
@@ -265,7 +264,6 @@ const AddCompany = () => {
                         accept="image/*"
                         name="logo"
                         onChange={(event) => {
-                            console.log(event)
                             const file = event.target.files?.[0];
                             if (file) {
                                 // Validate file type

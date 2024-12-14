@@ -31,52 +31,52 @@ const SingleBlog = () => {
     return (
         <Layout>
             <div className='w-100 float-start'>
-            <div className="container my-5">
-                <PageHeader />
-                <div className="row mb-3">
-                    <div className="col">
-                        <div className="news-header">
-                            <span className="badge bg-danger text-uppercase">{pageData?.Category}</span>
-                        </div>
-                        <h1 className="mt-3">{pageData?.Title}</h1>
-                        <p style={{ borderTop: "2px solid #9d9d9d", paddingTop: "0.8rem" }} >
-                            By: <strong>{pageData?.Author}</strong> | Published: <strong>{pageData?.publishedAt}</strong>
-                        </p>
-                        <div className="social-icons">
-                            <a href="#" className="btn btn-link"><i className="bi bi-facebook"></i></a>
-                            <a href="#" className="btn btn-link"><i className="bi bi-twitter"></i></a>
-                            <a href="#" className="btn btn-link"><i className="bi bi-google"></i></a>
-                            <a href="#" className="btn btn-link"><i className="bi bi-linkedin"></i></a>
-                            <a href="#" className="btn btn-link"><i className="bi bi-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Main Content Section */}
-                <div className="row">
-                    <div className="col-md-8">
-                        <div className="car">
-                            <Image
-                                src={s3BucketStrapiUrl(pageData?.Photo || null)}
-                                alt={pageData?.Photo.alternativeText || ""}
-                                width={800}
-                                height={400}
-                                className="card-img-top"
-                            />
-                            <div className="card-body" style={{ textAlign: 'justify' }}>
-                                <Markdown rehypePlugins={[rehypeRaw]}>{pageData?.Description || ""}</Markdown>
-
+                <div className="container my-5">
+                    <PageHeader />
+                    <div className="row mb-3">
+                        <div className="col">
+                            <div className="news-header">
+                                <span className="badge bg-danger text-uppercase">{pageData?.Category}</span>
+                            </div>
+                            <h1 className="mt-3">{pageData?.Title}</h1>
+                            <p style={{ borderTop: "2px solid #9d9d9d", paddingTop: "0.8rem" }} >
+                                By: <strong>{pageData?.Author}</strong> | Published: <strong>{pageData?.publishedAt}</strong>
+                            </p>
+                            <div className="social-icons">
+                                <a href="#" className="btn btn-link"><i className="bi bi-facebook"></i></a>
+                                <a href="#" className="btn btn-link"><i className="bi bi-twitter"></i></a>
+                                <a href="#" className="btn btn-link"><i className="bi bi-google"></i></a>
+                                <a href="#" className="btn btn-link"><i className="bi bi-linkedin"></i></a>
+                                <a href="#" className="btn btn-link"><i className="bi bi-instagram"></i></a>
                             </div>
                         </div>
                     </div>
 
-                    {/* Sidebar Section */}
-                    <div className="col-md-4">
-                        <h4 className="bg-danger text-white p-2">Recent Posts</h4>
-                        <RecentBlogs />
+                    {/* Main Content Section */}
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div className="car">
+                                <Image
+                                    src={s3BucketStrapiUrl(pageData?.Photo || null)}
+                                    alt={pageData?.Photo?.alternativeText || ""}
+                                    width={800}
+                                    height={400}
+                                    className="card-img-top"
+                                />
+                                <div className="card-body" style={{ textAlign: 'justify' }}>
+                                    <Markdown rehypePlugins={[rehypeRaw]}>{pageData?.Description || ""}</Markdown>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Sidebar Section */}
+                        <div className="col-md-4">
+                            <h4 className="bg-danger text-white p-2">Recent Posts</h4>
+                            <RecentBlogs />
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </Layout>
     )

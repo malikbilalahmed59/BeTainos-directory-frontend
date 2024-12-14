@@ -16,8 +16,7 @@ export const useContactSubmit = () => {
         mutationFn: (data) =>
             axiosInstance.post("/contact-us-submits", { data }).then((res) => res.data),
 
-        onSuccess: (res) => {
-            console.log(res)
+        onSuccess: () => {
             toast.success("Successfully Submited.");
         },
 
