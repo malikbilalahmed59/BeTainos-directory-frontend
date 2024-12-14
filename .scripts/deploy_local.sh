@@ -5,7 +5,22 @@ echo "=============================="
 echo "🚀 Deployment Started..."
 echo "=============================="
 
+# Debug: Check if Node.js and npm are available
+echo "🔍 Checking Node.js and npm availability..."
+if ! command -v node &> /dev/null; then
+  echo "❌ Node.js is not installed or not in PATH."
+  exit 1
+fi
+echo "✅ Node.js version: $(node -v)"
+
+if ! command -v npm &> /dev/null; then
+  echo "❌ npm is not installed or not in PATH."
+  exit 1
+fi
+echo "✅ npm version: $(npm -v)"
+
 # Navigate to the project directory
+echo "📂 Navigating to project directory..."
 cd /home/debian/BeTainos-directory-frontend
 
 # Pull the latest changes from the main branch
