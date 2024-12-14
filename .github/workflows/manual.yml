@@ -24,6 +24,6 @@ jobs:
       - name: Deploy to VPS
         run: |
           ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
-          cd /home/debian/BeTainos-directory-frontend
+          cd /home/debian/BeTainos-directory-frontend/.scripts
           ./deploy.sh
           EOF
