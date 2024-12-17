@@ -68,7 +68,7 @@ const Header = ({ pageData }: Props) => {
                                     {
                                         (pageData?.Header.MenuLink || []).map((item, i) => <li key={item.id} className="nav-item " >
                                             {
-                                                i == 0 ? <Dropdown title={item.Name}>
+                                                i == 0 ? <Dropdown title={'Accueil'}>
                                                     <Dropdown.Item>
                                                         <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
                                                             {item.Name}</Link>
