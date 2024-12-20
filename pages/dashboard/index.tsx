@@ -54,9 +54,10 @@ const Page = ({ session }: ProtectedPageProps) => {
     };
     const handleLogout = () => {
         signOut({
-            callbackUrl: "/login",
+            callbackUrl: "https://annuaire.betainos.com/login",
         });
     };
+
     return (
         <>
             <div className='dashboard-header w-100 float-start'>
