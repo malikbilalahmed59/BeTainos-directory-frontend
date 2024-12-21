@@ -293,7 +293,7 @@ const AddCompany = () => {
                             }
                         }}
                     />
-                    {formError.logo && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.logo}</Form.HelpText>}
+                    {formError?.logo && <Form.HelpText style={{ color: 'red', marginLeft: "0px" }}>{formError.logo}</Form.HelpText>}
                 </Form.Group>
                 <Form.Group controlId="socials" className="col-lg-6">
                     <Stack justifyContent="flex-start" alignItems="center" spacing={8}>

@@ -33,7 +33,7 @@ const BlogCard = () => {
                     <div className='blog-card-box'>
                         {
                             paginatedData.map((item => <Link href={'company/' + item.documentId} key={item.id} style={{ textDecoration: 'none' }} className='blog-card-item'>
-                                <figure className='mb-0'><Image width={500} height={500} src={s3BucketStrapiUrl(item.Logo || null)} alt="logo" /></figure>
+                                <figure className='mb-0'><Image width={500} height={500} src={s3BucketStrapiUrl(item?.Logo || null)} alt="logo" /></figure>
                                 <div className='blog-card-content'>
                                     <h5 >{item.Name.slice(0, 19)}...</h5>
                                     <p className='mb-0' style={{ textAlign: 'justify' }}>{item.Description.slice(0, 90)}...</p>

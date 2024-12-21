@@ -206,7 +206,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                     {
                                         dataList.reverse().slice(0, 6).map(item => <li key={item.id}>
                                             <Link href={`/company/${item.documentId}`} className='professional-item-box'>
-                                                <figure className='mb-0'><Image width={65} height={43} src={s3BucketStrapiUrl(item.Logo)} alt={item.Logo?.alternativeText || "Logo"} /></figure>
+                                                <figure className='mb-0'><Image width={65} height={43} src={s3BucketStrapiUrl(item?.Logo)} alt={item?.Logo?.alternativeText || "Logo"} /></figure>
                                                 <div className='professional-item-content'>
                                                     <h4>{item.Name}</h4>
                                                     <span className='d-inline-block'>{item.Description.slice(0, 100)}...</span>

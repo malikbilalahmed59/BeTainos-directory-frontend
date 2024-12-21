@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
   const { data, isLoading } = useLandingPage();
   const pageData = data && data[0];
-  const title = "HOME BeTaïnos | Annuaire des entreprises | 100% afro caribéen";
+  const title = "BeTaïnos | Annuaire des entreprises | 100% afro-caribéen !";
   const description = "Page d’accueil";
   const keywords = "Annuaire, BeTaïnos, Professionnel, Afro-caribéen";
   return (

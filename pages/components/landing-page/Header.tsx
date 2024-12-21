@@ -55,7 +55,7 @@ const Header = ({ pageData }: Props) => {
                         <div className="container-fluid p-0">
                             <Link href="/" className="navbar-brand">
                                 <figure className='mb-0'>
-                                    <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header.Logo || null)} alt="Annuaire Betainos Logo" />
+                                    <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header?.Logo || null)} alt="Annuaire Betainos Logo" />
                                 </figure>
                             </Link>
                             <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

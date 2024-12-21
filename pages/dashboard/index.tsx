@@ -65,7 +65,7 @@ const Page = ({ session }: ProtectedPageProps) => {
                     <div className='header-logo'>
                         <Link href="/" className="navbar-brand">
                             <figure className='mb-0'>
-                                <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header.Logo || null)} alt="logo" />
+                                <Image width={200} quality={100} height={63} src={s3BucketStrapiUrl(pageData?.Header?.Logo || null)} alt="logo" />
                             </figure>
                         </Link>
                     </div>
