@@ -12,24 +12,24 @@ const Footer = ({ pageData }: Props) => {
                 <div className='footer-box'>
                     <div className='footer-logo'>
                         <Link href="/">
-                            <figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(pageData?.Footer?.Logo || null)} alt={pageData?.Footer.Logo?.alternativeText || "Annuaire Betainos Logo"} /></figure>
+                            <figure className='mb-0'><Image width={216} height={63} src={s3BucketStrapiUrl(pageData?.Footer?.Logo || null)} alt={pageData?.Footer?.Logo?.alternativeText || "Annuaire Betainos Logo"} /></figure>
                         </Link>
-                        <p className='mb-0'>{pageData?.Footer.Description}</p>
+                        <p className='mb-0'>{pageData?.Footer?.Description}</p>
                     </div>
                     <div className='sitemap'>
-                        <h4>{pageData?.Footer.LeagalInformation?.Heading}</h4>
+                        <h4>{pageData?.Footer?.LeagalInformation?.Heading}</h4>
                         <ul className='list-unstyled'>
                             {
-                                (pageData?.Footer.LeagalInformation?.Links || []).map(l => <li key={l.id}><Link target='_blank' href={l.link || "#"}>{l.label}</Link></li>)
+                                (pageData?.Footer?.LeagalInformation?.Links || []).map(l => <li key={l.id}><Link target='_blank' href={l.link || "#"}>{l.label}</Link></li>)
                             }
 
                         </ul>
                     </div>
                     <div className='sitemap contact-info'>
-                        <h4>{pageData?.Footer.FollowUs?.Heading}</h4>
+                        <h4>{pageData?.Footer?.FollowUs?.Heading}</h4>
                         <ul className='list-unstyled footer-social'>
                             {
-                                (pageData?.Footer.FollowUs.Socials || []).map(l => <li key={l.id}>
+                                (pageData?.Footer?.FollowUs.Socials || []).map(l => <li key={l.id}>
                                     <Link href={l.Link || "#"} target='_blank'><figure className='mb-0'>
                                         {handleSocialMedia(l.Name)}
                                     </figure></Link></li>)
