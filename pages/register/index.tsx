@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button } from 'rsuite';
-import Logo from "/public/images/logo.png";
 import { GetServerSideProps } from 'next';
 import { getSession } from 'next-auth/react';
 import Meta from '../components/Meta';
@@ -30,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Register = () => {
     const [username, setUsername] = useState<string>("")
     const [email, setEmail] = useState<string>("")
-    const [password, setPassword] = useState<string>("0")
+    const [password, setPassword] = useState<string>("")
     const { mutate, isPending: loading } = useRegister()
     const router = useRouter();
 
@@ -67,7 +66,7 @@ const Register = () => {
             />
             <div className="login-form-con">
                 <figure className=''>
-                    <Image width={216} height={63} src={Logo} alt="logo" />
+                    <Image width={216} height={63} src={'https://betainos-cms.s3.eu-north-1.amazonaws.com/LOGO_HEADER_FOOTER_BETAINOS_c360afd039_586930a408.svg'} alt="logo" />
                 </figure>
                 <div className="text-center login-title form-main-con">
                     <h4 className="text-uppercase">S&apos;inscrire</h4>
@@ -83,13 +82,13 @@ const Register = () => {
                                 <input
                                     required
                                     type="text"
-                                    placeholder="example@mail.com"
+                                    placeholder=""
                                     value={username}
                                     onChange={e => setUsername(e.target.value)} />
                             </li>
                             <li>
                                 <label className="d-inline-block">E-mail</label>
-                                <input required type="email" placeholder="example@mail.com" value={email} onChange={e => setEmail(e.target.value)} />
+                                <input required type="email" placeholder="" value={email} onChange={e => setEmail(e.target.value)} />
                             </li>
                             <li>
                                 <label className="d-inline-block">Mot de passe</label>

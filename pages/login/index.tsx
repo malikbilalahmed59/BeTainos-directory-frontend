@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Button } from 'rsuite';
-import Logo from "/public/images/logo.png";
 import { useRouter } from 'next/router';
 import Meta from '../components/Meta';
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -63,7 +62,7 @@ const Login = () => {
             />
             <div className="login-form-con">
                 <figure className=''>
-                    <Image width={216} height={63} src={Logo} alt="logo" />
+                    <Image width={216} height={63} src={'https://betainos-cms.s3.eu-north-1.amazonaws.com/LOGO_HEADER_FOOTER_BETAINOS_c360afd039_586930a408.svg'} alt="logo" />
                 </figure>
                 <div className="text-center login-title form-main-con">
                     <h4 className="text-uppercase">Connexion</h4>
@@ -82,7 +81,7 @@ const Login = () => {
                                 <input required type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             </li>
                         </ul>
-                        <Button block loading={loading} type="submit" disabled={loading}>{'Login'}</Button>
+                        <Button block loading={loading} type="submit" disabled={loading}>{'Connexion'}</Button>
                         <span className="d-block text-center">Vous n&apos;avez pas encore de compte ? <Link href="/register">S&apos;inscrire</Link></span>
                     </form>
                 </div>

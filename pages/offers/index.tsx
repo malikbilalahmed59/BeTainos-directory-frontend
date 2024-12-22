@@ -28,7 +28,7 @@ const Index = () => {
   const pageData = data && data[0];
 
   // Dynamic Metadata
-  const title = "OFFERS Offres de service | BeTaïnos";
+  const title = "OFFERS de service | BeTaïnos";
   const description =
     "Présentation des offres de services proposés par BeTaïnos : Combo Starter, Grenadia Power, Mango Premium, Logo design, Flyer design, Business card design, Application development, Website development, Graphic design, Advertising on our platform.";
   const keywords =
