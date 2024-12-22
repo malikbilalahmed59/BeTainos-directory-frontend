@@ -48,15 +48,15 @@ export default function Home() {
                                         Annuaire des entreprises et professionnels afro-caribéens
                                     </h4>
                                     <p className="text-justify" style={{ textAlign: 'justify' }}>
-                                        BeTaïnos est une plateforme dédiée à la promotion des entreprises et professionnels des communautés afro-caribéennes. Cet annuaire en ligne facilite la mise en relation entre entrepreneurs, professionnels et clients à la recherche de services ou de produits authentiques et diversifiés. Que vous recherchiez un artisan, un consultant ou une entreprise spécialisée, BeTaïnos vous offre un accès rapide et simplifié à un large réseau d'adresses et d'expertises afro-caribéennes.
+                                        BeTaïnos est une plateforme dédiée à la promotion des entreprises et professionnels des communautés afro-caribéennes. Cet annuaire en ligne facilite la mise en relation entre entrepreneurs, professionnels et clients à la recherche de services ou de produits authentiques et diversifiés. Que vous recherchiez un artisan, un consultant ou une entreprise spécialisée, BeTaïnos vous offre un accès rapide et simplifié à un large réseau d&apos;adresses et d&apos;expertises afro-caribéennes.
 
                                     </p>
                                     <p style={{ textAlign: 'justify' }}>
-                                        En utilisant les services de BeTaïnos, vous contribuez à la promotion de l'entrepreneuriat afro-caribéen tout en renforçant les liens au sein de cette communauté dynamique.
+                                        En utilisant les services de BeTaïnos, vous contribuez à la promotion de l&apos;entrepreneuriat afro-caribéen tout en renforçant les liens au sein de cette communauté dynamique.
 
                                     </p>
                                     <p>
-                                        Besoin de l'adresse d'un restaurant, ou du numéro de téléphone d'un salon de coiffure ? Pas de panique, consultez notre annuaire d'entreprises et de professionnels en ligne.BeTainos vous permet de trouver rapidement et gratuitement les coordonnées dont vous avez besoin.Une solution simple, efficace et à portée de clic pour tous vos besoins !
+                                        Besoin de l&apos;adresse d&apos;un restaurant, ou du numéro de téléphone d&apos;&apos;un salon de coiffure ? Pas de panique, consultez notre annuaire d&apos;entreprises et de professionnels en ligne.BeTainos vous permet de trouver rapidement et gratuitement les coordonnées dont vous avez besoin.Une solution simple, efficace et à portée de clic pour tous vos besoins !
                                     </p>
                                 </div>
                             </div>
