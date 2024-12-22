@@ -45,26 +45,18 @@ export default function Home() {
                                         BeTaïnos :
                                     </h1>
                                     <h4 className="text-danger">
-                                        Directory of Afro-Caribbean businesses and professionals
+                                        Annuaire des entreprises et professionnels afro-caribéens
                                     </h4>
                                     <p className="text-justify" style={{ textAlign: 'justify' }}>
-                                        BeTaïnos is a platform dedicated to promoting businesses and professionals from AfroCaribbean communities. This online directory facilitates the connection between
-                                        entrepreneurs, professionals and customers looking for authentic and diversified services or
-                                        products. Whether you are looking for a craftsman, a consultant or a specialized company,
-                                        BeTaïnos offers you quick and simplified access to a large network of Afro-Caribbean
-                                        addresses and expertise.
+                                        BeTaïnos est une plateforme dédiée à la promotion des entreprises et professionnels des communautés afro-caribéennes. Cet annuaire en ligne facilite la mise en relation entre entrepreneurs, professionnels et clients à la recherche de services ou de produits authentiques et diversifiés. Que vous recherchiez un artisan, un consultant ou une entreprise spécialisée, BeTaïnos vous offre un accès rapide et simplifié à un large réseau d'adresses et d'expertises afro-caribéennes.
 
                                     </p>
                                     <p style={{ textAlign: 'justify' }}>
-                                        By using BeTaïnos services, you contribute to the promotion of Afro-Caribbean
-                                        entrepreneurship while strengthening ties within this dynamic community.
+                                        En utilisant les services de BeTaïnos, vous contribuez à la promotion de l'entrepreneuriat afro-caribéen tout en renforçant les liens au sein de cette communauté dynamique.
 
                                     </p>
                                     <p>
-                                        Need the address of a restaurant, or the phone number of a hair salon?
-                                        Don&apos;t panic, check out our online business and professional directory.
-                                        <b>BeTainos</b> allows you to quickly and free of charge find the contact details you need.
-                                        <b>A simple, effective solution just a click away for all your needs !</b>
+                                        Besoin de l'adresse d'un restaurant, ou du numéro de téléphone d'un salon de coiffure ? Pas de panique, consultez notre annuaire d'entreprises et de professionnels en ligne.BeTainos vous permet de trouver rapidement et gratuitement les coordonnées dont vous avez besoin.Une solution simple, efficace et à portée de clic pour tous vos besoins !
                                     </p>
                                 </div>
                             </div>
