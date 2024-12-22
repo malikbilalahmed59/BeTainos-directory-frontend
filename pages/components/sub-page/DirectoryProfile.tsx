@@ -26,14 +26,19 @@ import "swiper/css/autoplay";
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Logo from "/public/images/logo.jpg";
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 interface Props {
     pageData: IComapany | undefined
 }
 const DirectoryProfile = ({ pageData }: Props) => {
-    const router = useRouter();
-    const { asPath } = router;
-    const linkShare = asPath;
+    const [linkShare, setShareUrl] = useState('');
+    const router = useRouter()
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setShareUrl(window.location.href);
+        }
+    }, [router]);
 
     const { data } = useAds();
     const { data: list } = useDirectoryList();
@@ -170,7 +175,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             </ul>
                         </div>
                         <div className='advertisement-rt-box'>
-                            <h4>Advertisement</h4>
+                            <h4>PUBLICITÉ</h4>
                             <Swiper
                                 slidesPerView={1}
                                 loop={true}
@@ -185,7 +190,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                             >
                                 {
                                     data && data[0].SingleCompanyPage.map(slide => <SwiperSlide style={{ cursor: "pointer" }} key={slide.id}>
-                                        <Link href={slide.link} target='_blank' className='mb-0'><Image width={300} height={600} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner?.alternativeText || "logo"} /></Link>
+                                        <Link href={slide.link} target='_blank' className='mb-0'><Image width={300} quality={100} height={600} src={s3BucketStrapiUrl(slide.Banner || null)} alt={slide.Banner?.alternativeText || "logo"} /></Link>
                                     </SwiperSlide>)
                                 }
                             </Swiper>

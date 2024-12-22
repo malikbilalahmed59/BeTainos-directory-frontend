@@ -8,6 +8,7 @@ const Directory = () => {
     const { data } = useLandingPage();
     const pageData = data && data[0];
     const { data: list } = useDirectoryList()
+    const reversedList = list?.companie?.slice().sort((a, b) => b.id - a.id)
     return (
         <section className='w-100 float-start discover-con'>
             <div className='container'>
@@ -19,7 +20,7 @@ const Directory = () => {
                 {
                     <div className='discover-box'>
                         {
-                            list?.companie.reverse().slice(0, 6).map(card =>
+                            (reversedList || []).slice(0, 6).map(card =>
                                 <Link href={'company/' + card.documentId || "#"} key={card.id} className='discover-box-item'>
                                     <figure className='mb-0'>
                                         <Image width={154} height={154} src={s3BucketStrapiUrl(card?.Logo)} alt={card?.Logo?.alternativeText || "Beta Inc Icon"} />

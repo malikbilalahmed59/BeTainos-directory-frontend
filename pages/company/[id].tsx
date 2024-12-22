@@ -16,7 +16,12 @@ const Index = () => {
 
   useEffect(() => {
     if (!isLoading) {
-      const match = data?.companie.find(item => item.documentId == id);
+      // Combine both arrays into one for searching
+      const combinedData = [...(data?.companie || []), ...(data?.professional || [])];
+
+      // Find a match in the combined data
+      const match = combinedData.find(item => item.documentId == id);
+
       if (match) {
         setPageData(match);
       } else {
@@ -24,6 +29,7 @@ const Index = () => {
       }
     }
   }, [id, isLoading, data, router]);
+
 
   if (isLoading) return <Loader />;
 
