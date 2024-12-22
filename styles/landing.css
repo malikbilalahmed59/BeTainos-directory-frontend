@@ -422,6 +422,7 @@ h2 {
     letter-spacing: 20.9px;
     font-weight: 600;
     margin-bottom: 60px;
+    line-height: 38px;
 }
 
 .contact-title h2 {
@@ -763,8 +764,12 @@ h2 {
     padding: 30px;
     color: #fff;
     background: #9d9d9d;
+    margin-top: auto;
+    flex-grow: 1;
 }
-
+.card-img img{
+    width: 100%;
+}
 .blog-card-content h5 {
     font-size: 20px;
     line-height: 20px;

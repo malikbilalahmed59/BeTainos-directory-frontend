@@ -157,7 +157,7 @@ const SingleBlog = () => {
                                         height={400}
                                         className="card-img-top"
                                     />
-                                    <div className="card-body" style={{ textAlign: 'justify' }}>
+                                    <div className="card-body card-img" style={{ textAlign: 'justify' }}>
                                         <Markdown rehypePlugins={[rehypeRaw]}>{pageData?.Description || ""}</Markdown>
 
                                     </div>
