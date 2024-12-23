@@ -31,7 +31,7 @@
     "rehype-raw": "^7.0.0",
     "rsuite": "^5.73.0",
     "sharp": "^0.33.5",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.15"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.10",
