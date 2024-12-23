@@ -10,11 +10,11 @@ import { useRef, useEffect } from "react";
 const AdvertisementBox2 = () => {
   const { data } = useAds();
   const pageData = data?.[0];
-  const swiperRef = useRef(null); // Ref for Swiper instance
+  const swiperRef = useRef<any>(null); // Ref for Swiper instance
 
   useEffect(() => {
     if (swiperRef.current) {
-      swiperRef.current.autoplay.start(); // Ensure autoplay starts after component mount
+      swiperRef?.current?.autoplay?.start(); // Ensure autoplay starts after component mount
     }
   }, [swiperRef]);
 
