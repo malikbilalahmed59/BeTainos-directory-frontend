@@ -72,7 +72,7 @@ const MyProfessionals = () => {
                         boundaryLinks
                         maxButtons={5}
                         size="xs"
-                        layout={['total', '-', 'limit', '|', 'pager', 'skip']}
+                        layout={['-', 'limit', '|', 'pager', 'skip']}
                         total={(defaultData?.companie || []).length}
                         limitOptions={[10, 30, 50]}
                         limit={limit}

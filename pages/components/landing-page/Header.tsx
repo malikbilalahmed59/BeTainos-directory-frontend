@@ -74,7 +74,7 @@ const Header = ({ pageData }: Props) => {
                                                             {item.Name}</Link>
                                                     </Dropdown.Item>
                                                     <Dropdown.Item>
-                                                        <Link href='directory' className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                        <Link href='/directory' className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
                                                             Annuaire</Link>
                                                     </Dropdown.Item>
                                                 </Dropdown> : <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
