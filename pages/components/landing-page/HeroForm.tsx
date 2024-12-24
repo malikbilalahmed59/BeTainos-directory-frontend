@@ -37,18 +37,24 @@ const HeroForm = () => {
             <span>{item.title}</span>
         </div>
     );
-    const renderMenuItem = (label: any, item: any) => (
-        <Link href={'company/' + item?.value} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <Image
-                src={s3BucketStrapiUrl(item.image)}
-                alt={label}
-                height={40}
-                width={40}
-                style={{ width: 40, height: 40, marginRight: 10, borderRadius: '50%' }}
-            />
-            <span>{label}</span>
-        </Link>
-    );
+    const renderMenuItem = (label: any, item: any) => {
+        console.log(item)
+        return (
+            <Link href={'company/' + item?.value} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                <Image
+                    src={s3BucketStrapiUrl(item.image)}
+                    alt={label}
+                    height={40}
+                    width={40}
+                    style={{ width: 40, height: 40, marginRight: 10, borderRadius: '50%' }}
+                />
+                <div>
+                    <span>{label}</span><br />
+                    {item?.PostelAddress && <span style={{ fontSize: 'small' }}>{item?.PostelAddress}</span>}
+                </div>
+            </Link>
+        );
+    };
     return (
         <>
             <form className='  main-contact-form'>
@@ -74,6 +80,7 @@ const HeroForm = () => {
                     </li>
                     <li>
                         <label className='d-block'>{pageData?.HeroSection?.SearchLabel2}</label>
+
                         <SelectPicker
                             loading={isLoading}
                             placeholder={pageData?.HeroSection?.SearchLabel2}
@@ -81,12 +88,18 @@ const HeroForm = () => {
                             searchable
                             size="lg"
                             data={dataList.map(item => ({
+                                ...item,
                                 value: item.documentId, // Use a unique ID for each item
-                                label: item.Name, // Display title
+                                label: item.Name, // Only show the name in the label
+                                searchLabel: `${item.Name} ${item.PostelAddress}`, // Include both Name and PostelAddress in the search criteria
                                 image: item.Logo // Image for each item
                             }))}
                             renderMenuItem={(label, item) => renderMenuItem(label, item)}
                             renderValue={(value, item) => renderSelectedItem(value, item)}
+                            searchBy={(keyword, label, item) => {
+                                const searchString = `${item.Name} ${item.PostelAddress}`.toLowerCase();
+                                return searchString.includes(keyword.toLowerCase());
+                            }}
                         />
                     </li>
                 </ul>
