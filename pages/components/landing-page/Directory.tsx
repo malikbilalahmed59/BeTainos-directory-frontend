@@ -8,7 +8,7 @@ const Directory = () => {
     const { data } = useLandingPage();
     const pageData = data && data[0];
     const { data: list } = useDirectoryList()
-    const reversedList = list?.companie?.slice().sort((a, b) => b.id - a.id)
+    const reversedList = (list?.companie || [])?.slice().sort((a, b) => b.id - a.id)
     return (
         <section className='w-100 float-start discover-con'>
             <div className='container'>
@@ -28,7 +28,7 @@ const Directory = () => {
                                     <div className='discover-box-content'>
                                         <h3>{card?.Name.slice(0, 25)}</h3>
                                         <p>{card?.Description.slice(0, 110)}...</p>
-                                        <span className='d-inline-block'>Category: {card?.Category}</span>
+                                        <span className='d-inline-block'>Catégorie: {card?.Category}</span>
                                         {/* discover-box-content */}
                                     </div>
                                     {/* discover-box-item */}

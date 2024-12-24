@@ -15,7 +15,7 @@ const Categories = () => {
                         <div className='categories-box'>
                             {
                                 (data || []).map(item => <div key={item.id} className='categories-box-item'>
-                                    <Link href="/">{item.Name}</Link>
+                                    <Link href="#">{item.Name}</Link>
                                 </div>)
                             }
                         </div>
