@@ -25,9 +25,9 @@ const Header = ({ pageData }: Props) => {
                                 }
                             </div>
                             <div className='top-bar-info'>
-                                <div className='input-block'>
+                                {/* <div className='input-block'>
                                     <input type='text' placeholder={pageData?.HeaderBar?.search_label || ''} />
-                                </div>
+                                </div> */}
                                 {
                                     pageData.HeaderBar.Socials && pageData.HeaderBar.Socials.length > 0 &&
                                     <div className='social-icon'>
@@ -66,19 +66,21 @@ const Header = ({ pageData }: Props) => {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav mx-auto mb-lg-0">
                                     {
-                                        (pageData?.Header.MenuLink || []).map((item, i) => <li key={item.id} className="nav-item " >
+                                        (pageData?.Header?.MenuLink || []).map((item, i) => <li key={item.id} className="nav-item " >
                                             {
                                                 i == 0 ? <Dropdown title={'Accueil'}>
                                                     <Dropdown.Item>
-                                                        <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
-                                                            {item.Name}</Link>
+                                                        <Link href={item?.Link} className="nav-link" style={isActive(item?.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                            {item?.Name}</Link>
                                                     </Dropdown.Item>
                                                     <Dropdown.Item>
-                                                        <Link href='/directory' className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
-                                                            Annuaire</Link>
+                                                        <Link href={(pageData?.Header?.MenuLink || [])[i + 1]?.Link || "#"} className="nav-link" style={isActive((pageData?.Header?.MenuLink || [])[i + 1]?.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                            {(pageData?.Header?.MenuLink || [])[i + 1]?.Name}</Link>
                                                     </Dropdown.Item>
-                                                </Dropdown> : <Link href={item.Link} className="nav-link" style={isActive(item.Link) ? { background: 'red' } : {}} aria-current="page">
-                                                    {item.Name}</Link>
+                                                </Dropdown> : i == 1 ? <Link href='/directory' className="nav-link" style={isActive(item?.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                    Annuaire</Link> : (pageData?.Header?.MenuLink || []).length != i ?
+                                                    <Link href={(pageData?.Header?.MenuLink || [])[i]?.Link || "#"} className="nav-link" style={isActive((pageData?.Header?.MenuLink || [])[i]?.Link) ? { background: 'red' } : {}} aria-current="page">
+                                                        {(pageData?.Header?.MenuLink || [])[i]?.Name}</Link> : <></>
                                             }
 
                                         </li>)

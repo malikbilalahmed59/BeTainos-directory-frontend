@@ -223,7 +223,7 @@ const DirectoryProfile = ({ pageData }: Props) => {
                                 {/* professional-item */}
                             </div>
                             <div className='see-more-link text-center'>
-                                <Link href="/">Voir plus d&apos;entreprises et de professionnels similaires</Link>
+                                <Link href="/directory">Voir plus d&apos;entreprises et de professionnels similaires</Link>
                             </div>
                         </div>
                     </div>
