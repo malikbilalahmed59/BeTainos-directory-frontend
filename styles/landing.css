@@ -603,6 +603,19 @@ h2 {
     /* object-position: center; */
 
 }
+.advertisement-box .advertisement-rt-box img {
+    width: 100%;
+    height: 1123px;
+    object-fit: cover;
+}
+ .rs-picker-select-menu-item a div br {
+    display: none;
+}
+.rs-picker-select-menu-item a div span {
+    display: block;
+    font-size: 16px;
+    line-height: 18px;
+}
 .card-img-top {
     width: 100%;
     object-fit: cover;
