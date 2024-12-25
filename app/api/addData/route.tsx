@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { getServerSession } from 'next-auth/next'; // Use getServerSession 
 import { NextRequest, NextResponse } from 'next/server';
+import { sendEmail } from '@/app/helper/sendEmail';
 // Define the NextAuth options
 const authOptions: NextAuthOptions = {
     providers: [
@@ -93,6 +94,11 @@ export async function POST(req: NextRequest) {
                 },
             }
         );
+        sendEmail({
+            company_info_name: body?.Name,
+            email: body?.Email,
+            company_info_phone: body?.Phone,
+        }); // Send email
 
         return new Response(
             JSON.stringify({ message: "Registration successful!" }),
