@@ -25,7 +25,6 @@ export const addCompanySchema = Joi.object({
     name: Joi.string().min(3).max(100).required().label('Name'),
     postalAddress: Joi.string().min(10).required().label('Postal Address'),
     phone: Joi.string()
-        .pattern(/^\+?[0-9]{7,15}$/)
         .required()
         .label('Phone')
         .messages({
@@ -38,7 +37,7 @@ export const addCompanySchema = Joi.object({
             "string.empty": "Email is required.",
             "string.pattern.base": "Must be a valid email."
         }),
-    website: Joi.string().allow('').uri().label('Website'),
+    website: Joi.string().allow('').label('Website'),
     socials: Joi.array().optional()
         .items(
             Joi.object({
@@ -66,7 +65,6 @@ export const addProfSchema = Joi.object({
     ServicesOffered: Joi.string().min(10).required().label('Services Offered'),
     officeHours: Joi.string().min(10).required().label('office Hours'),
     phone: Joi.string()
-        .pattern(/^\+?[0-9]{7,15}$/)
         .required()
         .label('Phone')
         .messages({
@@ -79,7 +77,7 @@ export const addProfSchema = Joi.object({
             "string.empty": "Email is required.",
             "string.pattern.base": "Must be a valid email."
         }),
-    website: Joi.string().allow('').uri().label('Website'),
+    website: Joi.string().allow('').label('Website'),
     Socials: Joi.array().optional()
         .items(
             Joi.object({
